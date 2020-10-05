@@ -18,8 +18,11 @@ import { HomePage } from './components/pages/Home';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 // import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import Search from 'antd/lib/input/Search';
 
-const App = () => <div>Hello World</div>;
+import SearchBar from './components/common/SearchBar.js';
+
+const App = () => <SearchBar />;
 
 ReactDOM.render(
   <Router>
@@ -41,8 +44,6 @@ ReactDOM.render(
 //   //   history.push('/login');
 //   // };
 
-
-=======
 //   return (
 //     // <Security {...config} onAuthRequired={authHandler}>
 //       <Switch>
@@ -62,4 +63,3 @@ ReactDOM.render(
 //     // </Security>
 //   );
 // }
-
