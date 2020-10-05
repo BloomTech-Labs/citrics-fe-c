@@ -41,6 +41,8 @@ ReactDOM.render(
 //   //   history.push('/login');
 //   // };
 
+
+=======
 //   return (
 //     // <Security {...config} onAuthRequired={authHandler}>
 //       <Switch>
@@ -60,3 +62,4 @@ ReactDOM.render(
 //     // </Security>
 //   );
 // }
+
