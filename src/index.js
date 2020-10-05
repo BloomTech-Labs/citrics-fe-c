@@ -42,7 +42,6 @@ ReactDOM.render(
 //   // };
 
 
-=======
 //   return (
 //     // <Security {...config} onAuthRequired={authHandler}>
 //       <Switch>
