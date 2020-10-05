@@ -40,7 +40,7 @@ function App() {
   };
 
   return (
-    <Security {...config} onAuthRequired={authHandler}>
+    //<Security {...config} onAuthRequired={authHandler}>
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
@@ -55,6 +55,6 @@ function App() {
         <SecureRoute path="/datavis" component={ExampleDataViz} />
         <Route component={NotFoundPage} />
       </Switch>
-    </Security>
+    //</Security>
   );
 }
