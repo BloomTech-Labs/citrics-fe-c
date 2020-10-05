@@ -2,9 +2,8 @@
   "name": "labs-spa-starter",
   "version": "0.1.0",
   "private": false,
-  "license" : "MIT",
+  "license": "MIT",
   "repository": "github:Lambda-School-Labs/labs-spa-starter",
-  
   "dependencies": {
     "@craco/craco": "^5.6.4",
     "@okta/okta-react": "^3.0.2",
@@ -12,12 +11,14 @@
     "antd": "^4.4.3",
     "axios": "^0.19.2",
     "craco-less": "^1.17.0",
+    "immer": "^7.0.9",
     "plotly.js": "^1.54.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-plotly.js": "^2.4.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "redux": "^4.0.5"
   },
   "scripts": {
     "start": "craco start",
