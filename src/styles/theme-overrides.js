@@ -13,9 +13,9 @@ module.exports = {
   '@border-color-base': '#d9d9d9',
   '@box-shadow-base':
     '0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)',
-  
+
   // CUSTOM ////////////////////////////////////////////////////
-  
+
   // font size
   '@f-micro': '12px',
   '@f-tiny': '14px',
@@ -24,9 +24,8 @@ module.exports = {
   '@f-large': '24px',
   '@f-xlarge': '38px',
 
-
   // colors ///////////////////////////////
-  '@c-white':'#FFFFFF',
+  '@c-white': '#FFFFFF',
   '@c-earth-light': '#204225',
   '@c-earth': '#17271E',
   '@c-earth-dark': '#15221C',
@@ -53,7 +52,4 @@ module.exports = {
   // :filter     ( drop shadow )
   '@sty-elevation2': 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15))',
   '@sty-elevation1': 'drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.15))',
-
-
-
 };
