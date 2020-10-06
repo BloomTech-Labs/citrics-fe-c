@@ -19,17 +19,13 @@ import { HomePage } from './components/pages/Home';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 // import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
-import PlotlyCard from './components/common/PlotlyCard';
 
-const App = () => {
-  return (
-    <PlotlyCard
-      plotlyIcon="/populationicon.png"
-      plotlyName="Population"
-      plotlyType="bar"
-    />
-  );
-};
+import Search from 'antd/lib/input/Search';
+
+import SearchBar from './components/common/SearchBar.js';
+
+const App = () => <SearchBar />;
+
 
 ReactDOM.render(
   <Router>
