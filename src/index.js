@@ -23,9 +23,12 @@ import { LoadingComponent } from './components/common';
 import Search from 'antd/lib/input/Search';
 
 import SearchBar from './components/common/SearchBar.js';
+import PlotlyCard from './components/common/PlotlyCard';
+
+// Plotly Card Format:
+// <PlotlyCard plotlyType="bar" plotlyIcon="/populationicon.png" plotlyName="Population"/>
 
 const App = () => <SearchBar />;
-
 
 ReactDOM.render(
   <Router>

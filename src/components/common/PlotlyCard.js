@@ -1,6 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import '../../styles/PlotlyTheme.scss';
+import '../../styles/PlotlyCardTheme.css';
 
 const PlotlyCard = props => {
   const { plotlyIcon, plotlyName, plotlyType } = props;

@@ -1,4 +1,5 @@
-.card {
+/* FOR LESS */
+/* .card {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,4 +28,32 @@
         justify-content: center;
 
     }
+} */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    border: 1px solid black;
+    padding: 1%;
+    border-radius: 15px;
+}
+.cardInfo {
+    display: flex;
+    align-items: center;
+}
+
+.plotlyIcon {
+    padding: 0 1%;
+    width: 50px;
+    height: 30px;
+}
+.plotlyName {
+    align-self: center;
+    margin: 0;
+}
+.plotContainer {
+    display: flex;
+    justify-content: center;
 }
