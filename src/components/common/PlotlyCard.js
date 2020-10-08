@@ -1,72 +1,50 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
-import '../../styles/PlotlyCardTheme.css';
+import '../../styles/PlotlyCardTheme.less';
 
 const PlotlyCard = props => {
-  const { plotlyIcon, plotlyName, plotlyType } = props;
+  const { plotlyIcon, plotlyName, plotlyType, data, by } = props;
 
   return (
     <div className="card">
       <div className="cardInfo">
-        <img src={plotlyIcon} className="plotlyIcon" alt={plotlyName} />
+        {plotlyIcon}
         <h3 className="plotlyName">{plotlyName}</h3>
       </div>
 
       <div className="plotContainer">
         <Plot
-          className="plot"
-          data={[
-            {
-              // x: ['giraffes', 'orangutans', 'monkeys'],
-              x: [32],
+          data={data.map(citydata => {
+            return {
+              x: [citydata[by]],
               type: `${plotlyType}`,
               mode: 'lines+markers',
-              marker: { color: 'green' },
-              style: { background: 'green' },
-              name: 'Los Angeles',
+              marker: {
+                color: '#' + (((1 << 24) * Math.random()) | 0).toString(16),
+              },
+              name: `${citydata.city}, ${citydata.state}`,
               orientation: 'h',
               hoverinfo: 'skip',
-            },
-            {
-              // x: [1, 8, 1],
-              x: [46],
-              type: `${plotlyType}`,
-              mode: 'lines+markers',
-              marker: { color: 'red' },
-              style: { background: 'green' },
-              name: 'Long Beach',
-              orientation: 'h',
-              hoverinfo: 'skip',
-            },
-            {
-              // x: [1, 7, 8],
-              x: [78],
-              type: `${plotlyType}`,
-              mode: 'lines+markers',
-              marker: { color: 'yellow' },
-              style: { background: 'green' },
-              name: 'San Diego',
-              orientation: 'h',
-              hoverinfo: 'skip',
-            },
-            {
-              // x: [1, 7, 8],
-              x: [89],
-              type: `${plotlyType}`,
-              mode: 'lines+markers',
-              marker: { color: 'purple' },
-              style: { background: 'green' },
-              name: 'San Francisco',
-              orientation: 'h',
-              hoverinfo: 'skip',
-            },
-          ]}
+              showlegend: false,
+            };
+          })}
           layout={{
-            plot_bgcolor: 'white',
-            paper_bgcolor: 'white',
+            plot_bgcolor: 'transparent',
+            paper_bgcolor: 'transparent',
             autosize: true,
+            margin: { l: 0, t: 0, r: 0, b: 0 },
+            yaxis: {
+              automargin: true,
+              visible: false,
+            },
+            xaxis: {
+              automargin: true,
+            },
+            font: {
+              color: 'white',
+            },
           }}
-          useResizeHandler="true"
+          useResizeHandler
           style={{
             width: '100%',
             height: '100%',
@@ -74,6 +52,7 @@ const PlotlyCard = props => {
           config={{
             displayModeBar: false,
             staticPlot: true,
+            responsive: true,
           }}
         />
       </div>

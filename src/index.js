@@ -7,10 +7,8 @@ import {
   Switch,
 } from 'react-router-dom';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
-
 import 'antd/dist/antd.less';
 import { SmileOutlined } from '@ant-design/icons';
-
 import { NotFoundPage } from './components/pages/NotFound';
 import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
@@ -19,6 +17,8 @@ import { HomePage } from './components/pages/Home';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
+import ComparisonPage from './components/pages/Comparison';
+
 
 import Search from 'antd/lib/input/Search';
 
@@ -27,6 +27,7 @@ import PlotlyCard from './components/common/PlotlyCard';
 
 // Plotly Card Format:
 // <PlotlyCard plotlyType="bar" plotlyIcon="/populationicon.png" plotlyName="Population"/>
+
 
 ReactDOM.render(
   <Router>
