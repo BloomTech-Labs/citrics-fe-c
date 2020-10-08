@@ -14,6 +14,7 @@ import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
 import { LoginPage } from './components/pages/Login';
 import { HomePage } from './components/pages/Home';
+import { ResultsPage } from './components/pages/Results';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
@@ -54,6 +55,7 @@ function App() {
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
+        <Route path="/results" component={ResultsPage} />
         {/* //any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
