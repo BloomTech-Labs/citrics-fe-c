@@ -7,6 +7,7 @@ function ResultsContainer() {
   const [cityData, setCityData] = useState([]);
 
   useEffect(() => {
+    //this pulls in the data for the city cards
     axios
       .get('https://labs27-c-citrics-api.herokuapp.com/cities/all')
       .then(res => {
@@ -27,6 +28,7 @@ function ResultsContainer() {
             cityImage=""
             cityAlt=""
             cityName={city.cityname}
+            cityState={city.citystate}
             cityColor=""
             cityAttr_1={city.populationdensityrating}
             cityAttr_2={city.averageage}

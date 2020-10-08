@@ -6,6 +6,7 @@ function CityCard({
   cityImage,
   cityAlt,
   cityName,
+  cityState,
   cityColor,
   cityAttr_1,
   cityAttr_2,
@@ -22,7 +23,11 @@ function CityCard({
         cover={<img alt={cityAlt} src={cityImage} />}
       >
         <Meta
-          title={cityName}
+          title={
+            <div>
+              {cityName}, {cityState}
+            </div>
+          }
           description={
             <Collapse defaultActiveKey={['1']}>
               <Panel
@@ -31,10 +36,10 @@ function CityCard({
                 key="1"
               >
                 <ul>
-                  <li>{cityAttr_1}</li>
-                  <li>{cityAttr_2}</li>
-                  <li>{cityAttr_3}</li>
-                  <li>{cityAttr_4}</li>
+                  <li>Population Density Rating: {cityAttr_1}</li>
+                  <li> Average Age: {cityAttr_2}</li>
+                  <li> Average Household Income: {cityAttr_3}</li>
+                  <li> Average Temperature: {cityAttr_4}</li>
                 </ul>
               </Panel>
             </Collapse>
