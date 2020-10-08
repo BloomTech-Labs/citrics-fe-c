@@ -1,0 +1,35 @@
+*{
+    box-sizing: border-box;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 30%;
+    border: 1px solid black;
+    padding: 1.5%;
+    margin: 1% 0;
+    color: @c-white;
+    border-radius: @sty-border-radius-medium;
+    background-color: @c-earth;
+
+    .cardInfo {
+        display: flex;
+        align-items: center;
+        height: 10%;
+        padding: 1%;
+
+        .plotlyName {
+            align-self: center;
+            margin: 0 1%;
+            color: @c-white;
+        }
+    }
+    
+    .plotContainer {
+        display: flex;
+        justify-content: center;
+        height: 90%;
+        padding: 2%;
+    }
+} 
