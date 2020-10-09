@@ -24,7 +24,6 @@ export const fetchCities = () => async (dispatch, getState) => {
 };
 
 export const filterCities = value => {
-  console.log(value);
   return {
     type: 'FILTER',
     userInput: value,

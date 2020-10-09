@@ -11,20 +11,14 @@ function SearchBar() {
     state => state.searchBar
   );
   const { fetchCities, filterCities } = searchBarActs;
-  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchCities());
   }, [dispatch]);
 
-  const onChange = value => {
-    dispatch(filterCities(value));
-  };
-
-  const onSelect = (value, obj) => {
-    // you can pass the object id to global state from here
-    console.log(obj.id);
-  };
+  const onChange = value => dispatch(filterCities(value));
+  // you can pass the object id to global state from here
+  const onSelect = (value, obj) => console.log(obj.id);
 
   return (
     <div className="search-container">
