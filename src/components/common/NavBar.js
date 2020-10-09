@@ -38,6 +38,20 @@ function NavBar() {
           key="favorites"
           icon={<HomeOutlined style={{ color: 'white' }} />}
         />
+        <Menu.Item
+          style={{
+            color: '#4AC85D',
+            paddingBottom: '5px',
+            fontStyle: 'normal',
+            fontWeight: 'normal',
+            fontSize: '32px',
+            lineHeight: '32px',
+          }}
+          key="logo"
+        >
+          {' '}
+          Citrics{' '}
+        </Menu.Item>
       </Menu>
     </div>
   );
