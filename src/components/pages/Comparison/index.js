@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 // STYLES
 import '../../../styles/ComparisonPage.less';
@@ -7,6 +8,7 @@ import { CloudOutlined, SafetyOutlined, TeamOutlined } from '@ant-design/icons';
 // COMPONENTS
 import SearchBar from '../../common/SearchBar';
 import PlotlyCard from '../../common/PlotlyCard';
+import CityCard from '../../common/CityCard';
 
 // PLOTLY START
 const plotlyNames = ['Population', 'Cost of Living', 'Average Temperature'];
@@ -68,11 +70,44 @@ const payload = [
 ];
 
 const ComparisonPage = () => {
+  const [cityData, setCityData] = useState([]);
+
+  //use city id 3 for testing a single city
+
+  useEffect(() => {
+    //this pulls in the data for the city cards
+    axios
+      .get('https://labs27-c-citrics-api.herokuapp.com/cities/all')
+      .then(res => {
+        setCityData(res.data);
+        console.log(cityData);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="comparisonContainer">
       {/* Search / City Cards */}
       <div className="sidebar">
         <SearchBar />
+        {cityData.map(city => {
+          return (
+            <CityCard
+              key={city.cityid}
+              cityImage=""
+              cityAlt=""
+              cityName={city.cityname}
+              cityState={city.citystate}
+              cityColor=""
+              cityAttr_1={city.populationdensityrating}
+              cityAttr_2={city.averageage}
+              cityAttr_3={city.averagehouseholdincome}
+              cityAttr_4={city.averagetemperature}
+            />
+          );
+        })}
       </div>
 
       {/* Plotly Cards */}

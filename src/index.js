@@ -19,7 +19,7 @@ import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import ComparisonPage from './components/pages/Comparison';
-
+import NavBar from './components/common/NavBar.js';
 
 import Search from 'antd/lib/input/Search';
 
@@ -28,7 +28,6 @@ import PlotlyCard from './components/common/PlotlyCard';
 
 // Plotly Card Format:
 // <PlotlyCard plotlyType="bar" plotlyIcon="/populationicon.png" plotlyName="Population"/>
-
 
 ReactDOM.render(
   <Router>
@@ -52,6 +51,7 @@ function App() {
 
   return (
     <Security {...config} onAuthRequired={authHandler}>
+      <NavBar />
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />

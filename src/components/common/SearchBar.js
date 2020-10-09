@@ -26,6 +26,7 @@ function SearchBar() {
     <div className="search-container">
       <AutoComplete
         options={names}
+        style={{ width: '100%' }}
         onSelect={onSelect}
         onChange={onChange}
         dropdownMatchSelectWidth={true}
