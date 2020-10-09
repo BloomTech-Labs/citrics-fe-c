@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import store from './state';
 import {
   BrowserRouter as Router,
   Route,
@@ -8,7 +10,6 @@ import {
 } from 'react-router-dom';
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import 'antd/dist/antd.less';
-import { SmileOutlined } from '@ant-design/icons';
 import { NotFoundPage } from './components/pages/NotFound';
 import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
@@ -20,22 +21,14 @@ import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import ComparisonPage from './components/pages/Comparison';
 
-
-import Search from 'antd/lib/input/Search';
-
-import SearchBar from './components/common/SearchBar.js';
-import PlotlyCard from './components/common/PlotlyCard';
-
-// Plotly Card Format:
-// <PlotlyCard plotlyType="bar" plotlyIcon="/populationicon.png" plotlyName="Population"/>
-
-
 ReactDOM.render(
-  <Router>
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
@@ -56,6 +49,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route path="/results" component={ResultsPage} />
+        <Route path="/compare" component={ComparisonPage} />
         {/* //any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
