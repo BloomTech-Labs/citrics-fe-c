@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card } from 'antd';
 import { Collapse } from 'antd';
+import { CloseOutlined, HeartOutlined } from '@ant-design/icons';
 
 function CityCard({
   cityImage,
@@ -17,7 +18,7 @@ function CityCard({
   const { Panel } = Collapse;
   return (
     <div className="city-card-wrapper">
-      <Card
+      {/* <Card
         hoverable
         style={{ background: `${cityColor}` }}
         cover={<img alt={cityAlt} src={cityImage} />}
@@ -31,8 +32,7 @@ function CityCard({
           description={
             <Collapse defaultActiveKey={['1']}>
               <Panel
-                style={{ background: '#F759AB' }}
-                header="View Details"
+                style={{ background: '#F759AB', float: 'right' }}
                 key="1"
               >
                 <ul>
@@ -45,7 +45,22 @@ function CityCard({
             </Collapse>
           }
         />
-      </Card>
+      </Card> */}
+      <div style={{ background: { cityColor } }} className="citycard">
+        <div className="card-header-container">
+          <p>
+            {cityName}, {cityState}
+          </p>
+          <CloseOutlined style={{ float: 'right' }} />
+          <HeartOutlined style={{ float: 'right' }} />
+        </div>
+        <ul>
+          <li>Population Density Rating: {cityAttr_1}</li>
+          <li> Average Age: {cityAttr_2}</li>
+          <li> Average Household Income: {cityAttr_3}</li>
+          <li> Average Temperature: {cityAttr_4}</li>
+        </ul>
+      </div>
     </div>
   );
 }
