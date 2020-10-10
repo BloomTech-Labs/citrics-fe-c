@@ -6,17 +6,31 @@
     margin: 0px 0px;
     padding: 1%;
 
-    .citycard { 
+    .closeCard { 
         background-color:  #F759AB;
         border-radius: @sty-border-radius-small;
         width: auto;
-        height: 50px;
-        padding: 3%;
+        height: 3rem;
+        padding: 1rem;
+        overflow: hidden;
+    }
+
+    .openCard {
+        background-color:  #F759AB;
+        border-radius: @sty-border-radius-small;
+        width: auto;
+        height: 10rem;
+        padding: 1rem;
         overflow: hidden;
     }
 
     .card-header-container{
         display: flex;
+        justify-content: space-between;
+    }
+
+    .card-icons :hover {
+        cursor: pointer;
     }
 
     .ant-card {

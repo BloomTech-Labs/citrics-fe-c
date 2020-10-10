@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from 'antd';
 import { Collapse } from 'antd';
 import { CloseOutlined, HeartOutlined } from '@ant-design/icons';
@@ -16,43 +16,29 @@ function CityCard({
 }) {
   const { Meta } = Card;
   const { Panel } = Collapse;
+  const [open, setOpen] = useState(false);
+
+  function openCard() {
+    setOpen(!open);
+  }
+
+  let card_class = open ? 'openCard' : 'closeCard';
+
   return (
     <div className="city-card-wrapper">
-      {/* <Card
-        hoverable
-        style={{ background: `${cityColor}` }}
-        cover={<img alt={cityAlt} src={cityImage} />}
+      <div
+        style={{ background: { cityColor } }}
+        className={card_class}
+        onClick={openCard}
       >
-        <Meta
-          title={
-            <div>
-              {cityName}, {cityState}
-            </div>
-          }
-          description={
-            <Collapse defaultActiveKey={['1']}>
-              <Panel
-                style={{ background: '#F759AB', float: 'right' }}
-                key="1"
-              >
-                <ul>
-                  <li>Population Density Rating: {cityAttr_1}</li>
-                  <li> Average Age: {cityAttr_2}</li>
-                  <li> Average Household Income: {cityAttr_3}</li>
-                  <li> Average Temperature: {cityAttr_4}</li>
-                </ul>
-              </Panel>
-            </Collapse>
-          }
-        />
-      </Card> */}
-      <div style={{ background: { cityColor } }} className="citycard">
         <div className="card-header-container">
           <p>
             {cityName}, {cityState}
           </p>
-          <CloseOutlined style={{ float: 'right' }} />
-          <HeartOutlined style={{ float: 'right' }} />
+          <div className="card-icons">
+            <HeartOutlined />
+            <CloseOutlined style={{ marginLeft: '.5rem' }} />
+          </div>
         </div>
         <ul>
           <li>Population Density Rating: {cityAttr_1}</li>
