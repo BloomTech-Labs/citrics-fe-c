@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu } from 'antd';
 import { UserOutlined, HomeOutlined, HeartOutlined } from '@ant-design/icons';
+import history from 'react-router-dom';
 
 function NavBar() {
   const [current, setCurrent] = useState();
@@ -10,7 +11,14 @@ function NavBar() {
     console.log('click ', e);
     setCurrent({ current: e.key });
   };
-
+  /*
+  useEffect(() => {
+    window.onpopstate = e => {
+      e.preventDefault()
+      history.push(e.target.location.pathname)
+    }
+  }, []);
+  */
   return (
     <div className="navbar-container">
       <Menu onClick={handleClick} selectedKeys={[current]} mode="horizontal">

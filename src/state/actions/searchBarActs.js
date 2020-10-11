@@ -1,12 +1,12 @@
 import Axios from 'axios';
 
 export const fetchCities = () => async (dispatch, getState) => {
-  dispatch({ type: 'FETCH_REQUEST' });
+  dispatch({ type: 'SEARCHBAR_FETCH_REQUEST' });
 
   Axios.get('http://labs27-c-citrics-api.herokuapp.com/cities/all')
     .then(response =>
       dispatch({
-        type: 'FETCH_SUCCESS',
+        type: 'SEARCHBAR_FETCH_SUCCESS',
         payload: response.data.map(el => {
           return {
             value: `${el.cityname}, ${el.citystate}`,
@@ -17,7 +17,7 @@ export const fetchCities = () => async (dispatch, getState) => {
     )
     .catch(error =>
       dispatch({
-        type: 'FETCH_FAILURE',
+        type: 'SEARCHBAR_FETCH_FAILURE',
         error,
       })
     );
@@ -25,7 +25,7 @@ export const fetchCities = () => async (dispatch, getState) => {
 
 export const filterCities = value => {
   return {
-    type: 'FILTER',
+    type: 'SEARCHBAR_FILTER',
     userInput: value,
   };
 };
