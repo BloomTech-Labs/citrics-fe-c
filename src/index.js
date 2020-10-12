@@ -19,8 +19,7 @@ import { ResultsPage } from './components/pages/Results';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
-import ComparisonPage from './components/pages/Comparison';
-import NavBar from './components/common/NavBar.js';
+import ComparisonPage from './components/pages/Comparison2';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -46,7 +45,6 @@ function App() {
 
   return (
     <Security {...config} onAuthRequired={authHandler}>
-      <NavBar />
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />

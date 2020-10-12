@@ -19,8 +19,6 @@ const PlotlyCard = props => {
   const { graphLabel, data } = props;
   const [graphTypeState, setGraphTypeState] = useState('bar');
   const cardHeight = 64 * data.length;
-  console.log('hello');
-  console.log(cardHeight);
 
   const relativeProperty = () => {
     switch (graphLabel) {
@@ -47,13 +45,12 @@ const PlotlyCard = props => {
       <div className="plotContainer">
         <Plot
           data={data.map(citydata => {
-            console.log(citydata);
             return {
               x: [citydata[relativeProperty()]],
               type: graphTypeState,
               mode: 'markers',
               marker: {
-                color: '#' + (((1 << 24) * Math.random()) | 0).toString(16),
+                color: citydata.color,
               },
               name: `${citydata.cityname}, ${citydata.citystate}`,
               orientation: 'h',

@@ -1,5 +1,6 @@
 const initState = {
   cityData: [],
+  cityColor: '',
   filter: '',
   loading: false,
   error: null,
