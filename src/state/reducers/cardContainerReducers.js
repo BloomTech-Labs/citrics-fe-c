@@ -31,6 +31,13 @@ export const cardContainerReducers = (state = initState, action) => {
         ...state,
         filter: action.value,
       };
+
+    case 'CARDCONTAINER_REMOVE':
+      return {
+        ...state,
+        cityData: action.payload,
+      };
+
     default:
       return state;
   }

@@ -5,6 +5,9 @@ import axios from 'axios';
 
 import useVisibilityToggler from '../../hooks/useVisibilityToggler';
 
+import { cardContainerActs } from '../../state/actions';
+import { useDispatch } from 'react-redux';
+
 function CityCard({ city }) {
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState();
@@ -13,6 +16,12 @@ function CityCard({ city }) {
     <HeartFilled />,
     true
   );
+
+  const dispatch = useDispatch();
+
+  const { removeCity } = cardContainerActs;
+
+  const handleRemove = () => dispatch(removeCity(city.cityid));
 
   const openCard = () => setOpen(!open);
 
@@ -45,7 +54,7 @@ function CityCard({ city }) {
           </p>
           <div className="card-icons">
             <div onClick={toggleOnClick}>{heartIcon}</div>
-            <div>
+            <div onClick={handleRemove}>
               <CloseOutlined style={{ marginLeft: '.5rem' }} />
             </div>
           </div>
