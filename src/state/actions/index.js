@@ -5,5 +5,6 @@
 // Declare action TYPES at the top of the file
 
 import * as searchBarActs from './searchBarActs';
+import * as cardContainerActs from './cardContainerActs';
 
-export { searchBarActs };
+export { searchBarActs, cardContainerActs };

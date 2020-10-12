@@ -7,8 +7,8 @@ import { CloudOutlined, SafetyOutlined, TeamOutlined } from '@ant-design/icons';
 
 // COMPONENTS
 import SearchBar from '../../common/SearchBar';
-import PlotlyCard from '../../common/PlotlyCard';
 import CityCard from '../../common/CityCard';
+import CardContainer from '../../common/CardContainer';
 
 // PLOTLY START
 const plotlyNames = ['Population', 'Cost of Living', 'Average Temperature'];
@@ -91,6 +91,7 @@ const ComparisonPage = () => {
     <div className="comparisonContainer">
       {/* Search / City Cards */}
       <div className="sidebar">
+        <div>test</div>
         <SearchBar />
         {cityData.map(city => {
           return (
@@ -112,17 +113,7 @@ const ComparisonPage = () => {
 
       {/* Plotly Cards */}
       <div className="content">
-        {payload.map((city, i) => {
-          return (
-            <PlotlyCard
-              plotlyType="bar"
-              plotlyIcon={cityAttrIcons[i]}
-              plotlyName={plotlyNames[i]}
-              data={payload}
-              by={getPlotlyAttr(plotlyNames[i])}
-            />
-          );
-        })}
+        <CardContainer />
       </div>
     </div>
   );

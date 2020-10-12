@@ -1,28 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Plot from 'react-plotly.js';
 import '../../styles/PlotlyCardTheme.less';
+import {
+  CloudOutlined,
+  SafetyOutlined,
+  TeamOutlined,
+  HomeOutlined,
+} from '@ant-design/icons';
+
+const icons = {
+  populationdensityrating: <TeamOutlined style={{ fontSize: '1.5rem' }} />,
+  safteyratingscore: <SafetyOutlined style={{ fontSize: '1.5rem' }} />,
+  averagetemperature: <CloudOutlined style={{ fontSize: '1.5rem' }} />,
+  costoflivingscore: <HomeOutlined style={{ fontSize: '1.5rem' }} />,
+};
 
 const PlotlyCard = props => {
-  const { plotlyIcon, plotlyName, plotlyType, data, by } = props;
+  const { graphLabel, data } = props;
+  const [graphTypeState, setGraphTypeState] = useState('bar');
+  const cardHeight = 64 * data.length;
+  console.log('hello');
+  console.log(cardHeight);
+
+  const relativeProperty = () => {
+    switch (graphLabel) {
+      case 'Population Density':
+        return 'populationdensityrating';
+      case 'Safety Rating':
+        return 'safteyratingscore';
+      case 'Average Temperature':
+        return 'averagetemperature';
+      case 'Cost of Living':
+        return 'costoflivingscore';
+      default:
+        return;
+    }
+  };
 
   return (
     <div className="card">
       <div className="cardInfo">
-        {plotlyIcon}
-        <h3 className="plotlyName">{plotlyName}</h3>
+        {icons[relativeProperty()]}
+        <h3 className="plotlyName">{graphLabel}</h3>
       </div>
 
       <div className="plotContainer">
         <Plot
           data={data.map(citydata => {
+            console.log(citydata);
             return {
-              x: [citydata[by]],
-              type: `${plotlyType}`,
-              mode: 'lines+markers',
+              x: [citydata[relativeProperty()]],
+              type: graphTypeState,
+              mode: 'markers',
               marker: {
                 color: '#' + (((1 << 24) * Math.random()) | 0).toString(16),
               },
-              name: `${citydata.city}, ${citydata.state}`,
+              name: `${citydata.cityname}, ${citydata.citystate}`,
               orientation: 'h',
               hoverinfo: 'skip',
               showlegend: false,
@@ -39,6 +72,7 @@ const PlotlyCard = props => {
             },
             xaxis: {
               automargin: true,
+              visible: false,
             },
             font: {
               color: 'white',
@@ -47,7 +81,7 @@ const PlotlyCard = props => {
           useResizeHandler
           style={{
             width: '100%',
-            height: '100%',
+            height: `${cardHeight}px`,
           }}
           config={{
             displayModeBar: false,
