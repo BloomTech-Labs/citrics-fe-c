@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { Card } from 'antd';
-import { Collapse } from 'antd';
-import { CloseOutlined, HeartOutlined } from '@ant-design/icons';
+import { CloseOutlined, HeartOutlined, HeartFilled } from '@ant-design/icons';
 import '../../styles/style.less';
 import axios from 'axios';
 
+import useVisibilityToggler from '../../hooks/useVisibilityToggler';
+
 function CityCard({ city }) {
-  const { Meta } = Card;
-  const { Panel } = Collapse;
   const [open, setOpen] = useState(false);
   const [image, setImage] = useState();
+  const [heartIcon, toggleIcon] = useVisibilityToggler(
+    <HeartOutlined />,
+    <HeartFilled />,
+    true
+  );
+
   const openCard = () => setOpen(!open);
+
+  const toggleOnClick = e => {
+    e.stopPropagation();
+    toggleIcon();
+  };
 
   useEffect(() => {
     axios
@@ -35,8 +44,10 @@ function CityCard({ city }) {
             {city.cityname}, {city.citystate}
           </p>
           <div className="card-icons">
-            <HeartOutlined />
-            <CloseOutlined style={{ marginLeft: '.5rem' }} />
+            <div onClick={toggleOnClick}>{heartIcon}</div>
+            <div>
+              <CloseOutlined style={{ marginLeft: '.5rem' }} />
+            </div>
           </div>
         </div>
         <div className="city-card-body-wrapper">
