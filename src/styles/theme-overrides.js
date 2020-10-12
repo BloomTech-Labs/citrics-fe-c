@@ -26,9 +26,9 @@ module.exports = {
 
   // colors ///////////////////////////////
   '@c-white': '#FFFFFF',
-  '@c-earth-light': '#204225',
-  '@c-earth': '#17271E',
-  '@c-earth-dark': '#15221C',
+  '@c-bg-light': '#204225',
+  '@c-bg': '#17271E',
+  '@c-bg-dark': '#15221C',
   '@c-gray-light': '#F2F2F2',
   '@c-gray': '#E0E0E0',
   '@c-gray-dark': '#BDBDBD',

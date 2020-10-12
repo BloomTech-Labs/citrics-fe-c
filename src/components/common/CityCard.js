@@ -2,38 +2,24 @@ import React, { useState } from 'react';
 import { Card } from 'antd';
 import { Collapse } from 'antd';
 import { CloseOutlined, HeartOutlined } from '@ant-design/icons';
+import '../../styles/style.less';
 
-function CityCard({
-  cityImage,
-  cityAlt,
-  cityName,
-  cityState,
-  cityColor,
-  cityAttr_1,
-  cityAttr_2,
-  cityAttr_3,
-  cityAttr_4,
-}) {
+function CityCard({ city }) {
   const { Meta } = Card;
   const { Panel } = Collapse;
   const [open, setOpen] = useState(false);
-
-  function openCard() {
-    setOpen(!open);
-  }
-
-  let card_class = open ? 'openCard' : 'closeCard';
+  const openCard = () => setOpen(!open);
 
   return (
     <div className="city-card-wrapper">
       <div
-        style={{ background: { cityColor } }}
-        className={card_class}
+        style={{ background: city.color }}
+        className={open ? 'openCard' : 'closeCard'}
         onClick={openCard}
       >
         <div className="card-header-container">
           <p>
-            {cityName}, {cityState}
+            {city.cityname}, {city.citystate}
           </p>
           <div className="card-icons">
             <HeartOutlined />
@@ -41,10 +27,10 @@ function CityCard({
           </div>
         </div>
         <ul>
-          <li>Population Density Rating: {cityAttr_1}</li>
-          <li> Average Age: {cityAttr_2}</li>
-          <li> Average Household Income: {cityAttr_3}</li>
-          <li> Average Temperature: {cityAttr_4}</li>
+          <li>Population Density Rating: {city.populationdensityrating}</li>
+          <li> Average Age: {city.averageage}</li>
+          <li> Average Household Income: {city.averagehouseholdincome}</li>
+          <li> Average Temperature: {city.averagetemperature}</li>
         </ul>
       </div>
     </div>

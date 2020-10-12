@@ -1,6 +1,19 @@
+//scroll bar fix
+html { margin-left: calc(100vw - 100%); }
+
 .navbar-container {
+
+    display: inline-flexbox;
+    align-content: center;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    z-index: 100;
+
     .ant-menu {
-        background: #17271E;
+        display: inline-flexbox;
+        height: 80px;
         box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);;
     }
 

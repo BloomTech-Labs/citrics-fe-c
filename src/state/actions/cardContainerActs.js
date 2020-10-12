@@ -1,5 +1,11 @@
-import { ConsoleSqlOutlined } from '@ant-design/icons';
 import Axios from 'axios';
+import theme from '../../styles/themes';
+const cityColors = [
+  theme.dark.tangerine,
+  theme.dark.magenta,
+  theme.dark.sky,
+  theme.dark.bgLight,
+];
 
 export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
   const currentCities = getState().cardContainer.cityData;
@@ -18,7 +24,7 @@ export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
 
   Axios.get(`http://labs27-c-citrics-api.herokuapp.com/cities/city/${cityId}`)
     .then(response => {
-      console.log(response.data);
+      response.data.color = cityColors[currentCities.length];
       dispatch({
         type: 'CARDCONTAINER_FETCH_SUCCESS',
         payload: response.data,

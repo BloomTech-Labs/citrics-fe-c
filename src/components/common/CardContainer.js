@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 
 // COMPONENTS
 import PlotlyCard from './PlotlyCard';
+import CityCard from './CityCard';
 
 // PLOTLY START
 const graphLabels = [
@@ -16,16 +17,31 @@ const graphLabels = [
   'Cost of Living',
 ];
 
-export default function CardContainer() {
+export default function CardContainer({ Card }) {
   const { filter, cityData, loading, error } = useSelector(
     state => state.cardContainer
   );
 
-  return (
-    <div>
+  return Card == PlotlyCard ? (
+    <div style={{ width: '100%' }}>
       {cityData.length ? (
         graphLabels.map(label => (
-          <PlotlyCard key={nanoid()} graphLabel={label} data={cityData} />
+          <Card key={nanoid()} graphLabel={label} data={cityData} />
+        ))
+      ) : (
+        <div />
+      )}
+    </div>
+  ) : (
+    <div style={{ width: '100%', height: '500px' }}>
+      {cityData.length ? (
+        cityData.map(city => (
+          <CityCard
+            key={nanoid()}
+            city={city}
+            //cityImage=""
+            //cityAlt=""
+          />
         ))
       ) : (
         <div />
