@@ -3,7 +3,7 @@ import Axios from 'axios';
 export const fetchCities = () => async (dispatch, getState) => {
   dispatch({ type: 'SEARCHBAR_FETCH_REQUEST' });
 
-  Axios.get('http://labs27-c-citrics-api.herokuapp.com/cities/all')
+  Axios.get('https://labs27-c-citrics-api.herokuapp.com/cities/all')
     .then(response =>
       dispatch({
         type: 'SEARCHBAR_FETCH_SUCCESS',

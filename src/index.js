@@ -19,7 +19,7 @@ import { ResultsPage } from './components/pages/Results';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
-import ComparisonPage from './components/pages/Comparison2';
+import ComparisonPage from './components/pages/Comparison';
 
 ReactDOM.render(
   <Provider store={store}>
