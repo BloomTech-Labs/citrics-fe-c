@@ -15,11 +15,11 @@ import { ExampleListPage } from './components/pages/ExampleList';
 import { ProfileListPage } from './components/pages/ProfileList';
 import { LoginPage } from './components/pages/Login';
 import { HomePage } from './components/pages/Home';
-import { ResultsPage } from './components/pages/Results';
 import { ExampleDataViz } from './components/pages/ExampleDataViz';
 import { config } from './utils/oktaConfig';
 import { LoadingComponent } from './components/common';
 import ComparisonPage from './components/pages/Comparison';
+import Landing from './components/pages/Landing';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -49,6 +49,7 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route path="/compare" component={ComparisonPage} />
+        <Route path="/landing" component={Landing} />
         {/* //any of the routes you need secured should be registered as SecureRoutes */}
         <SecureRoute
           path="/"
