@@ -2,10 +2,8 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
 import '../../styles/style.less';
-import { useSelector } from 'react-redux';
 import NavBar from './NavBar';
 import Body from './Body';
-import { NodeExpandOutlined } from '@ant-design/icons';
 const { Content } = Layout;
 
 // The Canvas component is the blueprint for what is draw to the DOM
@@ -14,8 +12,6 @@ const { Content } = Layout;
 // 'main' props will be displayed to the right or centered underneath the nav bar if their are no 'side' props
 
 export default ({ Main, Side }) => {
-  const theme = useSelector(state => state.theme);
-
   return (
     <Layout
       className="layout"
@@ -25,7 +21,6 @@ export default ({ Main, Side }) => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        backgroundColor: theme.bgDark,
         opacity: 1,
         minHeight: '100vh',
         maxHeight: '100vh',
