@@ -4,17 +4,18 @@ export const fetchCities = () => async (dispatch, getState) => {
   dispatch({ type: 'SEARCHBAR_FETCH_REQUEST' });
 
   Axios.get('https://labs27-c-citrics-api.herokuapp.com/cities/all')
-    .then(response =>
+    .then(response => {
+      console.log(response.data);
       dispatch({
         type: 'SEARCHBAR_FETCH_SUCCESS',
         payload: response.data.map(el => {
           return {
-            value: `${el.cityname}, ${el.citystate}`,
+            value: `${el.citynamestate}`,
             id: el.cityid,
           };
         }),
-      })
-    )
+      });
+    })
     .catch(error =>
       dispatch({
         type: 'SEARCHBAR_FETCH_FAILURE',

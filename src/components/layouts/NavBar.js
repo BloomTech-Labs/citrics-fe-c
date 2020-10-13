@@ -4,11 +4,14 @@ import { Layout, Menu } from 'antd';
 import '../../styles/style.less';
 import { useSelector } from 'react-redux';
 import { UserOutlined, HomeOutlined, HeartOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
 
 const { Header } = Layout;
 
 export default () => {
   const theme = useSelector(state => state.theme);
+  const history = useHistory();
+
   return (
     <Header
       style={{
@@ -42,17 +45,24 @@ export default () => {
           color: theme.primary,
         }}
       >
+        {/*
+          Tried to make this a seperate component then .mapped through an arr of objects 
+          Ant design's <Menu mode='horizontal'/> did not want to play nice with that so here we are.. */}
+
         <Menu.Item
           key="home"
           icon={<HomeOutlined style={{ color: theme.primary }} />}
+          onClick={() => history.push('./landing')}
         />
         <Menu.Item
           key="favorites"
           icon={<HeartOutlined style={{ color: theme.primary }} />}
+          onClick={() => history.push('./landing')}
         />
         <Menu.Item
           key="profile"
           icon={<UserOutlined style={{ color: theme.primary }} />}
+          onClick={() => history.push('./landing')}
         />
       </Menu>
     </Header>
