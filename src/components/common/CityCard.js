@@ -49,9 +49,7 @@ function CityCard({ city }) {
         onClick={openCard}
       >
         <div className="card-header-container">
-          <p>
-            {city.cityname}, {city.citystate}
-          </p>
+          <p>{city.citynamestate}</p>
           <div className="card-icons">
             <div onClick={toggleOnClick}>{heartIcon}</div>
             <div onClick={handleRemove}>

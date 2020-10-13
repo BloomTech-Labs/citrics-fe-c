@@ -29,6 +29,7 @@ export default () => {
       <div
         className="logo"
         key="logo"
+        onClick={() => history.push('./landing')}
         style={{
           color: theme.primary,
           backgroundColor: theme.bg,
@@ -49,11 +50,14 @@ export default () => {
           Tried to make this a seperate component then .mapped through an arr of objects 
           Ant design's <Menu mode='horizontal'/> did not want to play nice with that so here we are.. */}
 
-        <Menu.Item
+        {/*
+          This component is not zombie code, it will need to be displayed at mobile breakpoints 
+          <Menu.Item
           key="home"
-          icon={<HomeOutlined style={{ color: theme.primary }} />}
+          icon={<HomeOutlined style={{ display: 'none' }} />}
           onClick={() => history.push('./landing')}
-        />
+          /> */}
+
         <Menu.Item
           key="favorites"
           icon={<HeartOutlined style={{ color: theme.primary }} />}
