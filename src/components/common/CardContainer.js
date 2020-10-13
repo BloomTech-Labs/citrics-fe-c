@@ -37,7 +37,7 @@ export default function CardContainer({ Card }) {
       {cityData.length ? (
         cityData.map(city => (
           <CityCard
-            key={nanoid()}
+            key={city.id}
             city={city}
             //cityImage=""
             //cityAlt=""

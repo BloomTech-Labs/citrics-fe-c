@@ -4,10 +4,11 @@ import { LeftOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchBarActs, cardContainerActs } from '../../state/actions';
 import '../../styles/style.less';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 function SearchBar() {
   const history = useHistory();
+  const currentLocation = useLocation().pathname;
   const dispatch = useDispatch();
   const { fetchSpecificCityData } = cardContainerActs;
   const { fetchCities, filterCities } = searchBarActs;
@@ -22,6 +23,7 @@ function SearchBar() {
   const onChange = value => dispatch(filterCities(value));
   // you can pass the object id to global state from here
   const onSelect = (value, city) => {
+    if (currentLocation != '/compare') history.push('/compare');
     dispatch(fetchSpecificCityData(city.id));
     //history.push('/login');
   };
