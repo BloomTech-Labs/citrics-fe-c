@@ -13,7 +13,7 @@ export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
   if (currentCities) {
     if (currentCities.length >= 1) {
       for (const city of currentCities) {
-        if (city.cityid == cityId) {
+        if (city.cityid === cityId) {
           return;
         }
       }
@@ -36,4 +36,21 @@ export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
         error,
       })
     );
+};
+
+export const removeCity = cityId => (dispatch, getState) => {
+  const currentCities = getState().cardContainer.cityData;
+  // check if city is already in state
+  if (currentCities) {
+    if (currentCities.length >= 1) {
+      for (const city of currentCities) {
+        if (city.cityid === cityId) {
+          return dispatch({
+            type: 'CARDCONTAINER_REMOVE',
+            payload: currentCities.filter(city => city.cityid !== cityId),
+          });
+        }
+      }
+    }
+  }
 };
