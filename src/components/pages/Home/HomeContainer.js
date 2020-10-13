@@ -1,13 +1,38 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useOktaAuth } from '@okta/okta-react';
-
+import Canvas from '../../layouts/Canvas';
+import SearchBar from '../../common/SearchBar';
 import RenderHomePage from './RenderHomePage';
+
+// these functions are acting as jsx return statements, can be compartmentalized later.
+function titleContainer() {
+  return <div></div>;
+}
+function title() {
+  return (
+    <div
+      id="title"
+      style={{
+        fontSize: 48,
+        paddingTop: '30vh',
+        lineHeight: '48px',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        color: '#fff',
+        textAlign: 'center',
+      }}
+    >
+      {' '}
+      Looking for a new place to call home?
+    </div>
+  );
+}
 
 function HomeContainer({ LoadingComponent }) {
   const { authState, authService } = useOktaAuth();
   const [userInfo, setUserInfo] = useState(null);
   // eslint-disable-next-line
-  const [memoAuthService] = useMemo(() => [authService], []);
+  const [memoAuthService] = useMemo(() => [authService], [])
 
   useEffect(() => {
     let isSubscribed = true;
@@ -36,6 +61,7 @@ function HomeContainer({ LoadingComponent }) {
       {authState.isAuthenticated && userInfo && (
         <RenderHomePage userInfo={userInfo} authService={authService} />
       )}
+      <Canvas Side={[SearchBar, title]} Main={titleContainer} />
     </>
   );
 }

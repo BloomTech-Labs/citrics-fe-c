@@ -51,7 +51,7 @@ function App() {
         <Route path="/results" component={ResultsPage} />
         <Route path="/compare" component={ComparisonPage} />
         {/* //any of the routes you need secured should be registered as SecureRoutes */}
-        <SecureRoute
+        <Route
           path="/"
           exact
           component={() => <HomePage LoadingComponent={LoadingComponent} />}

@@ -5,6 +5,7 @@ import '../../styles/style.less';
 import { useSelector } from 'react-redux';
 import NavBar from './NavBar';
 import Body from './Body';
+import { NodeExpandOutlined } from '@ant-design/icons';
 const { Content } = Layout;
 
 // The Canvas component is the blueprint for what is draw to the DOM
@@ -19,7 +20,13 @@ export default ({ Main, Side }) => {
     <Layout
       className="layout"
       style={{
+        background:
+          "linear-gradient(rgba(21, 34, 28, .95), rgba(21, 34, 28, .95)), url('https://i.imgur.com/4VVllkI.jpg')",
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         backgroundColor: theme.bgDark,
+        opacity: 1,
         minHeight: '100vh',
         maxHeight: '100vh',
       }}
