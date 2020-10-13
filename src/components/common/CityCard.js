@@ -32,9 +32,21 @@ function CityCard({ city }) {
 
   useEffect(() => {
     axios
-      .get('https://rickandmortyapi.com/api/character/2')
+      .get(
+        `https://en.wikipedia.org/w/api.php?action=query&list=search&format=json&origin=*&srsearch=${encodeURI(
+          city.citynamestate
+        )}`
+      )
       .then(res => {
-        setImage(res.data.image);
+        axios
+          .get(
+            `https://en.wikipedia.org/w/api.php?action=query&origin=*&format=json&formatversion=2&prop=pageimages|pageterms&piprop=original&titles=${encodeURI(
+              res.data.query.search[0].title
+            )}`
+          )
+          .then(res2 => {
+            setImage(res2.data.query.pages[0].original.source);
+          });
       })
       .catch(err => {
         console.log(err);
