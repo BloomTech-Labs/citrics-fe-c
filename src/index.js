@@ -50,8 +50,13 @@ function App() {
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route path="/results" component={ResultsPage} />
         <Route path="/compare" component={ComparisonPage} />
-        {/* //any of the routes you need secured should be registered as SecureRoutes */}
         <Route
+          path="/landing"
+          exact
+          component={() => <HomePage LoadingComponent={LoadingComponent} />}
+        />
+        {/* //any of the routes you need secured should be registered as SecureRoutes */}
+        <SecureRoute
           path="/"
           exact
           component={() => <HomePage LoadingComponent={LoadingComponent} />}
