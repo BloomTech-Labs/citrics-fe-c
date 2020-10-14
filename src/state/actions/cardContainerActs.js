@@ -54,3 +54,11 @@ export const removeCity = cityId => (dispatch, getState) => {
     }
   }
 };
+
+export const fetchNationalAverage = () => dispatch => {
+  Axios.get('https://labs27-c-citrics-api.herokuapp.com/cities/avg').then(
+    res => {
+      dispatch({ type: 'FETCH_NATIONAL_AVG', payload: res.data });
+    }
+  );
+};

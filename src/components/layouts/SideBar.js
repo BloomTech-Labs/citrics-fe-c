@@ -25,6 +25,7 @@ export default ({ Components }) => {
         position: 'fixed',
         width: '100vw',
         zIndex: 99,
+        overflowY: 'scroll',
       }}
     >
       <div
