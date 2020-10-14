@@ -35,14 +35,7 @@ export default function CardContainer({ Card }) {
   ) : (
     <div style={{ width: '100%', height: '500px' }}>
       {cityData.length ? (
-        cityData.map(city => (
-          <CityCard
-            key={city.id}
-            city={city}
-            //cityImage=""
-            //cityAlt=""
-          />
-        ))
+        cityData.map(city => <CityCard key={city.id} city={city} />)
       ) : (
         <div />
       )}
