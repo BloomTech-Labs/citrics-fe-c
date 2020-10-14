@@ -5,7 +5,6 @@ export const fetchCities = () => async (dispatch, getState) => {
 
   Axios.get('https://labs27-c-citrics-api.herokuapp.com/cities/all')
     .then(response => {
-      console.log(response.data);
       dispatch({
         type: 'SEARCHBAR_FETCH_SUCCESS',
         payload: response.data.map(el => {
