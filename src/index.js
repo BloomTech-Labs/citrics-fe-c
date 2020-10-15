@@ -41,6 +41,7 @@ function App() {
     history.push('/login');
   };
   return (
+
     <Switch>
       <Route path="/login" component={LoginPage} />
       <Route path="/implicit/callback" component={LoginCallback} />
@@ -53,5 +54,6 @@ function App() {
         <SecureRoute path="/profile" component={LandingPage} />
       </Security>
     </Switch>
+
   );
 }
