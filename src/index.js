@@ -49,16 +49,19 @@ function App() {
         <Route path="/login" component={LoginPage} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <Route path="/compare" component={ComparisonPage} />
-        <Route path="/landing" component={Landing} />
+        <Route path="/" exact component={Landing} />
+        {/* temporairly putting the landing component until we have a profile/favorites page */}
+        <SecureRoute path="/profile" component={Landing} />
+
         {/* //any of the routes you need secured should be registered as SecureRoutes */}
-        <SecureRoute
+        {/* <SecureRoute
           path="/"
           exact
           component={() => <HomePage LoadingComponent={LoadingComponent} />}
         />
         <SecureRoute path="/example-list" component={ExampleListPage} />
         <SecureRoute path="/profile-list" component={ProfileListPage} />
-        <SecureRoute path="/datavis" component={ExampleDataViz} />
+        <SecureRoute path="/datavis" component={ExampleDataViz} /> */}
         <Route component={NotFoundPage} />
       </Switch>
     </Security>

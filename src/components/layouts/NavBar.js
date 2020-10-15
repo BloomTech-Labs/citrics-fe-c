@@ -29,7 +29,7 @@ export default () => {
       <div
         className="logo"
         key="logo"
-        onClick={() => history.push('./landing')}
+        onClick={() => history.push('./')}
         style={{
           color: theme.primary,
           backgroundColor: theme.bg,
@@ -61,12 +61,12 @@ export default () => {
         <Menu.Item
           key="favorites"
           icon={<HeartOutlined style={{ color: theme.primary }} />}
-          onClick={() => history.push('./landing')}
+          onClick={() => history.push('./profile')}
         />
         <Menu.Item
           key="profile"
           icon={<UserOutlined style={{ color: theme.primary }} />}
-          onClick={() => history.push('./landing')}
+          onClick={() => history.push('./profile')}
         />
       </Menu>
     </Header>
