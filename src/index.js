@@ -41,17 +41,17 @@ function App() {
     history.push('/login');
   };
   return (
-    <Security {...config} onAuthRequired={authHandler}>
-      <Switch>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/implicit/callback" component={LoginCallback} />
-        <Route path="/compare" component={ComparisonPage} />
-        <Route path="/" exact component={LandingPage} />
-        <Route component={NotFoundPage} />​
-        {/* temporairly putting the landing component until we have a profile/favorites page */}
+    <Switch>
+      <Route path="/login" component={LoginPage} />
+      <Route path="/implicit/callback" component={LoginCallback} />
+      <Route path="/compare" component={ComparisonPage} />
+      <Route path="/" exact component={LandingPage} />
+      <Route component={NotFoundPage} />​
+      {/* temporairly putting the landing component until we have a profile/favorites page */}
+      <Security {...config} onAuthRequired={authHandler}>
         ​
         <SecureRoute path="/profile" component={LandingPage} />
-      </Switch>
-    </Security>
+      </Security>
+    </Switch>
   );
 }
