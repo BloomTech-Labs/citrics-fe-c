@@ -1,10 +1,20 @@
 import React from 'react';
-import Canvas from '../../layouts/Canvas';
-import SearchPanel from '../../common/SearchPanel';
-import CardContainer from '../../common/CardContainer';
-import '../../../styles/ComparisonPage.less';
-import PlotlyCard from '../../common/PlotlyCard';
+import ComparisonPage from './Component';
+import { mobileStyles, tabletStyles, desktopStyles } from './styles';
+import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
 export default () => (
-  <Canvas Side={SearchPanel} Main={() => <CardContainer Card={PlotlyCard} />} />
+  <>
+    <IsMobile>
+      <ComparisonPage styles={mobileStyles} />
+    </IsMobile>
+
+    <IsTablet>
+      <ComparisonPage styles={tabletStyles} />
+    </IsTablet>
+
+    <IsDesktop>
+      <ComparisonPage styles={desktopStyles} />
+    </IsDesktop>
+  </>
 );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
-import '../../styles/PlotlyCardTheme.less';
+import '../../../styles/PlotlyCardTheme.less';
 import {
   CloudOutlined,
   SafetyOutlined,
@@ -15,7 +15,7 @@ const icons = {
   costoflivingscore: <HomeOutlined style={{ fontSize: '1.5rem' }} />,
 };
 
-const PlotlyCard = props => {
+export default ({ props }) => {
   const { graphLabel, data } = props;
   const [graphTypeState, setGraphTypeState] = useState('bar');
   const cardHeight = 64 * data.length;
@@ -90,5 +90,3 @@ const PlotlyCard = props => {
     </div>
   );
 };
-
-export default PlotlyCard;

@@ -1,20 +1,20 @@
 import React from 'react';
-import LandingPage from './Component';
+import SearchBar from './Component';
 import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
 export default () => (
   <>
     <IsMobile>
-      <LandingPage styles={mobileStyles} />
+      <SearchBar props styles={mobileStyles} />
     </IsMobile>
 
     <IsTablet>
-      <LandingPage styles={tabletStyles} />
+      <SearchBar styles={tabletStyles} />
     </IsTablet>
 
     <IsDesktop>
-      <LandingPage styles={desktopStyles} />
+      <SearchBar styles={desktopStyles} />
     </IsDesktop>
   </>
 );

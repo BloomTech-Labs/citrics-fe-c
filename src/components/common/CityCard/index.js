@@ -1,20 +1,20 @@
 import React from 'react';
-import LandingPage from './Component';
+import CityCard from './Component';
 import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
-export default () => (
+export default ({ city }) => (
   <>
     <IsMobile>
-      <LandingPage styles={mobileStyles} />
+      <CityCard city={city} styles={mobileStyles} />
     </IsMobile>
 
     <IsTablet>
-      <LandingPage styles={tabletStyles} />
+      <CityCard city={city} styles={tabletStyles} />
     </IsTablet>
 
     <IsDesktop>
-      <LandingPage styles={desktopStyles} />
+      <CityCard city={city} styles={desktopStyles} />
     </IsDesktop>
   </>
 );

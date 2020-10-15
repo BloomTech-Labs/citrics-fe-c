@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { AutoComplete, Input } from 'antd';
 import { LeftOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchBarActs, cardContainerActs } from '../../state/actions';
-import '../../styles/style.less';
+import { searchBarActs, cardContainerActs } from '../../../state/actions';
+import '../../../styles/style.less';
 import { useHistory, useLocation } from 'react-router-dom';
 
 function SearchBar() {

@@ -1,15 +1,14 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
-import '../../styles/style.less';
+import '../../../styles/style.less';
 import { useSelector } from 'react-redux';
-import Sidebar from './SideBar';
+import Sidebar from '../SideBar';
 
 const { Content } = Layout;
 
-export default ({ Main, Side }) => {
+export default ({ Main, Side, styles }) => {
   const theme = useSelector(state => state.theme);
-
   return Side && Main ? (
     <div
       style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}

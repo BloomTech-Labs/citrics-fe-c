@@ -1,14 +1,14 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
-import '../../styles/style.less';
+import '../../../styles/style.less';
 import { useSelector } from 'react-redux';
 import { UserOutlined, HomeOutlined, HeartOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 
 const { Header } = Layout;
 
-export default () => {
+export default ({ styles }) => {
   const theme = useSelector(state => state.theme);
   const history = useHistory();
 
@@ -29,7 +29,7 @@ export default () => {
       <div
         className="logo"
         key="logo"
-        onClick={() => history.push('./landing')}
+        onClick={() => history.push('./')}
         style={{
           color: theme.primary,
           backgroundColor: theme.bg,
@@ -61,12 +61,12 @@ export default () => {
         <Menu.Item
           key="favorites"
           icon={<HeartOutlined style={{ color: theme.primary }} />}
-          onClick={() => history.push('./landing')}
+          onClick={() => history.push('./profile')}
         />
         <Menu.Item
           key="profile"
           icon={<UserOutlined style={{ color: theme.primary }} />}
-          onClick={() => history.push('./landing')}
+          onClick={() => history.push('./profile')}
         />
       </Menu>
     </Header>
