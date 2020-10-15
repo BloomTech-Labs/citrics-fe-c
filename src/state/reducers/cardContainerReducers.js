@@ -1,5 +1,6 @@
 const initState = {
   cityData: [],
+  nationalAverage: {},
   cityColor: '',
   filter: '',
   loading: false,
@@ -36,6 +37,12 @@ export const cardContainerReducers = (state = initState, action) => {
       return {
         ...state,
         cityData: action.payload,
+      };
+
+    case 'FETCH_NATIONAL_AVG':
+      return {
+        ...state,
+        nationalAverage: action.payload,
       };
 
     default:

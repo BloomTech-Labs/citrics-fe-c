@@ -40,8 +40,10 @@ function CityCard({ city }) {
   };
 
   useEffect(() => {
-    dispatch(fetchCityCardImage(city.citynamestate));
-  }, []);
+    if (city) {
+      dispatch(fetchCityCardImage(city.citynamestate));
+    }
+  }, [city]);
 
   return (
     <div className="city-card-wrapper">

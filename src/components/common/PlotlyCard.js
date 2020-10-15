@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import '../../styles/PlotlyCardTheme.less';
 import {
@@ -9,7 +9,7 @@ import {
 } from '@ant-design/icons';
 
 const icons = {
-  populationdensityrating: <TeamOutlined style={{ fontSize: '1.5rem' }} />,
+  population: <TeamOutlined style={{ fontSize: '1.5rem' }} />,
   safteyratingscore: <SafetyOutlined style={{ fontSize: '1.5rem' }} />,
   averagetemperature: <CloudOutlined style={{ fontSize: '1.5rem' }} />,
   costoflivingscore: <HomeOutlined style={{ fontSize: '1.5rem' }} />,
@@ -22,14 +22,14 @@ const PlotlyCard = props => {
 
   const relativeProperty = () => {
     switch (graphLabel) {
-      case 'Population Density':
-        return 'populationdensityrating';
+      case 'Population':
+        return 'population';
       case 'Safety Rating':
         return 'safteyratingscore';
       case 'Average Temperature':
         return 'averagetemperature';
       case 'Cost of Living':
-        return 'costoflivingscore';
+        return 'averagerentcost';
       default:
         return;
     }
