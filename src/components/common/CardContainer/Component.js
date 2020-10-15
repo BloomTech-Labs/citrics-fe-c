@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router';
+import React, { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
-import { cardContainerActs } from '../../state/actions';
+import { cardContainerActs } from '../../../state/actions';
 
 // COMPONENTS
-import PlotlyCard from './PlotlyCard';
-import CityCard from './CityCard';
+import { PlotlyCard, CityCard } from '../../common';
 
 // PLOTLY START
 const graphLabels = [
@@ -18,7 +16,7 @@ const graphLabels = [
   'Cost of Living',
 ];
 
-export default function CardContainer({ Card }) {
+export default ({ Card }) => {
   const { cityData, nationalAverage } = useSelector(
     state => state.cardContainer
   );
@@ -56,4 +54,4 @@ export default function CardContainer({ Card }) {
       )}
     </div>
   );
-}
+};

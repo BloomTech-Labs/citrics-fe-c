@@ -1,20 +1,20 @@
 import React from 'react';
-import LandingPage from './Component';
+import FormButton from './Component';
 import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
 export default () => (
   <>
     <IsMobile>
-      <LandingPage styles={mobileStyles} />
+      <FormButton props styles={mobileStyles} />
     </IsMobile>
 
     <IsTablet>
-      <LandingPage styles={tabletStyles} />
+      <FormButton styles={tabletStyles} />
     </IsTablet>
 
     <IsDesktop>
-      <LandingPage styles={desktopStyles} />
+      <FormButton styles={desktopStyles} />
     </IsDesktop>
   </>
 );

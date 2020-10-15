@@ -1,14 +1,14 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout, Menu } from 'antd';
-import '../../styles/style.less';
+import '../../../styles/style.less';
 import { useSelector } from 'react-redux';
 import { UserOutlined, HomeOutlined, HeartOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 
 const { Header } = Layout;
 
-export default () => {
+export default ({ styles }) => {
   const theme = useSelector(state => state.theme);
   const history = useHistory();
 
