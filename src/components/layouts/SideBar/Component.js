@@ -1,12 +1,12 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Layout } from 'antd';
-import '../../styles/style.less';
+import '../../../styles/style.less';
 import { useSelector } from 'react-redux';
 
 const { Content, Sider } = Layout;
 
-export default ({ Components }) => {
+export default ({ Components, styles }) => {
   const theme = useSelector(state => state.theme);
   //ant design is making me lose my mind this width const is temporary
   const width = 576;

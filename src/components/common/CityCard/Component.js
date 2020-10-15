@@ -3,17 +3,17 @@ import React, { useState, useEffect } from 'react';
 //style
 import { CloseOutlined, HeartOutlined, HeartFilled } from '@ant-design/icons';
 import { Skeleton } from 'antd';
-import '../../styles/style.less';
+import '../../../styles/style.less';
 
 //custom hooks
-import useVisibilityToggler from '../../hooks/useVisibilityToggler';
+import useVisibilityToggler from '../../../hooks/useVisibilityToggler';
 
 //redux
-import { cardContainerActs } from '../../state/actions';
-import { cityCardActs } from '../../state/actions';
+import { cardContainerActs } from '../../../state/actions';
+import { cityCardActs } from '../../../state/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-function CityCard({ city }) {
+export default ({ city }) => {
   const [open, setOpen] = useState(false);
   const [heartIcon, toggleIcon] = useVisibilityToggler(
     <HeartOutlined />,
@@ -85,6 +85,4 @@ function CityCard({ city }) {
       )}
     </div>
   );
-}
-
-export default CityCard;
+};
