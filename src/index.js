@@ -49,16 +49,6 @@ function App() {
       <Security {...config} onAuthRequired={authHandler}>
         <SecureRoute path="/profile" component={LandingPage} />
       </Security>
-
-      {/* //any of the routes you need secured should be registered as SecureRoutes */}
-      {/* <SecureRoute
-          path="/"
-          exact
-          component={() => <HomePage LoadingComponent={LoadingComponent} />}
-        />
-        <SecureRoute path="/example-list" component={ExampleListPage} />
-        <SecureRoute path="/profile-list" component={ProfileListPage} />
-        <SecureRoute path="/datavis" component={ExampleDataViz} /> */}
       <Route component={NotFoundPage} />
     </Switch>
   );
