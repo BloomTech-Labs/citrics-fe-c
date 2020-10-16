@@ -1,20 +1,19 @@
 import React from 'react';
 import NavBar from './Component';
-import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../breakPoints';
 
 export default () => (
   <>
     <IsMobile>
-      <NavBar styles={mobileStyles} />
+      <NavBar display={'mobile'} />
     </IsMobile>
 
     <IsTablet>
-      <NavBar styles={tabletStyles} />
+      <NavBar display={'tablet'} />
     </IsTablet>
 
     <IsDesktop>
-      <NavBar styles={desktopStyles} />
+      <NavBar display={'desktop'} />
     </IsDesktop>
   </>
 );
