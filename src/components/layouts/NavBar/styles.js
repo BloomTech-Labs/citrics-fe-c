@@ -3,7 +3,7 @@ import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
 // this is a styles function
 // requires 'display' arg (string)
 // optional  'theme' arg (if you need to access redux state)
-export const styles = (display, theme) => ({
+export default (display, theme) => ({
   header: header(display, theme),
   logo: logo(display, theme),
   menu: menu(display, theme),

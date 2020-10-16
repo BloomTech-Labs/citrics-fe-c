@@ -3,7 +3,6 @@ import { AutoComplete, Input } from 'antd';
 import { LeftOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchBarActs, cardContainerActs } from '../../../state/actions';
-import '../../../styles/style.less';
 import { useHistory, useLocation } from 'react-router-dom';
 
 function SearchBar() {
@@ -43,7 +42,7 @@ function SearchBar() {
         placeholder="Search"
         prefix={<LeftOutlined />}
         suffix={<SearchOutlined />}
-        style={{ borderRadius: '30px' }}
+        style={{ borderRadius: 30, height: 50 }}
       />
     </AutoComplete>
   );
