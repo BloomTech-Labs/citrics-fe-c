@@ -40,26 +40,16 @@ function App() {
     history.push('/login');
   };
   return (
-    <Security {...config} onAuthRequired={authHandler}>
-      <Switch>
-        <Route path="/login" component={LoginPage} />
-        <Route path="/implicit/callback" component={LoginCallback} />
-        <Route path="/compare" component={ComparisonPage} />
-        <Route path="/" exact component={LandingPage} />
-        {/* temporairly putting the landing component until we have a profile/favorites page */}
+    <Switch>
+      <Route path="/login" component={LoginPage} />
+      <Route path="/implicit/callback" component={LoginCallback} />
+      <Route path="/compare" component={ComparisonPage} />
+      <Route path="/" exact component={LandingPage} />
+      {/* temporairly putting the landing component until we have a profile/favorites page */}
+      <Security {...config} onAuthRequired={authHandler}>
         <SecureRoute path="/profile" component={LandingPage} />
-
-        {/* //any of the routes you need secured should be registered as SecureRoutes */}
-        {/* <SecureRoute
-          path="/"
-          exact
-          component={() => <HomePage LoadingComponent={LoadingComponent} />}
-        />
-        <SecureRoute path="/example-list" component={ExampleListPage} />
-        <SecureRoute path="/profile-list" component={ProfileListPage} />
-        <SecureRoute path="/datavis" component={ExampleDataViz} /> */}
-        <Route component={NotFoundPage} />
-      </Switch>
-    </Security>
+      </Security>
+      <Route component={NotFoundPage} />
+    </Switch>
   );
 }
