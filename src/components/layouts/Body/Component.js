@@ -4,33 +4,35 @@ import { Layout } from 'antd';
 import '../../../styles/style.less';
 import { useSelector } from 'react-redux';
 import Sidebar from '../SideBar';
+import styles from './styles';
 
 const { Content } = Layout;
 
-export default ({ Main, Side, styles }) => {
+export default ({ Main, Side, display }) => {
   const theme = useSelector(state => state.theme);
+  const sty = styles(display, theme);
   return Side && Main ? (
-    <div
-      style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-    >
-      <Sidebar Components={Side} />
-      <Content
-        style={{
-          display: 'flex',
-          flexDirection: 'row-reverse',
-          width: '100vw',
-        }}
-      >
-        <div
-          style={{
-            height: 'calc(100vh)',
-            width: 'calc(100vw - 576px)',
-            marginLeft: 'calc(100vw - 100% + 558px)', // had to do this funky stuff cuz the scroll bar
-            paddingTop: '80px',
-            paddingRight: '24px',
-            paddingLeft: '24px',
-          }}
-        >
+    display == 'desktop' ? (
+      <div style={sty.split}>
+        <Sidebar Components={Side} />
+        <Content style={sty.rightContent}>
+          <div style={sty.rightContentContainer}>
+            {Array.isArray(Main) ? (
+              Main.map(Component => <Component />)
+            ) : (
+              <Main />
+            )}
+          </div>
+        </Content>
+      </div>
+    ) : (
+      <Content style={sty.noSider}>
+        <div className="noSiderContainer" style={sty.noSiderContainer}>
+          {Array.isArray(Side) ? (
+            Side.map(Component => <Component />)
+          ) : (
+            <Side />
+          )}
           {Array.isArray(Main) ? (
             Main.map(Component => <Component />)
           ) : (
@@ -38,15 +40,9 @@ export default ({ Main, Side, styles }) => {
           )}
         </div>
       </Content>
-    </div>
+    )
   ) : (
-    <Content
-      style={{
-        padding: 48,
-        paddingBottom: 0,
-        paddingTop: 0,
-      }}
-    >
+    <Content style={sty.noSider}>
       {Array.isArray(Main) ? Main.map(Component => <Component />) : <Main />}
     </Content>
   );

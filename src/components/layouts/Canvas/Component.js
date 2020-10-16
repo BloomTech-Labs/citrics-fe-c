@@ -20,19 +20,18 @@ export default ({ Main, Side, styles }) => (
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
+      backgroundAttachment: 'fixed',
       opacity: 1,
       minHeight: '100vh',
-      maxHeight: '100vh',
     }}
   >
-    <Content style={{ minHeight: '100vh', maxHeight: '100vh' }}>
+    <Content style={{ minHeight: '100vh' }}>
       <NavBar />
       <Body
         Main={Main ? Main : false}
         Side={Side ? Side : false}
         style={{
-          minHeight: '100vh',
-          maxHeight: '100vh',
+          minHeight: '100%',
           display: 'inline-block',
         }}
       />

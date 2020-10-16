@@ -1,9 +1,68 @@
-export const mobileStyles = {};
+import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
 
-export const tabletStyles = {};
+// this is a styles function
+// requires 'display' arg (string)
+// optional  'theme' arg (if you need to access redux state)
+export default (display, theme) => ({
+  sider: sider(display, theme),
+  siderContainer: siderContainer(display, theme),
+});
 
-export const notebookStyles = {};
+// below here we are just styling each jsx element (mobile, tablet, and desktop resolutions)
+const sider = (display, theme) => {
+  // this is our base css object
 
-export const desktopStyles = {};
+  const css = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.primary,
+    color: theme.bg,
+    minHeight: '100vh',
+    maxHeight: '100vh',
+    top: 0,
+    position: 'fixed',
+    width: '544',
+    zIndex: 99,
+    overflowY: 'scroll',
+  };
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
+};
 
-export const xlStyles = {};
+const siderContainer = (display, theme) => {
+  // this is our base css object
+
+  const css = {
+    padding: '24px',
+    paddingTop: '104px',
+    display: 'inline-block',
+    justifyContent: 'center',
+    minHeight: '100vh',
+    maxHeight: '100vh',
+  };
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
+};

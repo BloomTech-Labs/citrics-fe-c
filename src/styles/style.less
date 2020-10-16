@@ -1,3 +1,23 @@
+/* The emerging W3C standard
+   that is currently Firefox-only */
+//
+
+* {
+scrollbar-width: thin;
+scrollbar-color: rgba(0,0,0,.1);
+}
+/* Works on Chrome/Edge/Safari */
+*::-webkit-scrollbar {
+width: 12px;
+}
+*::-webkit-scrollbar-track {
+background: rgba(0,0,0,0);
+}
+*::-webkit-scrollbar-thumb {
+background-color: rgba(0,0,0,.1);
+border-radius: 20px;
+}
+
 //Add all less files here and import this file into your components 
 
 //main files
@@ -5,8 +25,7 @@
 @import '~antd/dist/antd.css';
 
 //components
-@import './SearchBar.less';
+
 @import './CityCard.less';
 @import './NavBar.less';
-@import './Canvas.less';
 
