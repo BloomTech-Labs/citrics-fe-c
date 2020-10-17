@@ -30,9 +30,9 @@ export default ({ Card }) => {
 
   const cityDataCopy = [];
   nationalAverage.color = 'red';
-  // cityData.forEach(city => {
-  //   cityDataCopy.push(city);
-  // });
+  cityData.forEach(city => {
+    cityDataCopy.push(city);
+  });
   cityDataCopy.push(nationalAverage);
 
   return Card === PlotlyCard ? (

@@ -54,7 +54,7 @@ export const desktopStyles = city => ({
     position: 'relative',
   },
   cityCardBodyWrapperImg: {
-    width: '100%',
+    // width: '100%',
     height: '100%',
     marginBottom: '4%',
     objectFit: 'fill',

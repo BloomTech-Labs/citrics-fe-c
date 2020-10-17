@@ -55,31 +55,10 @@ export const removeCity = cityId => (dispatch, getState) => {
   }
 };
 
-const na = {
-  cityid: 0,
-  citynamestate: 'San Francisco, CA',
-  population: 147764.216,
-  populationdensityrating: 1,
-  safteyratingscore: 2,
-  costoflivingscore: 1,
-  averageincome: 3022.216,
-  averagetemperature: 2,
-  lat: 1.4499112,
-  lon: -3.5092895,
-  averageage: 38.95039999999999,
-  averagehouseholdincome: 77554.112,
-  averageindividualincome: 38764.272,
-  averagehouseingcost: 0.0,
-  averagerentcost: 1557.232,
-  costoflivingindex: 55.5,
-  users: [],
-};
-
 export const fetchNationalAverage = () => dispatch => {
-  dispatch({ type: 'FETCH_NATIONAL_AVG', payload: na });
-  // Axios.get('https://labs27-c-citrics-api.herokuapp.com/cities/avg').then(
-  //   res => {
-  //     dispatch({ type: 'FETCH_NATIONAL_AVG', payload: res.data });
-  //   }
-  // );
+  Axios.get('https://labs27-c-citrics-api.herokuapp.com/cities/avg').then(
+    res => {
+      dispatch({ type: 'FETCH_NATIONAL_AVG', payload: res.data });
+    }
+  );
 };
