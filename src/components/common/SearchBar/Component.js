@@ -4,6 +4,7 @@ import { LeftOutlined, SearchOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchBarActs, cardContainerActs } from '../../../state/actions';
 import { useHistory, useLocation } from 'react-router-dom';
+import '../../../styles/style.less';
 
 function SearchBar() {
   const history = useHistory();
@@ -14,6 +15,7 @@ function SearchBar() {
   const { filter, cityData, loading, error } = useSelector(
     state => state.searchBar
   );
+  const theme = useSelector(state => state.theme);
 
   useEffect(() => {
     dispatch(fetchCities());
@@ -24,7 +26,6 @@ function SearchBar() {
   const onSelect = (value, city) => {
     if (currentLocation != '/compare') history.push('/compare');
     dispatch(fetchSpecificCityData(city.id));
-    //history.push('/login');
   };
 
   return (
@@ -40,12 +41,14 @@ function SearchBar() {
     >
       <Input
         placeholder="Search"
-        prefix={<LeftOutlined />}
-        suffix={<SearchOutlined />}
-        style={{ borderRadius: 30, height: 50 }}
+        id="mainSearchInput"
+        prefix={<LeftOutlined style={{ color: theme.primaryLight }} />}
+        suffix={<SearchOutlined style={{ color: theme.primaryLight }} />}
+        style={{ borderRadius: 30, height: 50, background: 'unset' }}
+        bordered={true}
       />
     </AutoComplete>
   );
 }
-
+// outline: `3px solid ${theme.primaryLight}`
 export default SearchBar;

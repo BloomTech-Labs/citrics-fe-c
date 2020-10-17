@@ -20,11 +20,12 @@ const header = (display, theme) => {
     height: '80px',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: theme.bg,
+    backgroundColor: theme.bgDark,
     top: 0,
     position: 'fixed',
     width: '100vw',
     zIndex: 100,
+    filter: theme.elevation3,
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)
@@ -51,8 +52,9 @@ const header = (display, theme) => {
 
 const logo = (display, theme) => {
   const css = {
-    color: theme.primary,
-    backgroundColor: theme.bg,
+    background: theme.primaryVert,
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
     fontSize: '32px',
     lineHeight: '32px',
   };
@@ -97,18 +99,20 @@ const menu = (display, theme) => {
 
 const menuIcon = (display, theme) => {
   const css = {
-    color: theme.primary,
+    color: theme.primaryLight,
     backgroundColor: 'unset',
   };
   return isMobile(display)
     ? //mobile css
       {
         ...css,
+        color: theme.primaryLight,
       }
     : isTablet(display)
     ? //tablet css (spread this bad boy and pass in what you want to change)
       {
         ...css,
+        color: theme.primaryLight,
       }
     : //desktop (spread this bad boy and pass in what you want to change)
       { ...css };
@@ -123,11 +127,14 @@ const menuItem = (display, theme) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: theme.bg,
+        backgroundColor: theme.bgDark,
+        stroke: theme.primaryLight,
         height: 48,
         width: 48,
         margin: 16,
         borderRadius: theme.borderRadiusLarge,
+        borderImageSource: 'linear-gradient(180deg, #8FFF00 0%, #50C461 100%)',
+        border: `1px solid ${theme.white}`,
         //borderRadius: theme.borderRadius
       }
     : isTablet(display)
@@ -137,11 +144,14 @@ const menuItem = (display, theme) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: theme.bg,
+        background: theme.panelGradient + '50',
+        stroke: theme.primaryLight,
         height: 48,
         width: 48,
         margin: 16,
         borderRadius: theme.borderRadiusLarge,
+        //border: 2px solid;
+        border: `1px solid ${theme.white}`,
       }
     : //desktop (spread this bad boy and pass in what you want to change)
       { ...css };
