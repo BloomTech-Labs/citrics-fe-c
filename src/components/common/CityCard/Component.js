@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 //style
 import { CloseOutlined, HeartOutlined, HeartFilled } from '@ant-design/icons';
 import { Skeleton } from 'antd';
-import '../../../styles/style.less';
 
 //custom hooks
 import useVisibilityToggler from '../../../hooks/useVisibilityToggler';
@@ -13,7 +12,7 @@ import { cardContainerActs } from '../../../state/actions';
 import { cityCardActs } from '../../../state/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-export default ({ city }) => {
+export default ({ city, styles }) => {
   const [open, setOpen] = useState(false);
   const [heartIcon, toggleIcon] = useVisibilityToggler(
     <HeartOutlined />,
@@ -46,7 +45,7 @@ export default ({ city }) => {
   }, [city]);
 
   return (
-    <div className="city-card-wrapper">
+    <div style={styles.cityCardWrapper}>
       {cityImageLoading ? (
         <Skeleton.Input
           style={{
@@ -59,22 +58,25 @@ export default ({ city }) => {
         />
       ) : (
         <div
-          style={{ background: city.color }}
-          className={open ? 'openCard' : 'closeCardDesktop'}
+          style={open ? styles.openCard : styles.closeCard}
           onClick={openCard}
         >
-          <div className="card-header-container">
-            <p>{city.citynamestate}</p>
-            <div className="card-icons">
+          <div style={styles.cardHeaderContainer}>
+            <h3 style={styles.cityNameText}>{city.citynamestate}</h3>
+            <div style={styles.cardIcons}>
               <div onClick={toggleOnClick}>{heartIcon}</div>
               <div onClick={handleRemove}>
                 <CloseOutlined style={{ marginLeft: '.5rem' }} />
               </div>
             </div>
           </div>
-          <div className="city-card-body-wrapper">
-            <img src={cityImage} alt="city" />
-            <ul>
+          <div style={styles.cityCardBodyContainer}>
+            <img
+              style={styles.cityCardBodyWrapperImg}
+              src={cityImage}
+              alt="city"
+            />
+            <ul style={styles.cityCardBodyWrapperUl}>
               <li>Population Density Rating: {city.populationdensityrating}</li>
               <li> Average Age: {city.averageage}</li>
               <li> Average Household Income: {city.averagehouseholdincome}</li>

@@ -14,7 +14,7 @@ export default ({ city }) => (
     </IsTablet>
 
     <IsDesktop>
-      <CityCard city={city} styles={desktopStyles} />
+      <CityCard city={city} styles={desktopStyles(city)} />
     </IsDesktop>
   </>
 );
