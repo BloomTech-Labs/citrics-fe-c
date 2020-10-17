@@ -28,17 +28,17 @@ export default ({ Card }) => {
     dispatch(fetchNationalAverage());
   }, []);
 
-  // const cityDataCopy = [];
-  nationalAverage.color = 'yellow';
+  const cityDataCopy = [];
+  nationalAverage.color = 'red';
   // cityData.forEach(city => {
   //   cityDataCopy.push(city);
   // });
-  // cityDataCopy.push(nationalAverage);
+  cityDataCopy.push(nationalAverage);
 
   return Card === PlotlyCard ? (
     <div style={{ width: '100%' }}>
       {graphLabels.map(label => (
-        <Card key={nanoid()} graphLabel={label} data={cityData} />
+        <Card key={nanoid()} graphLabel={label} data={cityDataCopy} />
       ))}
     </div>
   ) : (
