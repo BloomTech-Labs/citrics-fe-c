@@ -6,7 +6,7 @@ import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 export default ({ Card }) => (
   <>
     <IsMobile>
-      <CardContainer Card={Card} styles={mobileStyles} />
+      <CardContainer Card={Card} styles={mobileStyles()} />
     </IsMobile>
 
     <IsTablet>

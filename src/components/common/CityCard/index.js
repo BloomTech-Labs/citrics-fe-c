@@ -6,7 +6,7 @@ import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 export default ({ city }) => (
   <>
     <IsMobile>
-      <CityCard city={city} styles={mobileStyles} />
+      <CityCard city={city} styles={mobileStyles(city)} />
     </IsMobile>
 
     <IsTablet>
@@ -14,7 +14,7 @@ export default ({ city }) => (
     </IsTablet>
 
     <IsDesktop>
-      <CityCard city={city} styles={desktopStyles} />
+      <CityCard city={city} styles={desktopStyles(city)} />
     </IsDesktop>
   </>
 );

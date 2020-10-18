@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 
 //style
-import { CloseOutlined, HeartOutlined, HeartFilled } from '@ant-design/icons';
+import {
+  CloseOutlined,
+  HeartOutlined,
+  HeartFilled,
+  InfoCircleOutlined,
+  MinusOutlined,
+  LoadingOutlined,
+} from '@ant-design/icons';
 import { Skeleton } from 'antd';
-import '../../../styles/style.less';
 
 //custom hooks
 import useVisibilityToggler from '../../../hooks/useVisibilityToggler';
@@ -13,8 +19,9 @@ import { cardContainerActs } from '../../../state/actions';
 import { cityCardActs } from '../../../state/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-export default ({ city }) => {
-  const [open, setOpen] = useState(false);
+export default ({ city, styles }) => {
+  const [cityCardOpen, setCityCardOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
   const [heartIcon, toggleIcon] = useVisibilityToggler(
     <HeartOutlined />,
     <HeartFilled />,
@@ -32,7 +39,8 @@ export default ({ city }) => {
 
   const cityImage = cityImages[city.citynamestate];
 
-  const openCard = () => setOpen(!open);
+  const openCard = () => setCityCardOpen(!cityCardOpen);
+  const openInfo = () => setInfoOpen(!infoOpen);
 
   const toggleOnClick = e => {
     e.stopPropagation();
@@ -46,35 +54,50 @@ export default ({ city }) => {
   }, [city]);
 
   return (
-    <div className="city-card-wrapper">
+    <div style={styles.cityCardWrapper}>
       {cityImageLoading ? (
-        <Skeleton.Input
-          style={{
-            height: 100,
-            width: 500,
-            background: city.color,
-            borderRadius: 20,
-          }}
-          active
-        />
+        // <Skeleton.Input
+        //   style={{
+        //     height: 100,
+        //     width: 500,
+        //     background: city.color,
+        //     borderRadius: 20,
+        //   }}
+        //   active
+        // />
+        <div style={styles.closeCard}>
+          <LoadingOutlined style={styles.loadingIcon} />
+        </div>
       ) : (
-        <div
-          style={{ background: city.color }}
-          className={open ? 'openCard' : 'closeCardDesktop'}
-          onClick={openCard}
-        >
-          <div className="card-header-container">
-            <p>{city.citynamestate}</p>
-            <div className="card-icons">
+        <div style={cityCardOpen ? styles.openCard : styles.closeCard}>
+          <div style={styles.cardHeaderContainer} onClick={openCard}>
+            <div style={styles.cityNameText}>{city.citynamestate}</div>
+            <div style={styles.cardIcons}>
               <div onClick={toggleOnClick}>{heartIcon}</div>
               <div onClick={handleRemove}>
-                <CloseOutlined style={{ marginLeft: '.5rem' }} />
+                <CloseOutlined style={{ marginLeft: '.3rem' }} />
               </div>
             </div>
           </div>
-          <div className="city-card-body-wrapper">
-            <img src={cityImage} alt="city" />
-            <ul>
+          <div style={styles.cityCardBodyContainer}>
+            <img
+              style={styles.cityCardBodyWrapperImg}
+              src={cityImage}
+              alt="city"
+            />
+            <ul
+              onClick={openInfo}
+              style={
+                infoOpen
+                  ? styles.cityCardBodyWrapperUlOpen
+                  : styles.cityCardBodyWrapperUlClose
+              }
+            >
+              {infoOpen ? (
+                <MinusOutlined style={styles.infoIcon} />
+              ) : (
+                <InfoCircleOutlined style={styles.infoIcon} />
+              )}
               <li>Population Density Rating: {city.populationdensityrating}</li>
               <li> Average Age: {city.averageage}</li>
               <li> Average Household Income: {city.averagehouseholdincome}</li>

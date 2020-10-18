@@ -16,7 +16,7 @@ const graphLabels = [
   'Cost of Living',
 ];
 
-export default ({ Card }) => {
+export default ({ Card, styles }) => {
   const { cityData, nationalAverage } = useSelector(
     state => state.cardContainer
   );
@@ -29,20 +29,20 @@ export default ({ Card }) => {
   }, []);
 
   const cityDataCopy = [];
-  nationalAverage.color = '#FFF';
+  nationalAverage.color = 'red';
   cityData.forEach(city => {
     cityDataCopy.push(city);
   });
   cityDataCopy.push(nationalAverage);
 
   return Card === PlotlyCard ? (
-    <div style={{ width: '100%' }}>
+    <div style={styles.plotlyCardContainer}>
       {graphLabels.map(label => (
         <Card key={nanoid()} graphLabel={label} data={cityDataCopy} />
       ))}
     </div>
   ) : (
-    <div style={{ width: '100%' }}>
+    <div style={styles.cityCardContainer}>
       {cityData.map(city => (
         <CityCard key={city.id} city={city} />
       ))}
