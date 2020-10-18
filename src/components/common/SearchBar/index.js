@@ -6,7 +6,7 @@ import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 export default () => (
   <>
     <IsMobile>
-      <SearchBar props styles={mobileStyles} />
+      <SearchBar styles={mobileStyles} />
     </IsMobile>
 
     <IsTablet>

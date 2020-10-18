@@ -1,22 +1,4 @@
 module.exports = {
-  '@primary-color': '#ec3944',
-  '@link-color': ' #ec3944',
-  '@success-color': '#52c41a',
-  '@warning-color': '#faad14',
-  '@error-color': '#f5222d',
-  '@font-size-base': '14px',
-  '@heading-color': 'rgba(0, 0, 0, 0.85)',
-  '@text-color': 'rgba(0, 0, 0, 0.65)',
-  '@text-color-secondary': 'rgba(0, 0, 0, 0.45)',
-  '@disabled-color': 'rgba(0, 0, 0, 0.25)',
-  '@border-radius-base': '2px',
-  '@border-color-base': '#d9d9d9',
-  '@box-shadow-base':
-    '0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)',
-
-  // CUSTOM ////////////////////////////////////////////////////
-
-  // font size
   '@f-micro': '12px',
   '@f-tiny': '14px',
   '@f-small': '16px',
@@ -26,21 +8,30 @@ module.exports = {
 
   // colors ///////////////////////////////
   '@c-white': '#FFFFFF',
-  '@c-bg-light': '#204225',
-  '@c-bg': '#17271E',
-  '@c-bg-dark': '#15221C',
+  '@c-bg-light': '#132634',
+  '@c-bg': '#19292D',
+  '@c-bg-dark': '#1B242C',
   '@c-gray-light': '#F2F2F2',
   '@c-gray': '#E0E0E0',
   '@c-gray-dark': '#BDBDBD',
   '@c-lightning': '#FE006E',
+  '@c-magenta-light': '#FF00A8',
   '@c-magenta': '#F759AB',
-  '@c-primary-light': '#9AE883',
-  '@c-primary': '#4AC85D',
-  '@c-primary-dark': '#248232',
+  '@c-primary-light': '#BDFF00',
+  '@c-primary': 'linear-gradient(90deg, #00FF66 0%, #BDFF00 100%)',
+  '@c-primary-vert': 'linear-gradient(180deg, #BDFF00 0%, #00FF66 100%)',
+  '@c-primary-dark': '#00FF66',
   '@c-primary-darker': '#10521A',
-  '@c-sky': '#2F80ED',
-  '@c-tangerine': '#FFBF00',
+  '@c-sky-light': '#00FFF0',
+  '@c-sky': 'linear-gradient(90deg, #006DFF 0%, #00FFF0 100%)',
+  '@c-sky-dark': '#006DFF',
+  '@c-tangerine-light': '#FFF500',
+  '@c-tangerine': 'linear-gradient(90deg, #FF7A00 0%, #FFF500 100%)',
+  '@c-tangerine-dark': '#FF7A00',
 
+  '@c-subtle-panel-gradient':
+    'linear-gradient(360deg, #1B242C 0%, #142F33 100%)',
+  '@c-panel-gradient': 'linear-gradient(0deg, #133034 0%, #1B242C 100%)',
   // styles ///////////////////////////////
 
   // border radius
@@ -49,7 +40,8 @@ module.exports = {
   '@sty-border-radius-medium': '30px',
   '@sty-border-radius-large': '40px',
 
-  // :filter     ( drop shadow )
-  '@sty-elevation2': 'drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.15))',
-  '@sty-elevation1': 'drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.15))',
+  // ':'filter     ( drop shadow )
+  '@sty-elevation3': 'drop-shadow(0px 4px 12px #00000020)',
+  '@sty-elevation2': 'drop-shadow(0px 4px 12px #00000015)',
+  '@sty-elevation1': 'drop-shadow(0px 2px 8px #00000010)',
 };

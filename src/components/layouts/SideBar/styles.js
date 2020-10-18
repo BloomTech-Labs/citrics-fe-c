@@ -16,8 +16,7 @@ const sider = (display, theme) => {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.primary,
-    color: theme.bg,
+    background: theme.bgDark,
     minHeight: '100vh',
     maxHeight: '100vh',
     top: 0,
@@ -25,6 +24,7 @@ const sider = (display, theme) => {
     width: '544',
     zIndex: 99,
     overflowY: 'scroll',
+    filter: theme.elevation2,
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)
