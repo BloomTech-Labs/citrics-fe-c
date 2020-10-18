@@ -16,7 +16,7 @@ export default ({ Main, Side, styles }) => (
     className="layout"
     style={{
       background:
-        "linear-gradient(rgba(21, 34, 28, .95), rgba(21, 34, 28, .95)), url('https://i.imgur.com/4VVllkI.jpg')",
+        "linear-gradient(rgba(17, 26, 34, .95), rgba(20, 30, 34, .95)), url('https://i.imgur.com/4VVllkI.jpg')",
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
       backgroundPosition: 'center',
