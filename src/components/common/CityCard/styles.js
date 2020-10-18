@@ -1,8 +1,21 @@
 export const desktopStyles = city => {
+  function getColor(c) {
+    let res = c.split(' ');
+
+    for (let i = 0; i < res.length; i++) {
+      if (res[i][0] == '#') {
+        return res[i];
+      }
+    }
+    return c;
+  }
+
+  const cityColor = getColor(city.color);
+
   return {
     cityCardWrapper: {
       margin: '5% 0',
-      color: city.color,
+      color: cityColor,
       userSelect: 'none',
     },
     cardHeaderContainer: {
@@ -27,7 +40,7 @@ export const desktopStyles = city => {
       height: '45px',
       padding: '30px, 0px, 2px, 24px',
       overflow: 'hidden',
-      border: `3px solid ${city.color}`,
+      border: `3px solid ${cityColor}`,
     },
     openCard: {
       display: 'flex',
@@ -37,7 +50,7 @@ export const desktopStyles = city => {
       width: 'auto',
       height: 'auto',
       justifyContent: 'top',
-      border: `3px solid ${city.color}`,
+      border: `3px solid ${cityColor}`,
       overflow: 'hidden',
     },
     cardIcons: {
@@ -52,7 +65,7 @@ export const desktopStyles = city => {
       position: 'relative',
     },
     cityCardBodyWrapperImg: {
-      // width: '100%',
+      width: '100%',
       height: '100%',
       marginBottom: '4%',
       objectFit: 'fill',
