@@ -4,13 +4,15 @@ const cityColors = [
   theme.dark.tangerineLight,
   theme.dark.magentaLight,
   theme.dark.skyLight,
-  theme.dark.bgLight,
 ];
 
 export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
   const currentCities = getState().cardContainer.cityData;
   // check if city is already in state
   if (currentCities) {
+    if (currentCities.length >= 3) {
+      return;
+    }
     if (currentCities.length >= 1) {
       for (const city of currentCities) {
         if (city.cityid === cityId) {
@@ -25,6 +27,7 @@ export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
   Axios.get(`https://labs27-c-citrics-api.herokuapp.com/cities/city/${cityId}`)
     .then(response => {
       response.data.color = cityColors[currentCities.length];
+      response.data.colorIdx = currentCities.length;
       dispatch({
         type: 'CARDCONTAINER_FETCH_SUCCESS',
         payload: response.data,

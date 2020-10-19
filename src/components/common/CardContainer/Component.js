@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { nanoid } from 'nanoid';
+import styles from './styles';
 
 // REDUX
 import { useSelector, useDispatch } from 'react-redux';
@@ -16,12 +17,12 @@ const graphLabels = [
   'Cost of Living',
 ];
 
-export default ({ Card, styles }) => {
+export default ({ Card, display }) => {
   const { cityData, nationalAverage } = useSelector(
     state => state.cardContainer
   );
-
   const theme = useSelector(state => state.theme);
+  const sty = styles(display, theme);
 
   const dispatch = useDispatch();
   const { fetchNationalAverage } = cardContainerActs;
@@ -38,17 +39,18 @@ export default ({ Card, styles }) => {
   cityDataCopy.push(nationalAverage);
 
   return Card === PlotlyCard ? (
-    <div style={styles.plotlyCardContainer}>
+    <div style={sty.plotlyCardContainer}>
       {graphLabels.map(label => (
         <Card key={nanoid()} graphLabel={label} data={cityDataCopy} />
       ))}
     </div>
   ) : (
-    <div style={styles.cityCardContainer}>
+    <div style={sty.cityCardContainer}>
+      {/*<div className='search-results' style={sty.searchResultContainer}>*/}
       {cityData.map(city => (
         <CityCard key={city.id} city={city} />
       ))}
-
+      {/*</div>*/}
       {nationalAverage !== undefined ? (
         <CityCard key={nationalAverage.id} city={nationalAverage} />
       ) : (

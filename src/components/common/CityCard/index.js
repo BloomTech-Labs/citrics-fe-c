@@ -1,20 +1,19 @@
 import React from 'react';
 import CityCard from './Component';
-import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
 export default ({ city }) => (
   <>
     <IsMobile>
-      <CityCard city={city} styles={mobileStyles(city)} />
+      <CityCard city={city} display={'mobile'} />
     </IsMobile>
 
     <IsTablet>
-      <CityCard city={city} styles={tabletStyles(city)} />
+      <CityCard city={city} display={'tablet'} />
     </IsTablet>
 
     <IsDesktop>
-      <CityCard city={city} styles={desktopStyles(city)} />
+      <CityCard city={city} display={'desktop'} />
     </IsDesktop>
   </>
 );

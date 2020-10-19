@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styles from './styles';
 
 //style
 import {
@@ -8,115 +9,170 @@ import {
   InfoCircleOutlined,
   MinusOutlined,
   LoadingOutlined,
+  AlignCenterOutlined,
 } from '@ant-design/icons';
-import { Skeleton } from 'antd';
+import { Skeleton, Collapse } from 'antd';
 
-//custom hooks
+//helper
 import useVisibilityToggler from '../../../hooks/useVisibilityToggler';
+import { shortNum } from '../../../utils/helpers';
 
-//redux
+//Redux
 import { cardContainerActs } from '../../../state/actions';
 import { cityCardActs } from '../../../state/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
-export default ({ city, styles }) => {
-  const [cityCardOpen, setCityCardOpen] = useState(false);
-  const [infoOpen, setInfoOpen] = useState(false);
-  const [heartIcon, toggleIcon] = useVisibilityToggler(
-    <HeartOutlined />,
-    <HeartFilled />,
-    true
+const icons = [HeartOutlined, CloseOutlined];
+const makeButtons = (Icon, handleIcon, Icon2, handleIcon2) => {
+  return Icon2 ? (
+    <>
+      <Icon style={{ margin: '0 8px' }} onClick={handleIcon} />
+      <Icon2 style={{ margin: '0 8px' }} onClick={handleIcon2} />
+    </>
+  ) : (
+    <Icon
+      style={{ position: 'absolute', margin: '12px 12px' }}
+      onClick={handleIcon}
+    />
   );
-  const [isNationalAverage, setIsNationalAverage] = useState(false);
+};
 
-  const { cityImages, cityImageLoading } = useSelector(state => state.cityCard);
-
+export default ({ city, display }) => {
+  //Redux
+  const theme = useSelector(state => state.theme);
+  const cardCount = useSelector(state => state.cardContainer.cityData.length);
   const dispatch = useDispatch();
-
   const { removeCity } = cardContainerActs;
   const { fetchCityCardImage } = cityCardActs;
 
-  const handleRemove = () => dispatch(removeCity(city.cityid));
+  //Toggles
+  const [HeartIcon, toggleHeartIcon] = useVisibilityToggler(
+    HeartOutlined,
+    HeartFilled,
+    true
+  );
+  const [InfoIcon, toggleInfoIcon] = useVisibilityToggler(
+    InfoCircleOutlined,
+    MinusOutlined,
+    false
+  );
 
-  const cityImage = cityImages[city.citynamestate];
+  //Destructuring
+  const { Panel } = Collapse;
+  const sty = styles(display, theme, city);
 
-  const openCard = () => !isNationalAverage && setCityCardOpen(!cityCardOpen);
-  const openInfo = () => setInfoOpen(!infoOpen);
-
-  const toggleOnClick = e => {
+  //handlers
+  const handleRemove = e => {
     e.stopPropagation();
-    toggleIcon();
+    dispatch(removeCity(city.cityid));
   };
-
-  const checkNationalAverage = city => {
-    city.citynamestate === 'National Average, USA' && setIsNationalAverage(true);
+  const handleFavorite = e => {
+    e.stopPropagation();
+    toggleHeartIcon();
   };
+  const handleInfo = e => toggleInfoIcon();
+  //helpers
+  const isCityCard = city => city.colorIdx >= 0;
 
   useEffect(() => {
     if (city) {
       dispatch(fetchCityCardImage(city.citynamestate));
-      checkNationalAverage(city);
     }
   }, [city]);
-
+  console.log(city);
   return (
-    <div style={styles.cityCardWrapper}>
-      {cityImageLoading ? (
-        <div style={styles.closeCard}>
-          <LoadingOutlined style={styles.loadingIcon} />
-        </div>
-      ) : (
-        <div style={cityCardOpen ? styles.openCard : styles.closeCard}>
-          <div
-            style={
-              cityCardOpen
-                ? styles.cardHeaderContainerOpen
-                : styles.cardHeaderContainerClose
-            }
-            onClick={openCard}
-          >
-            <div style={styles.cityNameText}>{city.citynamestate}</div>
-            {!isNationalAverage && (
-              <div style={styles.cardIcons}>
-                <div onClick={toggleOnClick}>{heartIcon}</div>
-                <div onClick={handleRemove}>
-                  <CloseOutlined style={{ marginLeft: '.3rem' }} />
-                </div>
-              </div>
-            )}
-          </div>
-
-          <div style={styles.cityCardBodyContainer}>
-            <img
-              style={
-                cityCardOpen
-                  ? styles.cityCardBodyWrapperImg
-                  : { display: 'none' }
+    <>
+      <Collapse
+        className={
+          isCityCard(city)
+            ? `cityCard-${city.colorIdx} sCard`
+            : 'cityCard-3 sCard'
+        }
+        defaultActiveKey={['0']}
+        ghost
+        style={
+          display == 'desktop'
+            ? sty.outerCollapse
+            : { ...sty.outerCollapse, width: `${100 / cardCount - cardCount}%` }
+        }
+      >
+        <Panel
+          disabled={!isCityCard(city)}
+          header={city.citynamestate}
+          key="1"
+          extra={
+            isCityCard(city) && display === 'desktop'
+              ? makeButtons(
+                  HeartIcon,
+                  handleFavorite,
+                  CloseOutlined,
+                  handleRemove
+                )
+              : false
+          }
+          showArrow={false}
+          style={sty.outerPanel}
+        >
+          <div className={'cityCardImg'} style={sty.cityCardImg}>
+            <Collapse
+              className={
+                isCityCard(city)
+                  ? `sCardInner innerInfo-${city.colorIdx}`
+                  : 'sCardInner'
               }
-              src={city.wikiimgurl}
-              alt="city"
-            />
-            <ul
-              onClick={openInfo}
-              style={
-                infoOpen
-                  ? styles.cityCardBodyWrapperUlOpen
-                  : styles.cityCardBodyWrapperUlClose
-              }
+              style={{ background: 'unset' }}
+              defaultActiveKey={['2']}
+              bordered={false}
             >
-              {infoOpen ? (
-                <MinusOutlined style={styles.infoIcon} />
-              ) : (
-                <InfoCircleOutlined style={styles.infoIcon} />
-              )}
-              <li>Population: {city.population}</li>
-              <li> Average Age: {city.averageage}</li>
-              <li> Average Household Income: ${city.householdincome}</li>
-              <li> Average Monthly Rent: ${city.rent}</li>
-            </ul>
+              <Panel
+                key="2"
+                showArrow={false}
+                extra={makeButtons(InfoIcon, handleInfo)}
+                style={sty.innerPanel}
+              >
+                <ul style={sty.unorderedList}>
+                  <li> Population: {shortNum(city.population)}</li>
+                  <li>
+                    {' '}
+                    Population Density: {shortNum(city.densitymisq)} per square
+                    mile{' '}
+                  </li>
+                  <li>
+                    {' '}
+                    Average Age: {Math.round(shortNum(city.averageage))}{' '}
+                    (rounded)
+                  </li>
+                  <li> Cost of Living Index: {city.costoflivingindex} </li>
+                  <li> Annual Income: ${shortNum(city.individualincome)}</li>
+                  <li> Household Income: ${shortNum(city.householdincome)}</li>
+                  <li> House Price: ${shortNum(city.averagehouse)}</li>
+                  <li> Monthly Rent: ${shortNum(city.rent)}</li>
+
+                  {city.historicalweather == true && (
+                    <li>
+                      {' '}
+                      Precipitation: {
+                        city.historicalweather[0].precipitation
+                      }{' '}
+                      (placeholder){' '}
+                    </li>
+                  )}
+                  {city.historicalweather == true && (
+                    <li>
+                      {' '}
+                      Temperature: {city.historicalweather[0].temperature}&deg;F
+                      (placeholder)
+                    </li>
+                  )}
+                  {city.covid == true && (
+                    <li>Covid score? {city.covid[0]} (placeholder)</li>
+                  )}
+                </ul>
+              </Panel>
+            </Collapse>
           </div>
-        </div>
-      )}
-    </div>
+        </Panel>
+      </Collapse>
+    </>
   );
 };

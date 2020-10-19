@@ -1,3 +1,4 @@
+import { AlignCenterOutlined } from '@ant-design/icons';
 import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
 // this is a styles function
 // requires 'display' arg (string)
@@ -19,26 +20,35 @@ const container = (display, theme) => {
     ? //mobile css
       {
         ...css,
-        margin: '-12px',
+        marginTop: -12,
+        marginLeft: 0,
         zIndex: '50',
         width: '100vw',
         padding: '12px',
         borderRadius: '0px 0px 30px 30px',
-        // display: 'absolute',
-        // background: theme.subtlePanelGradient,
-        backgroundColor: 'red',
+        backgroundImage: theme.panelGradient,
         position: '-webkit-sticky',
         position: 'sticky',
         top: '0px',
         filter: theme.elevation3,
         marginBottom: '40px',
-        //top: 'unset',
-        //bottom: 0,
       }
     : isTablet(display)
     ? //tablet css (spread this bad boy and pass in what you want to change)
       {
         ...css,
+        marginTop: -12,
+        marginLeft: 0,
+        zIndex: '50',
+        width: '100vw',
+        padding: '12px',
+        borderRadius: '0px 0px 30px 30px',
+        backgroundImage: theme.panelGradient,
+        position: '-webkit-sticky',
+        position: 'sticky',
+        top: '0px',
+        filter: theme.elevation3,
+        marginBottom: '40px',
       }
     : //desktop (spread this bad boy and pass in what you want to change)
       { ...css };

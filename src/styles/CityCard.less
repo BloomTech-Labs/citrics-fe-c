@@ -1,81 +1,144 @@
-.city-card-wrapper {
-    flex: none;
-    order: 2;
-    align-self: flex-start;
-    flex-grow: 0;
-    margin: 0px 0px;
-    padding: 8px;
-    padding-bottom: 0px;
+.treeClass.ant-tree{
 
-    p{
-        padding-top: 8px;
-        padding-left: 16px;
+    background-color: unset;
+    background: unset !important;
+    color: @c-white;
+    direction: rtl;
+
+    .anticon{
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        -webkit-tap-highlight-color: @c-white;
     }
-
-    :hover { 
-        cursor: pointer;
+    .ant-tree-switcher{
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        -webkit-tap-highlight-color: @c-white;
     }
-
-    .closeCardMobile { 
-        display: flex;
-        flex-direction: column;
-        background-color:  #F759AB;
-        border-radius: @sty-border-radius-medium;
-        width: auto;
-        height: 40px;
-        padding: 24px, 0px, 8px, 24px;
-        overflow: hidden;
-        transition: .15s;
-    }
-
-    .closeCardDesktop {
-        display: flex;
-        flex-direction: column;
-        background-color:  #F759AB;
-        border-radius: @sty-border-radius-medium;
-        width: auto;
-        height: 150px;
-        padding: 30px, 0px, 2px, 24px;
-        overflow: hidden;
-        transition: .15s;
-    }
-
-    .openCard {
-        display: flex;
-        flex-direction: column;
-        background-color:  #F759AB;
-        border-radius: @sty-border-radius-medium;
-        width: auto;
-        height: auto;
-        justify-content: top;
-        margin: 24px, 0px, 8px, 24px;
-        overflow: hidden;
-        transition: .15s;
-    }
-
-    .card-header-container{
-        justify-self: center;
-        width: auto;
-        padding: 24px, 0px, 16px, 0px;
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .city-card-body-wrapper img{
-        width: 100%;
-        margin-bottom: 4%;
-    }
-
-    .city-card-body-wrapper ul{
-        list-style-type: none;
-    }
-
-    .card-icons{
-        display: flex;
-        margin: 1%;
-        padding-top: 8px;
-        padding-right: 16px;
-    }
-
     
 }
+
+
+.sCard{
+
+    .ant-collapse-item{
+        transition: ease-out .325s;
+        background-color: 'unset';
+    }
+
+    .ant-collapse-item-active{
+        padding: 2px 0px 0px 0px;
+        transition-delay: 1s;
+        transition: ease-out .325s;
+        padding-top: 10px;
+    }
+    
+    .ant-collapse-content-box{
+        padding: 0px;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        border-radius: 30px;
+    }
+
+    .ant-collapse-content{
+        padding: 0px;
+        padding-top: 6px !important;
+    }
+
+    .ant-collapse-header{
+        font-family: 'Nunito';
+        font-size: 12px;
+        padding: 2px 7px 0px 14px !important;
+    } 
+
+    .ant-drawer-content{
+        background-color: unset;
+        filter: unset;
+    }
+    .ant-drawer-header{
+        border-bottom: unset;
+        background-color: unset;
+        
+    }
+}
+
+.sCardInner{
+    .ant-collapse-item{
+        transition: ease-out .1s .35s;
+        background-color: 'unset';
+        margin: 0px !important;
+        padding: 0px !important;
+    }
+
+    .ant-collapse-item-active{
+        padding: 2px 0px 0px 0px;
+        transition-delay: 1s;
+        transition: ease-out .1s .35s;
+        padding-top: 10px;
+    }
+    
+    .ant-collapse-content-box{
+        padding: 0px;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        border-radius: 30px, 0px, 0px, 30px;
+    }
+
+    .ant-collapse-content{
+        padding: 0px;
+        padding-top: 0px !important;
+    }
+
+    .ant-collapse-header{
+        //display: none;
+        font-family: 'Nunito';
+        font-weight: 600;
+        padding: 0px 4px 0px 0px !important;
+    } 
+}
+
+
+.cityCard-0 {
+    .ant-collapse-header{
+        color: @c-tangerine-light !important;
+    } 
+}
+
+.cityCard-1 {
+    .ant-collapse-header{
+        color: @c-magenta-light !important;
+    } 
+}
+
+.cityCard-2 {
+    .ant-collapse-header{
+        color: @c-sky-light !important;
+    } 
+}
+
+.cityCard-3 {
+    .ant-collapse-header{
+        color: green !important;
+        &:hover{
+            cursor: default;
+        }
+    } 
+}
+
+
+
+
+
+
+
+/*
+.ant-collapse-item ant-collapse-item-active ant-collapse-no-arrow{
+    color: blue !important;
+}
+
+.ant-collapse-item ant-collapse-no-arrow{
+    color: red !important
+}
+*/
