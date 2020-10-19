@@ -55,8 +55,9 @@ const logo = (display, theme) => {
     background: theme.primaryVert,
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
-    fontSize: '32px',
+    fontSize: '40px',
     lineHeight: '32px',
+    fontFamily: 'Quicksand',
   };
   return isMobile(display)
     ? //mobile css
