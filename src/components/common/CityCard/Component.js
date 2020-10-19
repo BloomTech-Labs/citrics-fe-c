@@ -98,10 +98,10 @@ export default ({ city, styles }) => {
               ) : (
                 <InfoCircleOutlined style={styles.infoIcon} />
               )}
-              <li>Population Density Rating: {city.populationdensityrating}</li>
+              <li>Population: {city.population}</li>
               <li> Average Age: {city.averageage}</li>
-              <li> Average Household Income: {city.averagehouseholdincome}</li>
-              <li> Average Temperature: {city.averagetemperature}</li>
+              <li> Average Household Income: ${city.householdincome}</li>
+              <li> Average Monthly Rent: ${city.rent}</li>
             </ul>
           </div>
         </div>
