@@ -42,12 +42,12 @@ function App() {
   return (
     <Switch>
       <Route path="/login" component={LoginPage} />
-      <Route path="/implicit/callback" component={LoginCallback} />
       <Route path="/compare" component={ComparisonPage} />
       <Route path="/" exact component={LandingPage} />
       {/* temporairly putting the landing component until we have a profile/favorites page */}
       <Security {...config} onAuthRequired={authHandler}>
         <SecureRoute path="/profile" component={LandingPage} />
+        <Route path="/implicit/callback" component={LoginCallback} />
       </Security>
       <Route component={NotFoundPage} />
     </Switch>
