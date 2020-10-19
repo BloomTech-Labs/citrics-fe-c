@@ -1,6 +1,7 @@
 .ant-input{
     background-color: transparent;
-    color: @c-primary-light;
+    width: 100%;
+    color: @c-white;
     justify-self: center;
 
     &::-webkit-input-placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -12,20 +13,33 @@
 //this is an ant design headache
 .ant-select-selection-search-input{
 
-    border: 2px solid @c-primary;
+    width: 100%;
+    border: 0px solid transparent !important;
     &:hover{
-        border: 1px solid @c-primary-light !important;
+        border: 0px solid transparent !important;
     }
     &:focus {
-        border: 1px solid @c-primary-light !important;
+        border: 0px solid transparent !important;
     }
     
 }
 
 .ant-select{
+    width: 100%;
+    border: 2px solid @c-primary-light;
     background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,.1) 100%);
     border-radius: 30px;
+    transition: ease-in-out .2s;
+    &:hover{
+        border: 2px solid rgba(44,164,255,1);
+        box-shadow: 0px 0px 20px rgba(24,144,255,.1);
+    }
+    &:focus {
+        border: 2px solid rgba(24,144,255,1);
+        box-shadow: 0px 0px 20px rgba(24,144,255,.1);
+    }
 }
+
 
 
 
