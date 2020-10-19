@@ -1,9 +1,9 @@
 import Axios from 'axios';
 import theme from '../../styles/themes';
 const cityColors = [
-  theme.dark.tangerine,
-  theme.dark.magenta,
-  theme.dark.sky,
+  theme.dark.tangerineLight,
+  theme.dark.magentaLight,
+  theme.dark.skyLight,
   theme.dark.bgLight,
 ];
 
