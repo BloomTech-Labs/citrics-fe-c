@@ -26,10 +26,19 @@ export default ({ Card, styles }) => {
   const dispatch = useDispatch();
   const { fetchNationalAverage } = cardContainerActs;
 
+  const calculateAverage = data => {
+    let average = 0;
+    for (let i = 0; i < data.length; i++) {
+      average += data[i].temperature;
+    }
+    return Math.round(average / data.length);
+  };
+
   const cityDataCopy = [];
   nationalAverage.color = theme.primaryDarker;
-  nationalAverage.averagetemperature = '59.4';
+  nationalAverage.averagetemperature = '52.4';
   cityData.forEach(city => {
+    city.averagetemperature = calculateAverage(city.historicalweather);
     cityDataCopy.push(city);
   });
   cityDataCopy.push(nationalAverage);
