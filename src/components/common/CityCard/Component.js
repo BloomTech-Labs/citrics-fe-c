@@ -27,6 +27,7 @@ export default ({ city, styles }) => {
     <HeartFilled />,
     true
   );
+  const [isNationalAverage, setIsNationalAverage] = useState(false);
 
   const { cityImages, cityImageLoading } = useSelector(state => state.cityCard);
 
@@ -39,7 +40,7 @@ export default ({ city, styles }) => {
 
   const cityImage = cityImages[city.citynamestate];
 
-  const openCard = () => setCityCardOpen(!cityCardOpen);
+  const openCard = () => !isNationalAverage && setCityCardOpen(!cityCardOpen);
   const openInfo = () => setInfoOpen(!infoOpen);
 
   const toggleOnClick = e => {
@@ -47,9 +48,14 @@ export default ({ city, styles }) => {
     toggleIcon();
   };
 
+  const checkNationalAverage = city => {
+    city.citynamestate === 'National Average, USA' && setIsNationalAverage(true);
+  };
+
   useEffect(() => {
     if (city) {
       dispatch(fetchCityCardImage(city.citynamestate));
+      checkNationalAverage(city);
     }
   }, [city]);
 
@@ -70,13 +76,16 @@ export default ({ city, styles }) => {
             onClick={openCard}
           >
             <div style={styles.cityNameText}>{city.citynamestate}</div>
-            <div style={styles.cardIcons}>
-              <div onClick={toggleOnClick}>{heartIcon}</div>
-              <div onClick={handleRemove}>
-                <CloseOutlined style={{ marginLeft: '.3rem' }} />
+            {!isNationalAverage && (
+              <div style={styles.cardIcons}>
+                <div onClick={toggleOnClick}>{heartIcon}</div>
+                <div onClick={handleRemove}>
+                  <CloseOutlined style={{ marginLeft: '.3rem' }} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
+
           <div style={styles.cityCardBodyContainer}>
             <img
               style={

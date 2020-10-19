@@ -48,7 +48,6 @@ export const desktopStyles = city => {
       borderRadius: '30px',
       width: 'auto',
       height: '34px',
-      // padding: '0px, 0px, 2px, 24px',
       overflow: 'hidden',
       border: `2px solid ${cityColor}`,
     },
