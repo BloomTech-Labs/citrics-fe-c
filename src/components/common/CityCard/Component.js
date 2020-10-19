@@ -43,9 +43,12 @@ export default ({ city, styles }) => {
   const openCard = () => !isNationalAverage && setCityCardOpen(!cityCardOpen);
   const openInfo = () => setInfoOpen(!infoOpen);
 
-  const toggleOnClick = e => {
+  const handleFavorite = e => {
     e.stopPropagation();
     toggleIcon();
+    window.localStorage.getItem('okta-token-storage')
+      ? console.log('this is where I would put an axios call')
+      : console.log('this is where other stuff will happen');
   };
 
   const checkNationalAverage = city => {
@@ -78,7 +81,7 @@ export default ({ city, styles }) => {
             <div style={styles.cityNameText}>{city.citynamestate}</div>
             {!isNationalAverage && (
               <div style={styles.cardIcons}>
-                <div onClick={toggleOnClick}>{heartIcon}</div>
+                <div onClick={handleFavorite}>{heartIcon}</div>
                 <div onClick={handleRemove}>
                   <CloseOutlined style={{ marginLeft: '.3rem' }} />
                 </div>
