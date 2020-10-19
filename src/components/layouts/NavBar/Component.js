@@ -21,7 +21,7 @@ export default ({ display }) => {
         onClick={() => history.push('./')}
         style={sty.logo}
       >
-        Citrics
+        citrics
       </div>
       <Menu mode="horizontal" style={sty.menu}>
         {/*
