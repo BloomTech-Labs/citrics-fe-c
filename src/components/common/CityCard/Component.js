@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 //style
 import {
@@ -20,6 +21,7 @@ import { cityCardActs } from '../../../state/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default ({ city, styles }) => {
+  //state
   const [cityCardOpen, setCityCardOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [heartIcon, toggleIcon] = useVisibilityToggler(
@@ -31,14 +33,15 @@ export default ({ city, styles }) => {
 
   const { cityImages, cityImageLoading } = useSelector(state => state.cityCard);
 
+  //helper functions
+
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const { removeCity } = cardContainerActs;
   const { fetchCityCardImage } = cityCardActs;
 
   const handleRemove = () => dispatch(removeCity(city.cityid));
-
-  const cityImage = cityImages[city.citynamestate];
 
   const openCard = () => !isNationalAverage && setCityCardOpen(!cityCardOpen);
   const openInfo = () => setInfoOpen(!infoOpen);
@@ -48,7 +51,7 @@ export default ({ city, styles }) => {
     toggleIcon();
     window.localStorage.getItem('okta-token-storage')
       ? console.log('this is where I would put an axios call')
-      : console.log('this is where other stuff will happen');
+      : history.push('/profile'); //this is where I am going to prompt a login, somehow
   };
 
   const checkNationalAverage = city => {
@@ -57,7 +60,7 @@ export default ({ city, styles }) => {
 
   useEffect(() => {
     if (city) {
-      dispatch(fetchCityCardImage(city.citynamestate));
+      // dispatch(fetchCityCardImage(city.citynamestate));
       checkNationalAverage(city);
     }
   }, [city]);

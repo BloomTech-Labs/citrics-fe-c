@@ -4,6 +4,10 @@ import '@okta/okta-signin-widget/dist/css/okta-sign-in.min.css';
 
 import { config } from '../../../utils/oktaConfig';
 
+import logo from '../../../styles/logo/lime.png';
+
+import { Canvas } from '../../layouts';
+
 const LoginContainer = () => {
   useEffect(() => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config;
@@ -17,7 +21,7 @@ const LoginContainer = () => {
       },
       features: { registration: false },
       // turning this feature on allows your widget to use Okta for user registration
-      logo: 'path-to-your-logo',
+      logo: logo,
       // add your custom logo to your signing/register widget here.
       i18n: {
         en: {
@@ -50,4 +54,4 @@ const LoginContainer = () => {
   return <div id="sign-in-widget" />;
 };
 
-export default LoginContainer;
+export default ({ styles }) => <Canvas Main={LoginContainer} />;
