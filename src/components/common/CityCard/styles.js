@@ -14,22 +14,32 @@ export const desktopStyles = city => {
 
   return {
     cityCardWrapper: {
-      margin: '5% 0',
+      margin: '.5rem 0',
       color: cityColor,
       userSelect: 'none',
     },
-    cardHeaderContainer: {
+    cardHeaderContainerClose: {
       width: 'auto',
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
       cursor: 'pointer',
-      padding: '1% 2%',
+      padding: '.25rem 1rem 0 1rem',
     },
+
+    cardHeaderContainerOpen: {
+      width: 'auto',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      cursor: 'pointer',
+      padding: '.5rem 1rem .5rem 1rem',
+    },
+
     cityNameText: {
       color: city.color,
       alignSelf: 'center',
-      fontSize: '1.2rem',
+      fontSize: '.9rem',
     },
     closeCard: {
       display: 'flex',
@@ -37,11 +47,11 @@ export const desktopStyles = city => {
       backgroundColor: 'transparent',
       borderRadius: '30px',
       width: 'auto',
-      height: '45px',
-      padding: '30px, 0px, 2px, 24px',
+      height: '34px',
       overflow: 'hidden',
-      border: `3px solid ${cityColor}`,
+      border: `2px solid ${cityColor}`,
     },
+
     openCard: {
       display: 'flex',
       flexDirection: 'column',
@@ -50,13 +60,13 @@ export const desktopStyles = city => {
       width: 'auto',
       height: 'auto',
       justifyContent: 'top',
-      border: `3px solid ${cityColor}`,
+      border: `2px solid ${cityColor}`,
       overflow: 'hidden',
     },
     cardIcons: {
       display: 'flex',
       alignContent: 'center',
-      fontSize: '1rem',
+      fontSize: '.8rem',
       paddingTop: '2px',
     },
     cityCardBodyContainer: {
@@ -72,7 +82,7 @@ export const desktopStyles = city => {
     },
     cityCardBodyWrapperUlOpen: {
       listStyleType: 'none',
-      height: '200px',
+      height: 'auto',
       backgroundColor: 'rgba(0, 0, 0, 0.664)',
       position: 'absolute',
       top: '20px',
@@ -80,8 +90,8 @@ export const desktopStyles = city => {
       borderRadius: '15px',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
+      justifyContent: 'flex-start',
+      // alignItems: 'center',
       padding: '2%',
       margin: '0',
       color: 'white',
@@ -89,7 +99,7 @@ export const desktopStyles = city => {
     },
     cityCardBodyWrapperUlClose: {
       listStyleType: 'none',
-      height: '30px',
+      height: '20px',
       backgroundColor: 'rgba(0, 0, 0, 0.664)',
       position: 'absolute',
       top: '20px',
@@ -99,19 +109,21 @@ export const desktopStyles = city => {
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      padding: '2%',
+      // padding: '2%',
+      paddingBottom: '5%',
+      paddingLeft: '7.5%',
       margin: '0',
       color: 'transparent',
       cursor: 'pointer',
       overflow: 'hidden',
-      width: '15%',
+      width: '.2rem',
     },
     infoIcon: {
       color: 'white',
       position: 'absolute',
       top: '5px',
       right: '10px',
-      fontSize: '1.2rem',
+      fontSize: '.8rem',
     },
     loadingIcon: {
       width: '478px',
@@ -124,12 +136,27 @@ export const desktopStyles = city => {
 
 ////////////////////////////////////////////////////////////////////
 export const mobileStyles = (city, desktop = desktopStyles(city)) => {
-  const mobileStyle = desktop;
+  let mobileStyleObj = {
+    cityNameText: {
+      fontSize: '.8rem',
+    },
+  };
 
-  return desktop;
+  const mobileStyle = {
+    ...desktop,
+    ...mobileStyleObj,
+  };
+
+  return mobileStyle;
 };
 
 ////////////////////////////////////////////////////////////////////
-export const tabletStyles = {};
+export const tabletStyles = (city, mobile = mobileStyles(city)) => {
+  const tabletStyle = {
+    ...mobile,
+  };
+
+  return tabletStyle;
+};
 export const notebookStyles = {};
 export const xlStyles = {};

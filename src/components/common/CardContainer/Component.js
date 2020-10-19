@@ -21,6 +21,8 @@ export default ({ Card, styles }) => {
     state => state.cardContainer
   );
 
+  const theme = useSelector(state => state.theme);
+
   const dispatch = useDispatch();
   const { fetchNationalAverage } = cardContainerActs;
 
@@ -29,7 +31,7 @@ export default ({ Card, styles }) => {
   }, []);
 
   const cityDataCopy = [];
-  nationalAverage.color = 'red';
+  nationalAverage.color = theme.primaryDarker;
   cityData.forEach(city => {
     cityDataCopy.push(city);
   });

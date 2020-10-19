@@ -1,20 +1,19 @@
 import React from 'react';
 import SearchPanel from './Component';
-import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
 export default () => (
   <>
     <IsMobile>
-      <SearchPanel props styles={mobileStyles} />
+      <SearchPanel display={'mobile'} />
     </IsMobile>
 
     <IsTablet>
-      <SearchPanel styles={tabletStyles} />
+      <SearchPanel display={'tablet'} />
     </IsTablet>
 
     <IsDesktop>
-      <SearchPanel styles={desktopStyles} />
+      <SearchPanel display={'desktop'} />
     </IsDesktop>
   </>
 );

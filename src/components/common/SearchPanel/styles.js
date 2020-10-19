@@ -1,9 +1,65 @@
-export const mobileStyles = {};
+import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
+// this is a styles function
+// requires 'display' arg (string)
+// optional  'theme' arg (if you need to access redux state)
+export default (display, theme) => ({
+  //put your styles in this object
+  container: container(display, theme),
+  style2: style2(display, theme),
+});
 
-export const tabletStyles = {};
+// below here we are just styling each jsx element (mobile, tablet, and desktop resolutions)
+const container = (display, theme) => {
+  // this is our base css object
+  const css = {
+    width: '100%',
+  };
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+        margin: '-12px',
+        zIndex: '50',
+        width: '100vw',
+        padding: '12px',
+        borderRadius: '0px 0px 30px 30px',
+        // display: 'absolute',
+        // background: theme.subtlePanelGradient,
+        backgroundColor: 'red',
+        position: '-webkit-sticky',
+        position: 'sticky',
+        top: '0px',
+        filter: theme.elevation3,
+        marginBottom: '40px',
+        //top: 'unset',
+        //bottom: 0,
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
+};
 
-export const notebookStyles = {};
-
-export const desktopStyles = {};
-
-export const xlStyles = {};
+const style2 = (display, theme) => {
+  const css = {
+    //color: theme.primary,
+    //backgroundColor: theme.bg,
+  };
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+        display: 'none',
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
+};

@@ -27,6 +27,7 @@ export default ({ city, styles }) => {
     <HeartFilled />,
     true
   );
+  const [isNationalAverage, setIsNationalAverage] = useState(false);
 
   const { cityImages, cityImageLoading } = useSelector(state => state.cityCard);
 
@@ -39,7 +40,7 @@ export default ({ city, styles }) => {
 
   const cityImage = cityImages[city.citynamestate];
 
-  const openCard = () => setCityCardOpen(!cityCardOpen);
+  const openCard = () => !isNationalAverage && setCityCardOpen(!cityCardOpen);
   const openInfo = () => setInfoOpen(!infoOpen);
 
   const toggleOnClick = e => {
@@ -47,42 +48,52 @@ export default ({ city, styles }) => {
     toggleIcon();
   };
 
+  const checkNationalAverage = city => {
+    city.citynamestate === 'National Average, USA' && setIsNationalAverage(true);
+  };
+
   useEffect(() => {
     if (city) {
       dispatch(fetchCityCardImage(city.citynamestate));
+      checkNationalAverage(city);
     }
   }, [city]);
 
   return (
     <div style={styles.cityCardWrapper}>
       {cityImageLoading ? (
-        // <Skeleton.Input
-        //   style={{
-        //     height: 100,
-        //     width: 500,
-        //     background: city.color,
-        //     borderRadius: 20,
-        //   }}
-        //   active
-        // />
         <div style={styles.closeCard}>
           <LoadingOutlined style={styles.loadingIcon} />
         </div>
       ) : (
         <div style={cityCardOpen ? styles.openCard : styles.closeCard}>
-          <div style={styles.cardHeaderContainer} onClick={openCard}>
+          <div
+            style={
+              cityCardOpen
+                ? styles.cardHeaderContainerOpen
+                : styles.cardHeaderContainerClose
+            }
+            onClick={openCard}
+          >
             <div style={styles.cityNameText}>{city.citynamestate}</div>
-            <div style={styles.cardIcons}>
-              <div onClick={toggleOnClick}>{heartIcon}</div>
-              <div onClick={handleRemove}>
-                <CloseOutlined style={{ marginLeft: '.3rem' }} />
+            {!isNationalAverage && (
+              <div style={styles.cardIcons}>
+                <div onClick={toggleOnClick}>{heartIcon}</div>
+                <div onClick={handleRemove}>
+                  <CloseOutlined style={{ marginLeft: '.3rem' }} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
+
           <div style={styles.cityCardBodyContainer}>
             <img
-              style={styles.cityCardBodyWrapperImg}
-              src={cityImage}
+              style={
+                cityCardOpen
+                  ? styles.cityCardBodyWrapperImg
+                  : { display: 'none' }
+              }
+              src={city.wikiimgurl}
               alt="city"
             />
             <ul
@@ -98,10 +109,10 @@ export default ({ city, styles }) => {
               ) : (
                 <InfoCircleOutlined style={styles.infoIcon} />
               )}
-              <li>Population Density Rating: {city.populationdensityrating}</li>
+              <li>Population: {city.population}</li>
               <li> Average Age: {city.averageage}</li>
-              <li> Average Household Income: {city.averagehouseholdincome}</li>
-              <li> Average Temperature: {city.averagetemperature}</li>
+              <li> Average Household Income: ${city.householdincome}</li>
+              <li> Average Monthly Rent: ${city.rent}</li>
             </ul>
           </div>
         </div>
