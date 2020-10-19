@@ -97,6 +97,7 @@ const noSider = (display, theme) => {
         ...css,
         padding: '12 48 12 12',
         marginLeft: 'calc(100vw - 100%)',
+        overflowY: 'scroll',
       }
     : isTablet(display)
     ? //tablet css (spread this bad boy and pass in what you want to change)

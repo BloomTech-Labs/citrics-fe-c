@@ -136,7 +136,11 @@ export const desktopStyles = city => {
 
 ////////////////////////////////////////////////////////////////////
 export const mobileStyles = (city, desktop = desktopStyles(city)) => {
-  let mobileStyleObj = {};
+  let mobileStyleObj = {
+    cityNameText: {
+      fontSize: '.8rem',
+    },
+  };
 
   const mobileStyle = {
     ...desktop,
