@@ -51,6 +51,7 @@ const siderContainer = (display, theme) => {
     justifyContent: 'center',
     minHeight: '100vh',
     maxHeight: '100vh',
+    width: '520px',
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)

@@ -11,7 +11,7 @@ function title() {
     <div
       id="title"
       style={{
-        fontSize: 48,
+        fontSize: 36,
         paddingTop: '30vh',
         lineHeight: '48px',
         fontStyle: 'normal',
