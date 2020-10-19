@@ -1,5 +1,6 @@
 import Axios from 'axios';
 import theme from '../../styles/themes';
+const weatherAPIKey = '43da56af66734b79b13212632201910';
 const cityColors = [
   theme.dark.tangerineLight,
   theme.dark.magentaLight,
@@ -7,7 +8,10 @@ const cityColors = [
   theme.dark.bgLight,
 ];
 
-export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
+export const fetchSpecificCityData = (cityId, query) => async (
+  dispatch,
+  getState
+) => {
   const currentCities = getState().cardContainer.cityData;
   // check if city is already in state
   if (currentCities) {
@@ -21,10 +25,16 @@ export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
   }
 
   dispatch({ type: 'CARDCONTAINER_FETCH_REQUEST' });
-
   Axios.get(`https://labs27-c-citrics-api.herokuapp.com/cities/city/${cityId}`)
     .then(response => {
       response.data.color = cityColors[currentCities.length];
+      Axios.get(
+        `http://api.weatherapi.com/v1/current.json?key=${weatherAPIKey}&q=${encodeURI(
+          query
+        )}`
+      ).then(res => {
+        response.data.averagetemperature = res.data.current.temp_f;
+      });
       dispatch({
         type: 'CARDCONTAINER_FETCH_SUCCESS',
         payload: response.data,

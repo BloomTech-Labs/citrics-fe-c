@@ -11,9 +11,9 @@ import { PlotlyCard, CityCard } from '../../common';
 // PLOTLY START
 const graphLabels = [
   'Population',
-  'Safety Rating',
-  'Average Temperature',
+  'Average Age',
   'Cost of Living',
+  'Average Temperature',
 ];
 
 export default ({ Card, styles }) => {
@@ -26,16 +26,17 @@ export default ({ Card, styles }) => {
   const dispatch = useDispatch();
   const { fetchNationalAverage } = cardContainerActs;
 
-  useEffect(() => {
-    dispatch(fetchNationalAverage());
-  }, []);
-
   const cityDataCopy = [];
   nationalAverage.color = theme.primaryDarker;
+  nationalAverage.averagetemperature = '59.4';
   cityData.forEach(city => {
     cityDataCopy.push(city);
   });
   cityDataCopy.push(nationalAverage);
+
+  useEffect(() => {
+    dispatch(fetchNationalAverage());
+  }, [cityData]);
 
   return Card === PlotlyCard ? (
     <div style={styles.plotlyCardContainer}>

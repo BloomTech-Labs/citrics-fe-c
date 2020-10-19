@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import '../../../styles/PlotlyCardTheme.less';
+import { cardContainerActs } from '../../../state/actions';
+
 import {
   CloudOutlined,
-  SafetyOutlined,
+  IdcardOutlined,
   TeamOutlined,
-  HomeOutlined,
+  DollarCircleOutlined,
 } from '@ant-design/icons';
 
 const icons = {
   population: <TeamOutlined style={{ fontSize: '1.5rem' }} />,
-  safteyratingscore: <SafetyOutlined style={{ fontSize: '1.5rem' }} />,
+  averageage: <IdcardOutlined style={{ fontSize: '1.5rem' }} />,
   averagetemperature: <CloudOutlined style={{ fontSize: '1.5rem' }} />,
-  costoflivingscore: <HomeOutlined style={{ fontSize: '1.5rem' }} />,
+  averagehouse: <DollarCircleOutlined style={{ fontSize: '1.5rem' }} />,
 };
 
 export default ({ props }) => {
@@ -24,12 +26,12 @@ export default ({ props }) => {
     switch (graphLabel) {
       case 'Population':
         return 'population';
-      case 'Safety Rating':
-        return 'safteyratingscore';
+      case 'Average Age':
+        return 'averageage';
       case 'Average Temperature':
         return 'averagetemperature';
       case 'Cost of Living':
-        return 'averagerentcost';
+        return 'averagehouse';
       default:
         return;
     }
