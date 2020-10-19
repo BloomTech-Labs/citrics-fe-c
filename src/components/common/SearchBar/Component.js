@@ -42,8 +42,16 @@ function SearchBar() {
       <Input
         placeholder="Search"
         id="mainSearchInput"
-        prefix={<LeftOutlined style={{ color: theme.primaryLight }} />}
-        suffix={<SearchOutlined style={{ color: theme.primaryLight }} />}
+        prefix={
+          <LeftOutlined
+            style={{ color: theme.primaryLight, fontSize: '1.15rem' }}
+          />
+        }
+        suffix={
+          <SearchOutlined
+            style={{ color: theme.primaryLight, fontSize: '1.15rem' }}
+          />
+        }
         style={{ borderRadius: 30, height: 50, background: 'unset' }}
         bordered={true}
       />

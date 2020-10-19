@@ -10,7 +10,7 @@ export default ({ city }) => (
     </IsMobile>
 
     <IsTablet>
-      <CityCard city={city} styles={tabletStyles} />
+      <CityCard city={city} styles={tabletStyles(city)} />
     </IsTablet>
 
     <IsDesktop>

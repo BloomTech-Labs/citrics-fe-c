@@ -21,6 +21,8 @@ export default ({ Card, styles }) => {
     state => state.cardContainer
   );
 
+  const { theme, setTheme } = useSelector(state => state.theme);
+
   const dispatch = useDispatch();
   const { fetchNationalAverage } = cardContainerActs;
 
