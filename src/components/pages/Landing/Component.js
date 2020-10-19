@@ -21,7 +21,7 @@ function title() {
       }}
     >
       {' '}
-      Looking for a new place to call home?
+      Where will you wander?
     </div>
   );
 }
