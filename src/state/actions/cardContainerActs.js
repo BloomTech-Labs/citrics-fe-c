@@ -21,7 +21,6 @@ export const fetchSpecificCityData = cityId => async (dispatch, getState) => {
   }
 
   dispatch({ type: 'CARDCONTAINER_FETCH_REQUEST' });
-
   Axios.get(`https://labs27-c-citrics-api.herokuapp.com/cities/city/${cityId}`)
     .then(response => {
       response.data.color = cityColors[currentCities.length];

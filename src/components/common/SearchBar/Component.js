@@ -25,7 +25,7 @@ function SearchBar() {
   // you can pass the object id to global state from here
   const onSelect = (value, city) => {
     if (currentLocation != '/compare') history.push('/compare');
-    dispatch(fetchSpecificCityData(city.id));
+    dispatch(fetchSpecificCityData(city.id, city.value));
   };
 
   return (
