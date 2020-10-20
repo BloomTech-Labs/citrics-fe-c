@@ -43,4 +43,4 @@ function Favorites() {
   );
 }
 
-export default ({ styles }) => <Canvas Main={Favorites} />;
+export default ({ styles }) => <Canvas Side={SearchBar} Main={Favorites} />;
