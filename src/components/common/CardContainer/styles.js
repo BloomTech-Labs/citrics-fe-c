@@ -40,52 +40,22 @@ const cityCardContainer = (display, theme) => {
     ? //mobile css
       {
         ...css,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        flexWrap: 'nowrap',
+        // comented out for presentation
+        //display: 'flex',
+        //flexDirection: 'row',
+        //justifyContent: 'space-between',
+        //flexWrap: 'nowrap',
       }
     : isTablet(display)
     ? //tablet css (spread this bad boy and pass in what you want to change)
       {
         ...css,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        flexWrap: 'nowrap',
+        // comented out for presentation
+        //display: 'flex',
+        //flexDirection: 'row',
+        //justifyContent: 'space-between',
+        //flexWrap: 'nowrap',
       }
     : //desktop (spread this bad boy and pass in what you want to change)
       { ...css };
 };
-/*
-const searchResultContainer = (display, theme) => {
-  // this is our base css object
-  const css = {
-    width: '100%',
-  };
-  // spread the css const to pass in what you want to change
-  return isMobile(display)
-    ? //mobile css
-      {
-        ...css,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-
-      }
-    : isTablet(display)
-    ? //tablet css (spread this bad boy and pass in what you want to change)
-      {
-        ...css,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        flexWrap: 'nowrap',
-        //alignItems: 'center',
-
-      }
-    : //desktop (spread this bad boy and pass in what you want to change)
-      { ...css };
-};
-*/
