@@ -36,7 +36,7 @@ module.exports = {
   '@c-tangerine-dark': '#FF7A00',
 
   '@c-subtle-panel-gradient':
-    '-webkit-linear-gradient(360deg, #1B242C 0%, #142F33 100%)',
+    '-webkit-linear-gradient(90deg, #1B242C 0%, #142F33 100%)',
   '@c-panel-gradient':
     '-webkit-linear-gradient(0deg, #133034 0%, #1B242C 100%)',
   // styles ///////////////////////////////
