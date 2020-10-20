@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Canvas } from '../../layouts';
 import SearchBar from '../../common/SearchBar';
+import CityCard from '../../common/CityCard/Component.js';
 import '../../../styles/ComparisonPage.less';
+import axios from 'axios';
 
-function favtitle() {
+//156, 320, 747, 1177
+
+function Favorites() {
+  useEffect(() => {
+    axios
+      .get(`https://labs27-c-citrics-api.herokuapp.com/cities/city/156`)
+      .then(response => {
+        console.log(response);
+        dummyFavorites.push(response.data);
+      })
+      .catch(error => console.log(error));
+  }, []);
+
+  const dummyFavorites = [];
   return (
     <div
       id="title"
@@ -18,10 +33,14 @@ function favtitle() {
       }}
     >
       {' '}
-      Your favorite cities are saved on the left. Select up to three and see how
-      they stack up against each other!
+      View your favorite cities 🏙️
+      <div>
+        {dummyFavorites.map(city => {
+          return <CityCard city={city} />;
+        })}
+      </div>
     </div>
   );
 }
 
-export default ({ styles }) => <Canvas Side={SearchBar} Main={favtitle} />;
+export default ({ styles }) => <Canvas Main={Favorites} />;

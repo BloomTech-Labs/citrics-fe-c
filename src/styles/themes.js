@@ -15,22 +15,23 @@ const theme = {
   gray: '#E0E0E0',
   grayDark: '#BDBDBD',
   magentaLight: '#FF00A8',
-  magenta: 'linear-gradient(90deg, #EC0039 0%, #FF00A8 100%)',
+  magenta: '-webkit-linear-gradient(90deg, #EC0039 0%, #FF00A8 100%)',
   magentaDark: '#EC0039',
   primaryLight: '#BDFF00',
-  primary: 'linear-gradient(90deg, #00FF66 0%, #BDFF00 100%)',
-  primaryVert: 'linear-gradient(180deg, #BDFF00 0%, #00FF66 100%)',
+  primary: '-webkit-linear-gradient(90deg, #00FF66 0%, #BDFF00 100%)',
+  primaryVert: '-webkit-linear-gradient(180deg, #BDFF00 0%, #00FF66 100%)',
   primaryDark: '#00FF66',
   primaryDarker: '#10521A',
   skyLight: '#00FFF0',
-  sky: 'linear-gradient(90deg, #006DFF 0%, #00FFF0 100%)',
+  sky: '-webkit-linear-gradient(90deg, #006DFF 0%, #00FFF0 100%)',
   skyDark: '#006DFF',
   tangerineLight: '#FFF500',
-  tangerine: 'linear-gradient(90deg, #FF7A00 0%, #FFF500 100%)',
+  tangerine: '-webkit-linear-gradient(90deg, #FF7A00 0%, #FFF500 100%)',
   tangerineDark: '#FF7A00',
 
-  subtlePanelGradient: 'linear-gradient(360deg, #1B242C 0%, #142F33 100%)',
-  panelGradient: 'linear-gradient(0deg, #133034 0%, #1B242C 100%)',
+  subtlePanelGradient:
+    '-webkit-linear-gradient(360deg, #1B242C 0%, #142F33 100%)',
+  panelGradient: '-webkit-linear-gradient(90deg, #133034 0%, #1B242C 100%)',
 
   // styles ///////////////////////////////
 
