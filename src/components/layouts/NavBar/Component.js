@@ -32,7 +32,7 @@ export default ({ display }) => {
           key="favorites"
           style={sty.menuItem}
           icon={<HeartOutlined style={sty.menuIcon} />}
-          onClick={() => history.push('./profile')}
+          onClick={() => history.push('./favorites')}
         />
         {sty.homeIcon && (
           <Menu.Item
