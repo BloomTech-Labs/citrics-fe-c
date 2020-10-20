@@ -11,7 +11,7 @@ import { PlotlyCard, CityCard } from '../../common';
 // PLOTLY START
 const graphLabels = [
   'Population',
-  'Average Age',
+  'Average Household Income',
   'Cost of Living',
   'Average Temperature',
 ];
@@ -34,11 +34,34 @@ export default ({ Card, styles }) => {
     return Math.round(average / data.length);
   };
 
+  const getYearlyHistory = data => {
+    let d = {};
+    let newYearlyAverage = [];
+
+    for (let i = 0; i < data.length; i++) {
+      if (d[data[i].year] !== undefined) {
+        d[data[i].year] += data[i].housingcost;
+      } else {
+        d[data[i].year] = data[i].housingcost;
+      }
+    }
+
+    for (const [key, value] of Object.entries(d)) {
+      d[key] = { year: key, housingcost: Math.floor(value / 12) };
+      newYearlyAverage.push(d[key]);
+    }
+
+    return newYearlyAverage;
+  };
+
   const cityDataCopy = [];
   nationalAverage.color = theme.primaryDarker;
   nationalAverage.averagetemperature = '52.4';
   cityData.forEach(city => {
     city.averagetemperature = calculateAverage(city.historicalweather);
+    city.historicalyearlyhousecost = getYearlyHistory(
+      city.historicalaveragehouse
+    );
     cityDataCopy.push(city);
   });
   cityDataCopy.push(nationalAverage);
