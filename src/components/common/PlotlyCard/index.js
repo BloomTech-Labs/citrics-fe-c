@@ -1,20 +1,19 @@
 import React from 'react';
 import PlotlyCard from './Component';
-import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
 export default props => (
   <>
     <IsMobile>
-      <PlotlyCard props={props} styles={mobileStyles} />
+      <PlotlyCard props={props} display={'mobile'} />
     </IsMobile>
 
     <IsTablet>
-      <PlotlyCard props={props} styles={tabletStyles} />
+      <PlotlyCard props={props} display={'tablet'} />
     </IsTablet>
 
     <IsDesktop>
-      <PlotlyCard props={props} styles={desktopStyles} />
+      <PlotlyCard props={props} display={'desktop'} />
     </IsDesktop>
   </>
 );

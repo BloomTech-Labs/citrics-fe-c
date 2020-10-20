@@ -71,7 +71,7 @@ const cityCardImg = (display, theme, city) => {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     width: 'auto',
-    height: 100,
+    height: 300,
     overflowY: 'scroll',
     direction: 'rtl',
   };
@@ -93,11 +93,12 @@ const cityCardImg = (display, theme, city) => {
 const innerPanel = (display, theme, city) => {
   // this is our base css object
   const css = {
-    background: theme.bgDark + '95',
+    background: theme.bgDark + '98',
     borderRadius: '30px, 0px, 30px, 30px',
     border: 'unset',
     width: '75%',
     marginTop: '.25rem',
+    //height: '300px'
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)
