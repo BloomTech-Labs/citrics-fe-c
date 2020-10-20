@@ -8,11 +8,13 @@ import { useSelector } from 'react-redux';
 
 export default ({ styles }) => {
   const cityData = useSelector(state => state.cardContainer.cityData);
-
+  const Blank = () => <div></div>;
   return (
     <Canvas
       Side={SearchPanel}
-      Main={() => <CardContainer Card={cityData.length ? PlotlyCard : false} />}
+      Main={() =>
+        cityData.length ? <CardContainer Card={PlotlyCard} /> : Blank
+      }
     />
   );
 };
