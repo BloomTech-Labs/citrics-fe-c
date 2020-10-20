@@ -1,12 +1,5 @@
 const initState = {
-  favoriteCities: [
-    {
-      cityid: 5485,
-      citynamestate: 'Aliso Viejo, California',
-      statecode: 'CA',
-      timezone: 'UTC-8 Pacific',
-    },
-  ],
+  favoriteCities: [],
   displayName: '',
 };
 

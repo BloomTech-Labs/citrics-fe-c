@@ -9,6 +9,7 @@ export default ({ display }) => {
   const favorites = useSelector(state => state.userData.favoriteCities);
   const sty = styles(display, theme);
 
+  console.log(favorites);
   return (
     <div>
       {favorites.map(city => {
