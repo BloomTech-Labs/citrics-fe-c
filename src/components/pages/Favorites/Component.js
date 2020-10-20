@@ -1,46 +1,20 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Canvas } from '../../layouts';
-import SearchBar from '../../common/SearchBar';
-import CityCard from '../../common/CityCard/Component.js';
+import FavoritesPanel from '../../common/FavoritesPanel';
+import CardContainer from '../../common/CardContainer';
 import '../../../styles/ComparisonPage.less';
-import axios from 'axios';
+import { PlotlyCard } from '../../common';
+import { useSelector } from 'react-redux';
 
-//156, 320, 747, 1177
-
-function Favorites() {
-  useEffect(() => {
-    axios
-      .get(`https://labs27-c-citrics-api.herokuapp.com/cities/city/156`)
-      .then(response => {
-        console.log(response);
-        dummyFavorites.push(response.data);
-      })
-      .catch(error => console.log(error));
-  }, []);
-
-  const dummyFavorites = [];
+export default ({ styles }) => {
+  const favoriteCities = useSelector(state => state.userData.favoriteCities);
+  const Blank = () => <div></div>;
   return (
-    <div
-      id="title"
-      style={{
-        fontSize: 30,
-        paddingTop: '35vh',
-        lineHeight: '48px',
-        fontStyle: 'normal',
-        fontWeight: 'normal',
-        color: '#fff',
-        textAlign: 'center',
-      }}
-    >
-      {' '}
-      View your favorite cities 🏙️
-      <div>
-        {dummyFavorites.map(city => {
-          return <CityCard city={city} />;
-        })}
-      </div>
-    </div>
+    <Canvas
+      Side={FavoritesPanel} //we need a "favorite panel"
+      Main={() =>
+        favoriteCities.length ? <CardContainer Card={PlotlyCard} /> : Blank
+      }
+    />
   );
-}
-
-export default ({ styles }) => <Canvas Side={SearchBar} Main={Favorites} />;
+};
