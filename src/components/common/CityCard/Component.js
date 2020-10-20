@@ -20,6 +20,7 @@ import { shortNum } from '../../../utils/helpers';
 //Redux
 import { cardContainerActs } from '../../../state/actions';
 import { cityCardActs } from '../../../state/actions';
+import { userActs } from '../../../state/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const icons = [HeartOutlined, CloseOutlined];
@@ -44,6 +45,7 @@ export default ({ city, display }) => {
   const dispatch = useDispatch();
   const { removeCity } = cardContainerActs;
   const { fetchCityCardImage } = cityCardActs;
+  const { saveFavorite } = userActs;
 
   //Toggles
   const [HeartIcon, toggleHeartIcon] = useVisibilityToggler(
@@ -66,10 +68,13 @@ export default ({ city, display }) => {
     e.stopPropagation();
     dispatch(removeCity(city.cityid));
   };
+
   const handleFavorite = e => {
     e.stopPropagation();
     toggleHeartIcon();
+    dispatch(saveFavorite(city));
   };
+
   const handleInfo = e => toggleInfoIcon();
   //helpers
   const isCityCard = city => city.colorIdx >= 0;

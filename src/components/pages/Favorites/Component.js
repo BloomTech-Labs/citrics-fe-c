@@ -1,24 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Canvas } from '../../layouts';
-import SearchBar from '../../common/SearchBar';
-import CityCard from '../../common/CityCard/Component.js';
-import '../../../styles/ComparisonPage.less';
-import axios from 'axios';
-
-//156, 320, 747, 1177
+import FavoritesPanel from '../../common/FavoritesPanel';
 
 function Favorites() {
-  useEffect(() => {
-    axios
-      .get(`https://labs27-c-citrics-api.herokuapp.com/cities/city/156`)
-      .then(response => {
-        console.log(response);
-        dummyFavorites.push(response.data);
-      })
-      .catch(error => console.log(error));
-  }, []);
-
-  const dummyFavorites = [];
   return (
     <div
       id="title"
@@ -33,14 +17,9 @@ function Favorites() {
       }}
     >
       {' '}
-      View your favorite cities 🏙️
-      <div>
-        {dummyFavorites.map(city => {
-          return <CityCard city={city} />;
-        })}
-      </div>
+      View your favorite cities
     </div>
   );
 }
 
-export default ({ styles }) => <Canvas Side={SearchBar} Main={Favorites} />;
+export default ({ styles }) => <Canvas Side={FavoritesPanel} Main={Favorites} />;
