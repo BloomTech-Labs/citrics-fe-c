@@ -138,13 +138,18 @@ export default ({ props }) => {
             yaxis: {
               automargin: true,
               visible: graphTypeState === 'bar' ? false : true,
+              gridcolor: '#ffffff20',
             },
             xaxis: {
               automargin: true,
               visible: true,
+              gridcolor: '#ffffff20',
             },
             font: {
-              color: '#ffffff',
+              color: '#ffffff80',
+            },
+            line: {
+              color: 'white',
             },
           }}
           useResizeHandler
