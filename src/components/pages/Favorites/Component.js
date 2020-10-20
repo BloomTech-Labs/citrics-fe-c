@@ -1,20 +1,25 @@
 import React from 'react';
 import { Canvas } from '../../layouts';
 import FavoritesPanel from '../../common/FavoritesPanel';
-import CardContainer from '../../common/CardContainer';
-import '../../../styles/ComparisonPage.less';
-import { PlotlyCard } from '../../common';
-import { useSelector } from 'react-redux';
 
-export default ({ styles }) => {
-  const favoriteCities = useSelector(state => state.userData.favoriteCities);
-  const Blank = () => <div></div>;
+function Favorites() {
   return (
-    <Canvas
-      Side={FavoritesPanel} //we need a "favorite panel"
-      Main={() =>
-        favoriteCities.length ? <CardContainer Card={PlotlyCard} /> : Blank
-      }
-    />
+    <div
+      id="title"
+      style={{
+        fontSize: 30,
+        paddingTop: '35vh',
+        lineHeight: '48px',
+        fontStyle: 'normal',
+        fontWeight: 'normal',
+        color: '#fff',
+        textAlign: 'center',
+      }}
+    >
+      {' '}
+      View your favorite cities
+    </div>
   );
-};
+}
+
+export default ({ styles }) => <Canvas Side={FavoritesPanel} Main={Favorites} />;
