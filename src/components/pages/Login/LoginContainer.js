@@ -54,4 +54,4 @@ const LoginContainer = () => {
   return <div id="sign-in-widget" />;
 };
 
-export default ({ styles }) => <Canvas Main={LoginContainer} />;
+export default LoginContainer;
