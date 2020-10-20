@@ -137,14 +137,14 @@ export default ({ props }) => {
             margin: { l: 0, t: 0, r: 0, b: 0 },
             yaxis: {
               automargin: true,
-              visible: false,
+              visible: graphTypeState === 'bar' ? false : true,
             },
             xaxis: {
               automargin: true,
-              visible: false,
+              visible: true,
             },
             font: {
-              color: 'white',
+              color: '#ffffff',
             },
           }}
           useResizeHandler

@@ -144,11 +144,12 @@ const menuItem = (display, theme) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        backgroundColor: theme.bgDark,
         height: 48,
         width: 48,
         margin: 16,
         borderRadius: theme.borderRadiusLarge,
-        //border: 2px solid;
+        borderImageSource: 'linear-gradient(180deg, #8FFF00 0%, #50C461 100%)',
         border: `1px solid ${theme.primaryLight}`,
       }
     : //desktop (spread this bad boy and pass in what you want to change)
