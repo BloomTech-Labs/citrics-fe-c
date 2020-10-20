@@ -1,4 +1,3 @@
-import { AlignCenterOutlined } from '@ant-design/icons';
 import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
 // this is a styles function
 // requires 'display' arg (string)

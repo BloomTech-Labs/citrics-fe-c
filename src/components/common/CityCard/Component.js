@@ -26,7 +26,7 @@ const icons = [HeartOutlined, CloseOutlined];
 const makeButtons = (Icon, handleIcon, Icon2, handleIcon2) => {
   return Icon2 ? (
     <>
-      <Icon style={{ margin: '0 8px' }} onClick={handleIcon} />
+      <Icon style={{ margin: '0 4px' }} onClick={handleIcon} />
       <Icon2 style={{ margin: '0 8px' }} onClick={handleIcon2} />
     </>
   ) : (
@@ -91,7 +91,7 @@ export default ({ city, display }) => {
         defaultActiveKey={['0']}
         ghost
         style={
-          display == 'desktop'
+          display
             ? sty.outerCollapse
             : { ...sty.outerCollapse, width: `${100 / cardCount - cardCount}%` }
         }
@@ -101,7 +101,7 @@ export default ({ city, display }) => {
           header={city.citynamestate}
           key="1"
           extra={
-            isCityCard(city) && display === 'desktop'
+            isCityCard(city) && display
               ? makeButtons(
                   HeartIcon,
                   handleFavorite,
@@ -131,18 +131,24 @@ export default ({ city, display }) => {
                 style={sty.innerPanel}
               >
                 <ul style={sty.unorderedList}>
+                  <li>&#x200b;</li>
+                  <li>&#x200b;</li>
                   <li> Population: {shortNum(city.population)}</li>
                   <li>
                     {' '}
-                    Population Density: {shortNum(city.densitymisq)} per square
-                    mile{' '}
+                    Population Density: {shortNum(city.densitymisq)} PPSM{' '}
                   </li>
                   <li>
                     {' '}
                     Average Age: {Math.round(shortNum(city.averageage))}{' '}
-                    (rounded)
                   </li>
-                  <li> Cost of Living Index: {city.costoflivingindex} </li>
+                  <li>
+                    {' '}
+                    Cost of Living Index:{' '}
+                    {city.costoflivingindex
+                      ? city.costoflivingindex
+                      : 'Unprocessed'}{' '}
+                  </li>
                   <li> Annual Income: ${shortNum(city.individualincome)}</li>
                   <li> Household Income: ${shortNum(city.householdincome)}</li>
                   <li> House Price: ${shortNum(city.averagehouse)}</li>
