@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import '../../../styles/PlotlyCardTheme.less';
-import { cardContainerActs } from '../../../state/actions';
+import styles from './styles';
+import { useSelector } from 'react-redux';
 
 import {
   CloudOutlined,
@@ -19,10 +20,12 @@ const icons = {
   'Cost of Living': <DollarCircleOutlined style={{ fontSize: '1.5rem' }} />,
 };
 
-export default ({ props }) => {
+export default ({ props, display }) => {
   const { graphLabel, data } = props;
   const [graphTypeState, setGraphTypeState] = useState('bar');
+  const theme = useSelector(state => state.theme);
   const cardHeight = 64 * data.length;
+  const sty = styles(display, theme);
 
   const relativeProperty = () => {
     switch (graphLabel) {
@@ -74,7 +77,7 @@ export default ({ props }) => {
   };
 
   return (
-    <div className="card">
+    <div className="card" style={sty.card}>
       <div className="cardInfo">
         {icons[graphLabel]}
         <h3 className="plotlyName">{graphLabel}</h3>
