@@ -95,9 +95,10 @@ const noSider = (display, theme) => {
     ? //mobile css
       {
         ...css,
-        padding: '12 48 12 12',
-        marginLeft: 'calc(100vw - 100%)',
-        overflowY: 'scroll',
+        //padding: '12 48 12 12',
+        padding: '0 0 0 0',
+        //marginLeft: 'calc((100vw - 100%))',
+        //overflowY: 'scroll',
       }
     : isTablet(display)
     ? //tablet css (spread this bad boy and pass in what you want to change)
@@ -113,7 +114,7 @@ const noSiderContainer = (display, theme) => {
   // this is our base css object
 
   const css = {
-    width: 'calc(100vw - 5%)',
+    width: 'calc( 100vw - calc( 100vw - 100% ) )',
     paddingTop: '2.5%',
   };
   // spread the css const to pass in what you want to change

@@ -1,162 +1,139 @@
-export const desktopStyles = city => {
-  function getColor(c) {
-    let res = c.split(' ');
+import { AlignCenterOutlined } from '@ant-design/icons';
+import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
+// this is a styles function
+// requires 'display' arg (string)
+// optional  'theme' arg (if you need to access redux state)
+export default (display, theme, city) => ({
+  //put your styles in this object
+  outerCollapse: outerCollapse(display, theme, city),
+  outerPanel: outerPanel(display, theme, city),
+  innerPanel: innerPanel(display, theme, city),
+  cityCardImg: cityCardImg(display, theme, city),
+  unorderedList: unorderedList(display, theme, city),
+});
 
-    for (let i = 0; i < res.length; i++) {
-      if (res[i][0] == '#') {
-        return res[i];
+const outerCollapse = (display, theme, city) => {
+  // this is our base css object
+  const css = {
+    width: '100%',
+    marginTop: '8px',
+  };
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+        overflowX: 'hidden',
       }
-    }
-    return c;
-  }
-
-  const cityColor = getColor(city.color);
-
-  return {
-    cityCardWrapper: {
-      margin: '.5rem 0',
-      color: cityColor,
-      userSelect: 'none',
-    },
-    cardHeaderContainerClose: {
-      width: 'auto',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      cursor: 'pointer',
-      padding: '.25rem 1rem 0 1rem',
-    },
-
-    cardHeaderContainerOpen: {
-      width: 'auto',
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      cursor: 'pointer',
-      padding: '.5rem 1rem .5rem 1rem',
-    },
-
-    cityNameText: {
-      color: city.color,
-      alignSelf: 'center',
-      fontSize: '.9rem',
-    },
-    closeCard: {
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'transparent',
-      borderRadius: '30px',
-      width: 'auto',
-      height: '34px',
-      overflow: 'hidden',
-      border: `2px solid ${cityColor}`,
-    },
-
-    openCard: {
-      display: 'flex',
-      flexDirection: 'column',
-      backgroundColor: 'transparent',
-      borderRadius: '30px',
-      width: 'auto',
-      height: 'auto',
-      justifyContent: 'top',
-      border: `2px solid ${cityColor}`,
-      overflow: 'hidden',
-    },
-    cardIcons: {
-      display: 'flex',
-      alignContent: 'center',
-      fontSize: '.8rem',
-      paddingTop: '2px',
-    },
-    cityCardBodyContainer: {
-      width: '100%',
-      height: '240px',
-      position: 'relative',
-    },
-    cityCardBodyWrapperImg: {
-      width: '100%',
-      height: '100%',
-      marginBottom: '4%',
-      objectFit: 'fill',
-    },
-    cityCardBodyWrapperUlOpen: {
-      listStyleType: 'none',
-      height: 'auto',
-      backgroundColor: 'rgba(0, 0, 0, 0.664)',
-      position: 'absolute',
-      top: '20px',
-      right: '10px',
-      borderRadius: '15px',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      // alignItems: 'center',
-      padding: '2%',
-      margin: '0',
-      color: 'white',
-      cursor: 'pointer',
-    },
-    cityCardBodyWrapperUlClose: {
-      listStyleType: 'none',
-      height: '20px',
-      backgroundColor: 'rgba(0, 0, 0, 0.664)',
-      position: 'absolute',
-      top: '20px',
-      right: '10px',
-      borderRadius: '15px',
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'center',
-      alignItems: 'center',
-      // padding: '2%',
-      paddingBottom: '5%',
-      paddingLeft: '7.5%',
-      margin: '0',
-      color: 'transparent',
-      cursor: 'pointer',
-      overflow: 'hidden',
-      width: '.2rem',
-    },
-    infoIcon: {
-      color: 'white',
-      position: 'absolute',
-      top: '5px',
-      right: '10px',
-      fontSize: '.8rem',
-    },
-    loadingIcon: {
-      width: '478px',
-      fontSize: '1.8rem',
-      textAlign: 'center',
-      margin: 'auto auto',
-    },
-  };
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+        overflowX: 'hidden',
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
 };
 
-////////////////////////////////////////////////////////////////////
-export const mobileStyles = (city, desktop = desktopStyles(city)) => {
-  let mobileStyleObj = {
-    cityNameText: {
-      fontSize: '.8rem',
-    },
+const outerPanel = (display, theme, city) => {
+  // this is our base css object
+  const css = {
+    border: `solid ${city.color} 2px`,
+    borderRadius: 30,
+    marginTop: '.25rem',
+    overflow: 'hidden',
   };
-
-  const mobileStyle = {
-    ...desktop,
-    ...mobileStyleObj,
-  };
-
-  return mobileStyle;
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+        textOverflow: 'ellipsis',
+        whiteSpace: 'nowrap',
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
 };
 
-////////////////////////////////////////////////////////////////////
-export const tabletStyles = (city, mobile = mobileStyles(city)) => {
-  const tabletStyle = {
-    ...mobile,
+const cityCardImg = (display, theme, city) => {
+  // this is our base css object
+  const css = {
+    background: `url(${city.wikiimgurl})`,
+    borderRadius: `0px 0px 30px 30px`,
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    width: 'auto',
+    height: 100,
+    overflowY: 'scroll',
+    direction: 'rtl',
   };
-
-  return tabletStyle;
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
 };
-export const notebookStyles = {};
-export const xlStyles = {};
+
+const innerPanel = (display, theme, city) => {
+  // this is our base css object
+  const css = {
+    background: theme.bgDark + '95',
+    borderRadius: '30px, 0px, 30px, 30px',
+    border: 'unset',
+    width: '75%',
+    marginTop: '.25rem',
+  };
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
+};
+
+const unorderedList = (display, theme, city) => {
+  // this is our base css object
+  const css = {
+    textAlign: 'right',
+    listStylePosition: 'inside',
+    listStyleType: 'none',
+    margin: '0, 8px',
+    color: theme.white,
+  };
+  // spread the css const to pass in what you want to change
+  return isMobile(display)
+    ? //mobile css
+      {
+        ...css,
+      }
+    : isTablet(display)
+    ? //tablet css (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+      }
+    : //desktop (spread this bad boy and pass in what you want to change)
+      { ...css };
+};

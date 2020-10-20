@@ -1,20 +1,19 @@
 import React from 'react';
 import CardContainer from './Component';
-import { mobileStyles, tabletStyles, desktopStyles } from './styles';
 import { IsMobile, IsTablet, IsDesktop } from '../../layouts/breakPoints';
 
 export default ({ Card }) => (
   <>
     <IsMobile>
-      <CardContainer Card={Card} styles={mobileStyles()} />
+      <CardContainer Card={Card} display={'mobile'} />
     </IsMobile>
 
     <IsTablet>
-      <CardContainer Card={Card} styles={tabletStyles} />
+      <CardContainer Card={Card} display={'tablet'} />
     </IsTablet>
 
     <IsDesktop>
-      <CardContainer Card={Card} styles={desktopStyles} />
+      <CardContainer Card={Card} display={'desktop'} />
     </IsDesktop>
   </>
 );

@@ -107,13 +107,13 @@ const menuIcon = (display, theme) => {
     ? //mobile css
       {
         ...css,
-        color: theme.primaryLight,
+        color: theme.white,
       }
     : isTablet(display)
     ? //tablet css (spread this bad boy and pass in what you want to change)
       {
         ...css,
-        color: theme.primaryLight,
+        color: theme.white,
       }
     : //desktop (spread this bad boy and pass in what you want to change)
       { ...css };
@@ -129,13 +129,12 @@ const menuItem = (display, theme) => {
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: theme.bgDark,
-        stroke: theme.primaryLight,
         height: 48,
         width: 48,
         margin: 16,
         borderRadius: theme.borderRadiusLarge,
         borderImageSource: 'linear-gradient(180deg, #8FFF00 0%, #50C461 100%)',
-        border: `1px solid ${theme.white}`,
+        border: `1px solid ${theme.primaryLight}`,
         //borderRadius: theme.borderRadius
       }
     : isTablet(display)
@@ -145,14 +144,12 @@ const menuItem = (display, theme) => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: theme.panelGradient + '50',
-        stroke: theme.primaryLight,
         height: 48,
         width: 48,
         margin: 16,
         borderRadius: theme.borderRadiusLarge,
         //border: 2px solid;
-        border: `1px solid ${theme.white}`,
+        border: `1px solid ${theme.primaryLight}`,
       }
     : //desktop (spread this bad boy and pass in what you want to change)
       { ...css };
