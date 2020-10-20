@@ -13,7 +13,7 @@ import { PlotlyCard, CityCard } from '../../common';
 const graphLabels = [
   'Population',
   'Average Household Income',
-  'Cost of Living',
+  'Average Home Price',
   'Average Temperature',
 ];
 

@@ -15,9 +15,11 @@ import { Switch } from 'antd';
 
 const icons = {
   Population: <TeamOutlined style={{ fontSize: '1.5rem' }} />,
-  'Average Household Income': <HomeOutlined style={{ fontSize: '1.5rem' }} />,
+  'Average Household Income': (
+    <DollarCircleOutlined style={{ fontSize: '1.5rem' }} />
+  ),
   'Average Temperature': <CloudOutlined style={{ fontSize: '1.5rem' }} />,
-  'Cost of Living': <DollarCircleOutlined style={{ fontSize: '1.5rem' }} />,
+  'Average Home Price': <HomeOutlined style={{ fontSize: '1.5rem' }} />,
 };
 
 export default ({ props, display }) => {
@@ -39,7 +41,7 @@ export default ({ props, display }) => {
         return graphTypeState === 'line'
           ? 'historicalweather'
           : 'averagetemperature';
-      case 'Cost of Living':
+      case 'Average Home Price':
         return graphTypeState === 'line'
           ? 'historicalyearlyhousecost'
           : 'averagehouse';

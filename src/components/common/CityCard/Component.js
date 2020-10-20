@@ -133,26 +133,37 @@ export default ({ city, display }) => {
                 <ul style={sty.unorderedList}>
                   <li>&#x200b;</li>
                   <li>&#x200b;</li>
-                  <li> Population: {shortNum(city.population)}</li>
-                  <li>
-                    {' '}
-                    Population Density: {shortNum(city.densitymisq)} PPSM{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    Average Age: {Math.round(shortNum(city.averageage))}{' '}
-                  </li>
-                  <li>
-                    {' '}
-                    Cost of Living Index:{' '}
-                    {city.costoflivingindex
-                      ? city.costoflivingindex
-                      : 'Unprocessed'}{' '}
-                  </li>
-                  <li> Annual Income: ${shortNum(city.individualincome)}</li>
-                  <li> Household Income: ${shortNum(city.householdincome)}</li>
-                  <li> House Price: ${shortNum(city.averagehouse)}</li>
-                  <li> Monthly Rent: ${shortNum(city.rent)}</li>
+                  {city.population && (
+                    <li> Population: {shortNum(city.population)}</li>
+                  )}
+                  {city.densitymisq && (
+                    <li>
+                      {' '}
+                      Population Density: {shortNum(city.densitymisq)} PPSM{' '}
+                    </li>
+                  )}
+                  {city.averageage && (
+                    <li>
+                      {' '}
+                      Average Age: {Math.round(shortNum(city.averageage))}{' '}
+                    </li>
+                  )}
+                  {city.costoflivingindex && (
+                    <li> Cost of Living Index: {city.costoflivingindex}</li>
+                  )}
+                  {city.individualincome && (
+                    <li> Annual Income: ${shortNum(city.individualincome)}</li>
+                  )}
+                  {city.householdincome && (
+                    <li>
+                      {' '}
+                      Household Income: ${shortNum(city.householdincome)}
+                    </li>
+                  )}
+                  {city.averagehouse && (
+                    <li> House Price: ${shortNum(city.averagehouse)}</li>
+                  )}
+                  {city.rent && <li> Monthly Rent: ${shortNum(city.rent)}</li>}
 
                   {city.historicalweather == true && (
                     <li>
@@ -166,8 +177,8 @@ export default ({ city, display }) => {
                   {city.historicalweather == true && (
                     <li>
                       {' '}
-                      Temperature: {city.historicalweather[0].temperature}&deg;F
-                      (placeholder)
+                      Temperature: {city.historicalweather[0].temperature}
+                      &deg;F(placeholder)
                     </li>
                   )}
                   {city.covid == true && (
