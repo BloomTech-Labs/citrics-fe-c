@@ -6,8 +6,6 @@ import { config } from '../../../utils/oktaConfig';
 
 import logo from '../../../styles/logo/lime.png';
 
-import { Canvas } from '../../layouts';
-
 const LoginContainer = () => {
   useEffect(() => {
     const { pkce, issuer, clientId, redirectUri, scopes } = config;
