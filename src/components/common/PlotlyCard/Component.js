@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import Plot from 'react-plotly.js';
 import '../../../styles/PlotlyCardTheme.less';
+import { cardContainerActs } from '../../../state/actions';
+
 import {
   CloudOutlined,
-  SafetyOutlined,
-  TeamOutlined,
   HomeOutlined,
+  TeamOutlined,
+  DollarCircleOutlined,
 } from '@ant-design/icons';
 
+import { Switch } from 'antd';
+
 const icons = {
-  population: <TeamOutlined style={{ fontSize: '1.5rem' }} />,
-  safteyratingscore: <SafetyOutlined style={{ fontSize: '1.5rem' }} />,
-  averagetemperature: <CloudOutlined style={{ fontSize: '1.5rem' }} />,
-  costoflivingscore: <HomeOutlined style={{ fontSize: '1.5rem' }} />,
+  Population: <TeamOutlined style={{ fontSize: '1.5rem' }} />,
+  'Average Household Income': <HomeOutlined style={{ fontSize: '1.5rem' }} />,
+  'Average Temperature': <CloudOutlined style={{ fontSize: '1.5rem' }} />,
+  'Cost of Living': <DollarCircleOutlined style={{ fontSize: '1.5rem' }} />,
 };
 
 export default ({ props }) => {
@@ -23,40 +27,108 @@ export default ({ props }) => {
   const relativeProperty = () => {
     switch (graphLabel) {
       case 'Population':
-        return 'population';
-      case 'Safety Rating':
-        return 'safteyratingscore';
+        return graphTypeState === 'line' ? 'populationhist' : 'population';
+      case 'Average Household Income':
+        return graphTypeState === 'line'
+          ? 'historicalincome'
+          : 'householdincome';
       case 'Average Temperature':
-        return 'averagetemperature';
+        return graphTypeState === 'line'
+          ? 'historicalweather'
+          : 'averagetemperature';
       case 'Cost of Living':
-        return 'averagerentcost';
+        return graphTypeState === 'line'
+          ? 'historicalyearlyhousecost'
+          : 'averagehouse';
       default:
         return;
     }
   };
 
+  const graphTypeHandler = () => {
+    if (graphTypeState === 'bar') {
+      setGraphTypeState('line');
+    }
+    if (graphTypeState === 'line') {
+      setGraphTypeState('bar');
+    }
+  };
+
+  const relativePropertyLineGraph = {
+    historicalweather: {
+      x: 'month',
+      y: 'temperature',
+    },
+    populationhist: {
+      x: 'year',
+      y: 'pop',
+    },
+    historicalyearlyhousecost: {
+      x: 'year',
+      y: 'housingcost',
+    },
+    historicalincome: {
+      x: 'year',
+      y: 'householdincome',
+    },
+  };
+
   return (
     <div className="card">
       <div className="cardInfo">
-        {icons[relativeProperty()]}
+        {icons[graphLabel]}
         <h3 className="plotlyName">{graphLabel}</h3>
+        <div className="antdSwitch">
+          <Switch
+            checkedChildren="Historical"
+            size="small"
+            onChange={graphTypeHandler}
+            disabled={data.length === 1 ? true : false}
+          />
+        </div>
       </div>
 
       <div className="plotContainer">
         <Plot
           data={data.map(citydata => {
-            return {
-              x: [citydata[relativeProperty()]],
-              type: graphTypeState,
-              mode: 'markers',
-              marker: {
-                color: citydata.color,
-              },
-              name: `${citydata.cityname}, ${citydata.citystate}`,
-              orientation: 'h',
-              hoverinfo: 'skip',
-              showlegend: false,
-            };
+            return graphTypeState === 'line' &&
+              citydata.cityid !== 0 &&
+              citydata[relativeProperty()] !== undefined
+              ? /// LINE GRAPH
+                {
+                  x: citydata[relativeProperty()].map(value => {
+                    return value[
+                      relativePropertyLineGraph[relativeProperty()].x
+                    ];
+                  }),
+                  y: citydata[relativeProperty()].map(value => {
+                    return value[
+                      relativePropertyLineGraph[relativeProperty()].y
+                    ];
+                  }),
+                  type: graphTypeState,
+                  mode: 'lines+points',
+                  marker: {
+                    color: citydata.color,
+                  },
+                  name: `${citydata.cityname}, ${citydata.citystate}`,
+                  orientation: 'h',
+                  hoverinfo: 'skip',
+                  showlegend: false,
+                }
+              : {
+                  /// BAR GRAPH
+                  x: [citydata[relativeProperty()]],
+                  type: graphTypeState,
+                  mode: 'markers',
+                  marker: {
+                    color: citydata.color,
+                  },
+                  name: `${citydata.cityname}, ${citydata.citystate}`,
+                  orientation: 'h',
+                  hoverinfo: 'skip',
+                  showlegend: false,
+                };
           })}
           layout={{
             plot_bgcolor: 'transparent',
