@@ -16,6 +16,7 @@ const outerCollapse = (display, theme, city) => {
   // this is our base css object
   const css = {
     width: '100%',
+    marginTop: '8px',
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)

@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CardContainer, CityCard, SearchBar } from '../../common';
 // import '../../styles/style.less';
 import styles from './styles.js';
-import { useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 export default ({ display }) => {
   const theme = useSelector(state => state.theme);
+  const cardContainer = useSelector(state => state.cardContainer);
   const sty = styles(display, theme);
-  const pathname = useLocation().pathname;
-  return pathname === '/' ? (
+
+  return !cardContainer.cityData.length ? (
     <div
       className="search-container"
       style={{ ...sty.container, backgroundColor: 'unset' }}

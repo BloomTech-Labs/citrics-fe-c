@@ -79,11 +79,9 @@ export default ({ Card, display }) => {
     </div>
   ) : (
     <div style={sty.cityCardContainer}>
-      {/*<div className='search-results' style={sty.searchResultContainer}>*/}
       {cityData.map(city => (
         <CityCard key={city.id} city={city} />
       ))}
-      {/*</div>*/}
       {nationalAverage !== undefined ? (
         <CityCard key={nationalAverage.id} city={nationalAverage} />
       ) : (

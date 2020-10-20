@@ -79,7 +79,7 @@ export default ({ city, display }) => {
       dispatch(fetchCityCardImage(city.citynamestate));
     }
   }, [city]);
-  console.log(city);
+
   return (
     <>
       <Collapse
