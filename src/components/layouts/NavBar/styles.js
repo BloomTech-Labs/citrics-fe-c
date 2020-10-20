@@ -52,7 +52,6 @@ const header = (display, theme) => {
 
 const logo = (display, theme) => {
   const css = {
-    background: theme.primaryVert,
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     fontSize: '40px',
