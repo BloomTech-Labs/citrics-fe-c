@@ -1,5 +1,5 @@
 export default {
-  cityid: 333333333333,
+  cityid: 0,
   citynamestate: 'National Average, USA',
   statecode: 'AZ',
   timezone: 'UTC-7 Mountain',
