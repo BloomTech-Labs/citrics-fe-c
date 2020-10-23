@@ -51,6 +51,23 @@ Clone this repo and install dependencies with npm
     * start - starts the production server after a build is created
     * test - runs tests in **tests** directory \* eject - copy the configuration files and dependencies into the project so you have full control over them
 
+## Libaries and other info
+
+- Ant Design: Many of the components were built using AntDesign. Learn more about AntDesign [here](https://ant.design/components/overview/)
+- Styling: Styling was done using a combination of LESS and Javascript. We found it useful to override the AntDesign default styles with LESS by targeting the AntDesign classes
+- Media Breakpoints: Media Breakpoints were done using react-break. Learn more about react-break [here](https://www.npmjs.com/package/react-break)
+-Redux - Redux was used for global state management 
+
+## File Organization
+
+-Canvases - Canvases are custom built layouts - they are NOT Ant Design. Use them to create new pages by passing in components, as needed.
+-Inline Styles - Each component folder has its own styles.js. These are inline styles being passed directly into the component. You can also edit styles from styles.less 
+- State Management - Find all of your Redux actions/reducers in the state folder
+
+## Design Files and User Flow
+
+-View our Figma designs and user flow outline on [Whimsical](https://whimsical.com/BrfVjttdRNhp7sbVNgKKNu)
+
 # Contributing
 
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.
