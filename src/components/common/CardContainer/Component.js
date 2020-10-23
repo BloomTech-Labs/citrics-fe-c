@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import FadeIn from 'react-fade-in';
 import { nanoid } from 'nanoid';
 import styles from './styles';
 
@@ -73,9 +74,11 @@ export default ({ Card, display }) => {
 
   return Card === PlotlyCard ? (
     <div style={sty.plotlyCardContainer}>
-      {graphLabels.map(label => (
-        <Card key={nanoid()} graphLabel={label} data={cityDataCopy} />
-      ))}
+      <FadeIn childTag="div">
+        {graphLabels.map(label => (
+          <Card key={nanoid()} graphLabel={label} data={cityDataCopy} />
+        ))}
+      </FadeIn>
     </div>
   ) : (
     <div style={sty.cityCardContainer}>

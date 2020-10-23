@@ -14,3 +14,12 @@ export const saveFavorite = favoriteCity => (dispatch, getState) => {
     payload: favoriteCity,
   });
 };
+
+export const removeFavorite = cityId => (dispatch, getState) => {
+  const currentFavorites = getState().userData.favoriteCities;
+  // check if city is already in state
+  return dispatch({
+    type: 'REMOVE_FAVORITE_CITY',
+    payload: currentFavorites.filter(city => city.cityid !== cityId),
+  });
+};

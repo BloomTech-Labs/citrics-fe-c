@@ -15,7 +15,6 @@ export const userReducers = (state = initState, action) => {
         ...state,
         favoriteCities: action.payload,
       };
-
     case 'UPDATE_DISPLAY_NAME':
       return {
         ...state,
