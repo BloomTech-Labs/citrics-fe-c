@@ -97,7 +97,6 @@ export default ({ props, display }) => {
         <Plot
           data={data.map(citydata => {
             return graphTypeState === 'line' &&
-              citydata.cityid !== 0 &&
               citydata[relativeProperty()] !== undefined
               ? /// LINE GRAPH
                 {
