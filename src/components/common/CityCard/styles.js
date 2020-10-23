@@ -3,6 +3,7 @@ import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
 // this is a styles function
 // requires 'display' arg (string)
 // optional  'theme' arg (if you need to access redux state)
+
 export default (display, theme, city) => ({
   //put your styles in this object
   outerCollapse: outerCollapse(display, theme, city),
@@ -71,7 +72,7 @@ const cityCardImg = (display, theme, city) => {
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     width: 'auto',
-    height: 300,
+    height: 192,
     overflowY: 'scroll',
     direction: 'rtl',
   };

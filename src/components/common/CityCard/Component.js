@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import styles from './styles';
 
 //style
@@ -11,6 +12,7 @@ import {
   LoadingOutlined,
   AlignCenterOutlined,
 } from '@ant-design/icons';
+import FadeIn from 'react-fade-in';
 import { Skeleton, Collapse } from 'antd';
 
 //helper
@@ -24,10 +26,17 @@ import { userActs } from '../../../state/actions';
 import { useDispatch, useSelector } from 'react-redux';
 
 const icons = [HeartOutlined, CloseOutlined];
-const makeButtons = (Icon, handleIcon, Icon2, handleIcon2) => {
+const makeButtons = (Icon, handleIcon, Icon2, handleIcon2, currentLocation) => {
   return Icon2 ? (
     <>
-      <Icon style={{ margin: '0 4px' }} onClick={handleIcon} />
+      <Icon
+        style={
+          currentLocation != '/favorites'
+            ? { margin: '0 4px' }
+            : { margin: '0 4px', display: 'none' }
+        }
+        onClick={handleIcon}
+      />
       <Icon2 style={{ margin: '0 8px' }} onClick={handleIcon2} />
     </>
   ) : (
@@ -45,7 +54,8 @@ export default ({ city, display }) => {
   const dispatch = useDispatch();
   const { removeCity } = cardContainerActs;
   const { fetchCityCardImage } = cityCardActs;
-  const { saveFavorite } = userActs;
+  const { saveFavorite, removeFavorite } = userActs;
+  const currentLocation = useLocation().pathname;
 
   //Toggles
   const [HeartIcon, toggleHeartIcon] = useVisibilityToggler(
@@ -66,7 +76,9 @@ export default ({ city, display }) => {
   //handlers
   const handleRemove = e => {
     e.stopPropagation();
-    dispatch(removeCity(city.cityid));
+    currentLocation != '/favorites'
+      ? dispatch(removeCity(city.cityid))
+      : dispatch(removeFavorite(city.cityid));
   };
 
   const handleFavorite = e => {
@@ -86,14 +98,14 @@ export default ({ city, display }) => {
   }, [city]);
 
   return (
-    <>
+    <FadeIn>
       <Collapse
         className={
           isCityCard(city)
             ? `cityCard-${city.colorIdx} sCard`
             : 'cityCard-3 sCard'
         }
-        defaultActiveKey={['0']}
+        defaultActiveKey={display == 'desktop' && city.cityid ? ['1'] : ['0']}
         ghost
         style={
           display
@@ -111,7 +123,8 @@ export default ({ city, display }) => {
                   HeartIcon,
                   handleFavorite,
                   CloseOutlined,
-                  handleRemove
+                  handleRemove,
+                  currentLocation
                 )
               : false
           }
@@ -136,8 +149,6 @@ export default ({ city, display }) => {
                 style={sty.innerPanel}
               >
                 <ul style={sty.unorderedList}>
-                  <li>&#x200b;</li>
-                  <li>&#x200b;</li>
                   {city.population && (
                     <li> Population: {shortNum(city.population)}</li>
                   )}
@@ -195,6 +206,6 @@ export default ({ city, display }) => {
           </div>
         </Panel>
       </Collapse>
-    </>
+    </FadeIn>
   );
 };
