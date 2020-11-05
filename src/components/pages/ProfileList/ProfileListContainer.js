@@ -9,6 +9,8 @@ import RenderProfileListPage from './RenderProfileListPage';
 
 import { Canvas } from '../../layouts';
 
+import Avatar from '../../common/UploadAvatar/Avatar.js';
+
 // Here is an example of using our reusable List component to display some list data to the UI.
 function ProfileList() {
   // const { authState } = useOktaAuth();
@@ -24,7 +26,8 @@ function ProfileList() {
         }}
       >
         <div style={{ paddingRight: '6%' }}>
-          <h1 style={{ color: 'white', textAlign: 'center', padding: '4%' }}>
+          <Avatar />
+          <h1 style={{ color: 'white', textAlign: 'center', paddingTop: '4%' }}>
             Lauren Emick
           </h1>
           <h1 style={{ color: 'white', textAlign: 'center' }}>Seattle, WA</h1>
