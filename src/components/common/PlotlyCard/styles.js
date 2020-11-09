@@ -11,7 +11,7 @@ export default (display, theme) => ({
 const card = (display, theme) => {
   // this is our base css object
   const css = {
-    width: '100%',
+    width: '60%',
     margin: '1% 0',
   };
   // spread the css const to pass in what you want to change
