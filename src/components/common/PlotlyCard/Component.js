@@ -163,7 +163,7 @@ export default ({ props, display }) => {
             }}
             useResizeHandler
             style={{
-              width: '100%',
+              width: '60%',
               height: '50%',
             }}
             config={{
