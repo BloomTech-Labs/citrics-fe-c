@@ -20,12 +20,13 @@ const header = (display, theme) => {
     height: '80px',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: theme.bgDark,
+    backgroundColor: '#212F45',
     top: 0,
     position: 'fixed',
     width: '100vw',
     zIndex: 100,
     filter: theme.elevation3,
+    textAlign: 'center',
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)
@@ -57,6 +58,8 @@ const logo = (display, theme) => {
     fontSize: '40px',
     lineHeight: '32px',
     fontFamily: 'Quicksand',
+    color: '#006466',
+    textShadow: '#fff 1px 0px 14px',
   };
   return isMobile(display)
     ? //mobile css
