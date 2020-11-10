@@ -1,7 +1,9 @@
 import axios from 'axios';
 
 // we will define a bunch of API calls here.
-const apiUrl = `${process.env.REACT_APP_API_URI}/profiles`;
+// const apiUrl = `${process.env.REACT_APP_API_URI}/profiles`;
+const apiUrl = `${process.env.REACT_APP_API_URI}/users/getuserinfo`;
+// const apiUrl = `http://localhost:3000/profiles`;
 
 const sleep = time =>
   new Promise(resolve => {
@@ -35,12 +37,15 @@ const getDSData = (url, authState) => {
 };
 
 const apiAuthGet = authHeader => {
+  console.log('hitting api inputs');
   return axios.get(apiUrl, { headers: authHeader });
 };
 
-const getProfileData = authState => {
+const getProfileData = (authState, authService) => {
   try {
-    return apiAuthGet(getAuthHeader(authState)).then(response => response.data);
+    if (authState.isAuthenticated) {
+      return authService.getUser().then(response => response);
+    }
   } catch (error) {
     return new Promise(() => {
       console.log(error);
