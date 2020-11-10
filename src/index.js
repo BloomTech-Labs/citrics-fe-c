@@ -19,7 +19,10 @@ import {
   ComparisonPage,
   LandingPage,
   FavoritesPage,
+  ProfileList,
 } from './components/pages';
+
+// import ProfileListPage from './components/pages/ProfileList/ProfileListContainer';
 
 ReactDOM.render(
   <Provider store={store}>
@@ -48,7 +51,7 @@ function App() {
 
       {/* temporairly putting the landing component until we have a profile/favorites page */}
       <Security {...config} onAuthRequired={authHandler}>
-        <SecureRoute path="/profile" component={LandingPage} />
+        <SecureRoute path="/profile" component={ProfileList} />
         <Route path="/implicit/callback" component={LoginCallback} />
         <SecureRoute path="/favorites" exact component={FavoritesPage} />
       </Security>
