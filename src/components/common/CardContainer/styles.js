@@ -14,6 +14,7 @@ const plotlyCardContainer = (display, theme) => {
   // this is our base css object
   const css = {
     width: '100%',
+    color: 'red',
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)

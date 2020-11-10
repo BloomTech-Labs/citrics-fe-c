@@ -1,3 +1,4 @@
+import { AutoComplete } from 'antd';
 import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
 // this is a styles function
 // requires 'display' arg (string)
@@ -11,7 +12,7 @@ export default (display, theme) => ({
 const card = (display, theme) => {
   // this is our base css object
   const css = {
-    width: '100%',
+    width: '80%',
     margin: '1% 0',
   };
   // spread the css const to pass in what you want to change
