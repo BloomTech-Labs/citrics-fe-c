@@ -9,6 +9,10 @@
     color: @c-white;
     border-radius: @sty-border-radius-medium;
     background: @c-subtle-panel-gradient;
+    @media (max-width: 500px) {
+        width: auto;
+        height: auto;
+    }
 
 
     .cardInfo {
@@ -37,6 +41,10 @@
         height: 100%;
         padding-left: 2%;
         padding-bottom: 2%;
+        width: auto;
+        @media (max-width: 800px) {
+            width: auto;
+        }
     }
 
 } 
