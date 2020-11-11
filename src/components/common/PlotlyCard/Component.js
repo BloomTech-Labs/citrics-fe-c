@@ -141,8 +141,8 @@ export default ({ props, display }) => {
               plot_bgcolor: 'transparent',
               paper_bgcolor: 'transparent',
               autosize: true,
-              width: '100%',
-              height: '100%',
+              width: '500',
+              height: '500',
               margin: { l: 0, t: 0, r: 0, b: 0 },
               yaxis: {
                 automargin: true,
