@@ -1,7 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Avatar from '../../common/UpdateAvatar/Avatar';
+import Avatar from '../../common/UploadAvatar/Avatar';
+import '../../../styles/ProfilePage.less';
 
 const RenderProfileListPage = props => (
   <div>
