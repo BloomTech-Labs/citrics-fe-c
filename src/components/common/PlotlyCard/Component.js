@@ -99,6 +99,7 @@ export default ({ props, display }) => {
         <Collapse isOpened={isOpened}>
           <Plot
             data={data.map(citydata => {
+              console.log(citydata);
               return graphTypeState === 'line' &&
                 citydata[relativeProperty()] !== undefined
                 ? /// LINE GRAPH
@@ -118,9 +119,9 @@ export default ({ props, display }) => {
                     marker: {
                       color: citydata.color,
                     },
-                    name: `${citydata.cityname}, ${citydata.citystate}`,
+                    name: citydata.citynamestate,
                     orientation: 'h',
-                    hoverinfo: 'skip',
+                    hoverinfo: 'true',
                     showlegend: false,
                   }
                 : {
@@ -131,9 +132,9 @@ export default ({ props, display }) => {
                     marker: {
                       color: citydata.color,
                     },
-                    name: `${citydata.cityname}, ${citydata.citystate}`,
+                    name: citydata.citynamestate,
                     orientation: 'v',
-                    hoverinfo: 'skip',
+                    hoverinfo: 'true',
                     showlegend: false,
                   };
             })}
@@ -168,7 +169,7 @@ export default ({ props, display }) => {
             }}
             config={{
               displayModeBar: false,
-              staticPlot: true,
+              staticPlot: false,
               responsive: true,
             }}
           />
