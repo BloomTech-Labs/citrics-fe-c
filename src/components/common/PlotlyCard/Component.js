@@ -131,7 +131,7 @@ export default ({ props, display }) => {
                     marker: {
                       color: citydata.color,
                     },
-                    // name: `${citydata.cityname}, ${citydata.citystate}`,
+                    name: `${citydata.cityname}, ${citydata.citystate}`,
                     orientation: 'v',
                     hoverinfo: 'skip',
                     showlegend: false,
@@ -141,8 +141,8 @@ export default ({ props, display }) => {
               plot_bgcolor: 'transparent',
               paper_bgcolor: 'transparent',
               autosize: true,
-              width: '60%',
-              height: '80%',
+              width: '500',
+              height: '500',
               margin: { l: 0, t: 0, r: 0, b: 0 },
               yaxis: {
                 automargin: true,
