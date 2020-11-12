@@ -99,7 +99,6 @@ export default ({ props, display }) => {
         <Collapse isOpened={isOpened}>
           <Plot
             data={data.map(citydata => {
-              console.log(citydata);
               return graphTypeState === 'line' &&
                 citydata[relativeProperty()] !== undefined
                 ? /// LINE GRAPH
