@@ -9,6 +9,11 @@
     color: @c-white;
     border-radius: @sty-border-radius-medium;
     background: @c-subtle-panel-gradient;
+    @media (max-width: 500px) {
+        width: auto;
+        height: auto;
+        padding: 1.5%;
+    }
 
 
     .cardInfo {
@@ -28,6 +33,7 @@
             position: absolute;
             right: 20px;
         }
+        
     }
     
     .plotContainer {
@@ -37,6 +43,7 @@
         height: 100%;
         padding-left: 2%;
         padding-bottom: 2%;
+        width: auto;
     }
 
 } 
