@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js';
 import '../../../styles/PlotlyCardTheme.less';
 import styles from './styles';
 import { useSelector } from 'react-redux';
-import { Collapse, UnmountClosed } from 'react-collapse';
+import { Collapse } from 'react-collapse';
 
 import {
   CloudOutlined,
