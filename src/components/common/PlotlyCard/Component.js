@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js';
 import '../../../styles/PlotlyCardTheme.less';
 import styles from './styles';
 import { useSelector } from 'react-redux';
-import { Collapse, UnmountClosed } from 'react-collapse';
+import { Collapse } from 'react-collapse';
 
 import {
   CloudOutlined,
@@ -118,9 +118,9 @@ export default ({ props, display }) => {
                     marker: {
                       color: citydata.color,
                     },
-                    name: `${citydata.cityname}, ${citydata.citystate}`,
+                    name: citydata.citynamestate,
                     orientation: 'h',
-                    hoverinfo: 'skip',
+                    hoverinfo: 'true',
                     showlegend: false,
                   }
                 : {
@@ -131,9 +131,9 @@ export default ({ props, display }) => {
                     marker: {
                       color: citydata.color,
                     },
-                    name: `${citydata.cityname}, ${citydata.citystate}`,
+                    name: citydata.citynamestate,
                     orientation: 'v',
-                    hoverinfo: 'skip',
+                    hoverinfo: 'true',
                     showlegend: false,
                   };
             })}
@@ -168,7 +168,7 @@ export default ({ props, display }) => {
             }}
             config={{
               displayModeBar: false,
-              staticPlot: true,
+              staticPlot: false,
               responsive: true,
             }}
           />
