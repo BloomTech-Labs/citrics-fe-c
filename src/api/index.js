@@ -35,7 +35,6 @@ const getDSData = (url, authState) => {
 };
 
 const apiAuthGet = authHeader => {
-  console.log('hitting api inputs');
   return axios.get(apiUrl, { headers: authHeader });
 };
 
