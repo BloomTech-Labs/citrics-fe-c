@@ -12,7 +12,7 @@ import {
 import { Security, LoginCallback, SecureRoute } from '@okta/okta-react';
 import { config } from './utils/oktaConfig';
 import 'antd/dist/antd.less';
-
+import ProfileList from './components/pages/ProfileList/ProfileListContainer';
 import {
   NotFoundPage,
   LoginPage,
@@ -48,7 +48,7 @@ function App() {
       <Route path="/login" component={LoginPage} />
       <Route path="/compare" component={ComparisonPage} />
       <Route path="/" exact component={LandingPage} />
-
+      <Route path="/profile" component={ProfileList} />
       {/* temporairly putting the landing component until we have a profile/favorites page */}
       <Security {...config} onAuthRequired={authHandler}>
         <SecureRoute path="/profile" component={ProfileList} />

@@ -3,6 +3,7 @@ import Plot from 'react-plotly.js';
 import '../../../styles/PlotlyCardTheme.less';
 import styles from './styles';
 import { useSelector } from 'react-redux';
+import { Collapse } from 'react-collapse';
 
 import {
   CloudOutlined,
@@ -24,6 +25,7 @@ const icons = {
 
 export default ({ props, display }) => {
   const { graphLabel, data } = props;
+  const [isOpened, setIsOpened] = useState(false);
   const [graphTypeState, setGraphTypeState] = useState('bar');
   const theme = useSelector(state => state.theme);
   const cardHeight = 64 * data.length;
@@ -85,88 +87,92 @@ export default ({ props, display }) => {
         <h3 className="plotlyName">{graphLabel}</h3>
         <div className="antdSwitch">
           <Switch
-            checkedChildren="Historical"
-            size="small"
-            onChange={graphTypeHandler}
+            checkedChildren="Collapse"
+            unCheckedChildren="Expand"
+            size="medium"
+            onChange={() => setIsOpened(!isOpened)}
             disabled={data.length === 1 ? true : false}
           />
         </div>
       </div>
-
       <div className="plotContainer">
-        <Plot
-          data={data.map(citydata => {
-            return graphTypeState === 'line' &&
-              citydata[relativeProperty()] !== undefined
-              ? /// LINE GRAPH
-                {
-                  x: citydata[relativeProperty()].map(value => {
-                    return value[
-                      relativePropertyLineGraph[relativeProperty()].x
-                    ];
-                  }),
-                  y: citydata[relativeProperty()].map(value => {
-                    return value[
-                      relativePropertyLineGraph[relativeProperty()].y
-                    ];
-                  }),
-                  type: graphTypeState,
-                  mode: 'lines+points',
-                  marker: {
-                    color: citydata.color,
-                  },
-                  name: `${citydata.cityname}, ${citydata.citystate}`,
-                  orientation: 'h',
-                  hoverinfo: 'skip',
-                  showlegend: false,
-                }
-              : {
-                  /// BAR GRAPH
-                  x: [citydata[relativeProperty()]],
-                  type: graphTypeState,
-                  mode: 'markers',
-                  marker: {
-                    color: citydata.color,
-                  },
-                  name: `${citydata.cityname}, ${citydata.citystate}`,
-                  orientation: 'h',
-                  hoverinfo: 'skip',
-                  showlegend: false,
-                };
-          })}
-          layout={{
-            plot_bgcolor: 'transparent',
-            paper_bgcolor: 'transparent',
-            autosize: true,
-            margin: { l: 0, t: 0, r: 0, b: 0 },
-            yaxis: {
-              automargin: true,
-              visible: graphTypeState === 'bar' ? false : true,
-              gridcolor: '#ffffff20',
-            },
-            xaxis: {
-              automargin: true,
-              visible: true,
-              gridcolor: '#ffffff20',
-            },
-            font: {
-              color: '#ffffff80',
-            },
-            line: {
-              color: 'white',
-            },
-          }}
-          useResizeHandler
-          style={{
-            width: '100%',
-            height: `${cardHeight}px`,
-          }}
-          config={{
-            displayModeBar: false,
-            staticPlot: true,
-            responsive: true,
-          }}
-        />
+        <Collapse isOpened={isOpened}>
+          <Plot
+            data={data.map(citydata => {
+              return graphTypeState === 'line' &&
+                citydata[relativeProperty()] !== undefined
+                ? /// LINE GRAPH
+                  {
+                    x: citydata[relativeProperty()].map(value => {
+                      return value[
+                        relativePropertyLineGraph[relativeProperty()].x
+                      ];
+                    }),
+                    y: citydata[relativeProperty()].map(value => {
+                      return value[
+                        relativePropertyLineGraph[relativeProperty()].y
+                      ];
+                    }),
+                    type: graphTypeState,
+                    mode: 'lines+points',
+                    marker: {
+                      color: citydata.color,
+                    },
+                    name: citydata.citynamestate,
+                    orientation: 'h',
+                    hoverinfo: 'true',
+                    showlegend: false,
+                  }
+                : {
+                    /// BAR GRAPH
+                    y: [citydata[relativeProperty()]],
+                    type: 'bar',
+                    mode: 'markers',
+                    marker: {
+                      color: citydata.color,
+                    },
+                    name: citydata.citynamestate,
+                    orientation: 'v',
+                    hoverinfo: 'true',
+                    showlegend: false,
+                  };
+            })}
+            layout={{
+              plot_bgcolor: 'transparent',
+              paper_bgcolor: 'transparent',
+              autosize: true,
+              width: '500',
+              height: '500',
+              margin: { l: 0, t: 0, r: 0, b: 0 },
+              yaxis: {
+                automargin: true,
+                visible: true,
+                gridcolor: '#ffffff20',
+              },
+              xaxis: {
+                automargin: true,
+                visible: true,
+                gridcolor: '#ffffff20',
+              },
+              font: {
+                color: '#ffffff80',
+              },
+              line: {
+                color: 'white',
+              },
+            }}
+            useResizeHandler
+            style={{
+              width: '60%',
+              height: '50%',
+            }}
+            config={{
+              displayModeBar: false,
+              staticPlot: false,
+              responsive: true,
+            }}
+          />
+        </Collapse>
       </div>
     </div>
   );

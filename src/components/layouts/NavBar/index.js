@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NavBar from './Component';
 import { IsMobile, IsTablet, IsDesktop } from '../breakPoints';
 
-export default () => (
-  <>
-    <IsMobile>
-      <NavBar display={'mobile'} />
-    </IsMobile>
+export default () => {
+  return (
+    <>
+      <IsMobile>
+        <NavBar display={'mobile'} />
+      </IsMobile>
 
-    <IsTablet>
-      <NavBar display={'tablet'} />
-    </IsTablet>
+      <IsTablet>
+        <NavBar display={'tablet'} />
+      </IsTablet>
 
-    <IsDesktop>
-      <NavBar display={'desktop'} />
-    </IsDesktop>
-  </>
-);
+      <IsDesktop>
+        <NavBar display={'desktop'} />
+      </IsDesktop>
+    </>
+  );
+};

@@ -1,3 +1,4 @@
+import { AutoComplete } from 'antd';
 import { isMobile, isTablet, isDesktop } from '../../../utils/helpers';
 // this is a styles function
 // requires 'display' arg (string)
