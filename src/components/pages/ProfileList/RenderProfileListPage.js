@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '../../common/UploadAvatar/Avatar';
+
+import { Modal, Button } from 'antd';
 import '../../../styles/ProfilePage.less';
 
 const RenderProfileListPage = props => {
@@ -12,16 +14,30 @@ const RenderProfileListPage = props => {
     avatar: props.data.avatar,
   });
 
-  const editUser = user => {
-    setEditing(true);
-    setUser({ ...user, password: '' });
-  };
+  // Modal variables
+  const [visible, setVisible] = useState(false);
+  // const [confirmLoading, setConfirmLoading] = useState(false);
 
   const handleChange = e => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const showModal = () => {
+    setVisible(true);
+    setEditing(true);
+    setUser({ ...user, password: '' });
+  };
+
+  const handleOk = () => {
+    setVisible(false);
+    // setConfirmLoading(true);
+  };
+
+  const handleCancel = () => {
+    setVisible(false);
   };
 
   return (
@@ -44,9 +60,25 @@ const RenderProfileListPage = props => {
       </section>
 
       <section>
-        <button onClick={() => editUser(props.data)}>Edit</button>
+        <Button type="primary" onClick={showModal}>
+          Edit
+        </Button>
         {editing && (
-          <form>
+          <Modal
+            title="Edit Profile"
+            visible={visible}
+            onOk={handleOk}
+            // confirmLoading={confirmLoading}
+            onCancel={handleCancel}
+            footer={[
+              <Button key="submit" type="primary" onClick={handleOk}>
+                Save
+              </Button>,
+              <Button key="back" onClick={handleCancel}>
+                Cancel
+              </Button>,
+            ]}
+          >
             <h3 style={{ color: 'white' }}>Edit Profile</h3>
             <input
               label="name"
@@ -63,9 +95,7 @@ const RenderProfileListPage = props => {
               value={user.email}
               onChange={handleChange}
             />
-            <br />
-            <button onClick={() => setEditing(false)}>Cancel</button>
-          </form>
+          </Modal>
         )}
       </section>
     </div>
