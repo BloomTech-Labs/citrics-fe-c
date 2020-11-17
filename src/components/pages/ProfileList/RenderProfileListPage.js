@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '../../common/UploadAvatar/Avatar';
 
-import { Modal, Button } from 'antd';
+import { Modal, Button, Form, Input } from 'antd';
 import '../../../styles/ProfilePage.less';
 
 const RenderProfileListPage = props => {
@@ -13,10 +13,41 @@ const RenderProfileListPage = props => {
     email: props.data.email,
     avatar: props.data.avatar,
   });
-
-  // Modal variables
   const [visible, setVisible] = useState(false);
-  // const [confirmLoading, setConfirmLoading] = useState(false);
+  const [form] = Form.useForm();
+  const [formLayout, setFormLayout] = useState('horizontal');
+
+  const onFormLayoutChange = ({ layout }) => {
+    setFormLayout(layout);
+  };
+
+  const formItemLayout =
+    formLayout === 'horizontal'
+      ? {
+          labelCol: {
+            span: 4,
+          },
+          wrapperCol: {
+            span: 14,
+          },
+        }
+      : null;
+
+  const buttonItemLayout =
+    formLayout === 'horizontal'
+      ? {
+          wrapperCol: {
+            span: 14,
+            offset: 4,
+          },
+        }
+      : null;
+
+  const showModal = () => {
+    setVisible(true);
+    setEditing(true);
+    setUser({ ...user, password: '' });
+  };
 
   const handleChange = e => {
     setUser({
@@ -25,15 +56,8 @@ const RenderProfileListPage = props => {
     });
   };
 
-  const showModal = () => {
-    setVisible(true);
-    setEditing(true);
-    setUser({ ...user, password: '' });
-  };
-
   const handleOk = () => {
     setVisible(false);
-    // setConfirmLoading(true);
   };
 
   const handleCancel = () => {
@@ -68,33 +92,46 @@ const RenderProfileListPage = props => {
             title="Edit Profile"
             visible={visible}
             onOk={handleOk}
-            // confirmLoading={confirmLoading}
             onCancel={handleCancel}
             footer={[
-              <Button key="submit" type="primary" onClick={handleOk}>
-                Save
-              </Button>,
-              <Button key="back" onClick={handleCancel}>
-                Cancel
-              </Button>,
+              <Form.Item {...buttonItemLayout}>
+                <Button key="submit" type="primary" onClick={handleOk}>
+                  Save
+                </Button>
+                <Button key="back" onClick={handleCancel}>
+                  Cancel
+                </Button>
+              </Form.Item>,
             ]}
           >
-            <h3 style={{ color: 'white' }}>Edit Profile</h3>
-            <input
-              label="name"
-              type="text"
-              name="name"
-              value={user.name}
-              onChange={handleChange}
-            />
-            <br />
-            <input
-              label="email"
-              type="text"
-              name="email"
-              value={user.email}
-              onChange={handleChange}
-            />
+            <Form
+              {...formItemLayout}
+              layout={formLayout}
+              form={form}
+              initialValues={{
+                layout: formLayout,
+              }}
+              onValuesChange={onFormLayoutChange}
+            >
+              <Form.Item label="Name">
+                <Input
+                  style={{ color: 'black' }}
+                  type="text"
+                  name="name"
+                  value={user.name}
+                  onChange={handleChange}
+                />
+              </Form.Item>
+              <Form.Item label="Email">
+                <Input
+                  style={{ color: 'black' }}
+                  type="text"
+                  name="email"
+                  value={user.email}
+                  onChange={handleChange}
+                />
+              </Form.Item>
+            </Form>
           </Modal>
         )}
       </section>
