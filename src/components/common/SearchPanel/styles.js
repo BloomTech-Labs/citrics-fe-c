@@ -12,7 +12,7 @@ export default (display, theme) => ({
 const container = (display, theme) => {
   // this is our base css object
   const css = {
-    width: '100%',
+    // width: '50%',
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)
@@ -49,8 +49,14 @@ const container = (display, theme) => {
         filter: theme.elevation3,
         marginBottom: '40px',
       }
-    : //desktop (spread this bad boy and pass in what you want to change)
-      { ...css };
+    : isDesktop(display)
+    ? //desktop (spread this bad boy and pass in what you want to change)
+      {
+        ...css,
+        // display: 'flex',
+        // flexDirection: 'row-wrap',
+      }
+    : { ...css };
 };
 
 const style2 = (display, theme) => {

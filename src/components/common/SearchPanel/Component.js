@@ -3,6 +3,7 @@ import { CardContainer, CityCard, SearchBar } from '../../common';
 // import '../../styles/style.less';
 import styles from './styles.js';
 import { useSelector } from 'react-redux';
+import '../../../styles/ComparisonPage.less';
 
 export default ({ display }) => {
   const theme = useSelector(state => state.theme);
@@ -12,14 +13,18 @@ export default ({ display }) => {
   return !cardContainer.cityData.length ? (
     <div
       className="search-container"
-      style={{ ...sty.container, backgroundColor: 'unset' }}
+      // style={{ ...sty.container, backgroundColor: 'unset' }}
     >
-      <SearchBar />
+      <div className="search-bar">
+        <SearchBar />
+      </div>
     </div>
   ) : (
-    <div className="search-container" style={sty.container}>
-      <SearchBar />
-      <CardContainer Card={CityCard} />
+    <div className="search-container">
+      <div className="search-bar">
+        <SearchBar />
+      </div>
+      <CardContainer className="searched-city" Card={CityCard} />
     </div>
   );
 };

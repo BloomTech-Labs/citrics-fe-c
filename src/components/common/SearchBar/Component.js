@@ -52,7 +52,12 @@ function SearchBar() {
             style={{ color: theme.primaryLight, fontSize: '1.15rem' }}
           />
         }
-        style={{ borderRadius: 30, height: 50, background: 'unset' }}
+        style={{
+          borderRadius: 30,
+          height: 50,
+          width: '100%',
+          background: 'unset',
+        }}
         bordered={true}
       />
     </AutoComplete>

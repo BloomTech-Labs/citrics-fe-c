@@ -6,15 +6,26 @@ import '../../../styles/ComparisonPage.less';
 import { PlotlyCard } from '../../common';
 import { useSelector } from 'react-redux';
 
+function comparison() {
+  // const cityData = useSelector(state => state.cardContainer.cityData);
+  // const Blank = () => <div>Please add a city</div>;
+
+  return (
+    <div className="main">
+      <SearchPanel />
+      {/* {() => cityData.length ? <CardContainer Card={PlotlyCard} /> : Blank} */}
+      <CardContainer Card={PlotlyCard} />
+    </div>
+  );
+}
+
 export default ({ styles }) => {
   const cityData = useSelector(state => state.cardContainer.cityData);
-  const Blank = () => <div></div>;
+  const Blank = () => <div>Please add a city</div>;
   return (
     <Canvas
-      Side={SearchPanel}
-      Main={() =>
-        cityData.length ? <CardContainer Card={PlotlyCard} /> : Blank
-      }
+      // Side={SearchPanel}
+      Main={[comparison]}
     />
   );
 };
