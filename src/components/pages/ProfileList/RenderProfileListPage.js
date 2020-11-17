@@ -1,43 +1,76 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '../../common/UploadAvatar/Avatar';
 import '../../../styles/ProfilePage.less';
 
-const RenderProfileListPage = props => (
-  <div>
-    <section
-      style={{
-        marginTop: '50%',
-        display: 'flex',
-        justifyContent: 'center',
-        alignContent: 'center',
-      }}
-    >
-      <div style={{ paddingRight: '6%' }}>
-        <Avatar />
-        <h1 style={{ color: 'white', textAlign: 'center', paddingTop: '4%' }}>
-          {props.data.name}
-        </h1>
-      </div>
-      <div>
-        <h3 style={{ color: 'white' }}>Location: Seattle, WA</h3>
-        <h3 style={{ color: 'white' }}>Username: laurenemick</h3>
-        <h3 style={{ color: 'white' }}>Email: {props.data.email}</h3>
-        <h3 style={{ color: 'white' }}>Phone: (123) 456-7890</h3>
-      </div>
-    </section>
+const RenderProfileListPage = props => {
+  const [editing, setEditing] = useState(false);
+  const [user, setUser] = useState({
+    id: props.data.id,
+    name: props.data.name,
+    email: props.data.email,
+    avatar: props.data.avatar,
+  });
 
-    {/* {props.data.map(item => (
-      <figure key={item.id}>
-        <img src={item.avatarUrl} alt={item.name} />
-        <figcaption>
-          <h3 style={{color: 'white'}}>{item.username}</h3>
-        </figcaption>
-        <h3 style={{color: 'white'}}>{item.name}</h3>
-      </figure>
-    ))} */}
-  </div>
-);
+  const editUser = user => {
+    setEditing(true);
+    setUser({ ...user, password: '' });
+  };
+
+  const handleChange = e => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  return (
+    <div>
+      <section
+        style={{
+          marginTop: '50%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignContent: 'center',
+        }}
+      >
+        <div style={{ paddingRight: '6%' }}>
+          <Avatar src={user.avatar} />
+        </div>
+        <div>
+          <h3 style={{ color: 'white' }}>Name: {user.name}</h3>
+          <h3 style={{ color: 'white' }}>Email: {user.email}</h3>
+        </div>
+      </section>
+
+      <section>
+        <button onClick={() => editUser(props.data)}>Edit</button>
+        {editing && (
+          <form>
+            <h3 style={{ color: 'white' }}>Edit Profile</h3>
+            <input
+              label="name"
+              type="text"
+              name="name"
+              value={user.name}
+              onChange={handleChange}
+            />
+            <br />
+            <input
+              label="email"
+              type="text"
+              name="email"
+              value={user.email}
+              onChange={handleChange}
+            />
+            <br />
+            <button onClick={() => setEditing(false)}>Cancel</button>
+          </form>
+        )}
+      </section>
+    </div>
+  );
+};
 
 export default RenderProfileListPage;
 
