@@ -14,14 +14,9 @@ import '../../../styles/ProfilePage.less';
 const ProfileList = () => {
   const { authState, authService } = useOktaAuth();
 
-  const logout = async () => {
-    authService.logout('/');
-  };
-
   return (
     <div className="profile">
       <List
-        logout={logout}
         // Here we are passing our Axios request helper function as a callback.
         getItemsData={() => getProfileData(authState, authService)}
         // Here we are passing in a component we want to show whilst waiting for our API request

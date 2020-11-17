@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useOktaAuth } from '@okta/okta-react';
 import PropTypes from 'prop-types';
 import Avatar from '../../common/UploadAvatar/Avatar';
 
@@ -16,6 +17,11 @@ const RenderProfileListPage = props => {
   const [visible, setVisible] = useState(false);
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState('horizontal');
+  const { authService } = useOktaAuth();
+
+  const logout = async () => {
+    authService.logout('/');
+  };
 
   const onFormLayoutChange = ({ layout }) => {
     setFormLayout(layout);
@@ -88,7 +94,7 @@ const RenderProfileListPage = props => {
             style={{ background: '#1B3A4B', borderColor: 'grey' }}
             block="true"
             type="primary"
-            onClick={props.logout}
+            onClick={logout}
           >
             Logout
           </Button>
