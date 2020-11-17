@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Avatar from '../../common/UploadAvatar/Avatar';
 
-import { Modal, Button, Form, Input } from 'antd';
+import { Modal, Button, Form, Input, Card } from 'antd';
 import '../../../styles/ProfilePage.less';
 
 const RenderProfileListPage = props => {
@@ -56,8 +56,9 @@ const RenderProfileListPage = props => {
     });
   };
 
-  const handleOk = () => {
+  const handleSave = () => {
     setVisible(false);
+    setUser(user);
   };
 
   const handleCancel = () => {
@@ -66,36 +67,27 @@ const RenderProfileListPage = props => {
 
   return (
     <div>
-      <section
-        style={{
-          marginTop: '50%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignContent: 'center',
-        }}
-      >
-        <div style={{ paddingRight: '6%' }}>
+      <section style={{ marginTop: '40%' }}>
+        <Card title="User Info">
           <Avatar src={user.avatar} />
-        </div>
-        <div>
-          <h3 style={{ color: 'white' }}>Name: {user.name}</h3>
-          <h3 style={{ color: 'white' }}>Email: {user.email}</h3>
-        </div>
+          <h3 label="Name">{user.name}</h3>
+          <p label="Email">{user.email}</p>
+          <Button type="primary" onClick={showModal}>
+            Edit
+          </Button>
+        </Card>
       </section>
 
       <section>
-        <Button type="primary" onClick={showModal}>
-          Edit
-        </Button>
         {editing && (
           <Modal
             title="Edit Profile"
             visible={visible}
-            onOk={handleOk}
+            onOk={handleSave}
             onCancel={handleCancel}
             footer={[
               <Form.Item {...buttonItemLayout}>
-                <Button key="submit" type="primary" onClick={handleOk}>
+                <Button key="submit" type="primary" onClick={handleSave}>
                   Save
                 </Button>
                 <Button key="back" onClick={handleCancel}>
