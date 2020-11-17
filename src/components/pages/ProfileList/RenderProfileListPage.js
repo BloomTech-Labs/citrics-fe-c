@@ -67,13 +67,30 @@ const RenderProfileListPage = props => {
 
   return (
     <div>
-      <section style={{ marginTop: '40%' }}>
-        <Card title="User Info">
+      <section>
+        <Card title={user.name}>
           <Avatar src={user.avatar} />
-          <h3 label="Name">{user.name}</h3>
+          <p label="Location">Seattle, WA</p>
           <p label="Email">{user.email}</p>
-          <Button type="primary" onClick={showModal}>
+          <Button
+            style={{
+              marginBottom: '4%',
+              background: '#006466',
+              borderColor: 'grey',
+            }}
+            block="true"
+            type="primary"
+            onClick={showModal}
+          >
             Edit
+          </Button>
+          <Button
+            style={{ background: '#1B3A4B', borderColor: 'grey' }}
+            block="true"
+            type="primary"
+            onClick={props.logout}
+          >
+            Logout
           </Button>
         </Card>
       </section>
@@ -87,10 +104,20 @@ const RenderProfileListPage = props => {
             onCancel={handleCancel}
             footer={[
               <Form.Item {...buttonItemLayout}>
-                <Button key="submit" type="primary" onClick={handleSave}>
+                <Button
+                  style={{ background: '#006466', borderColor: 'grey' }}
+                  key="submit"
+                  type="primary"
+                  onClick={handleSave}
+                >
                   Save
                 </Button>
-                <Button key="back" onClick={handleCancel}>
+                <Button
+                  style={{ background: '#1B3A4B', borderColor: 'grey' }}
+                  type="primary"
+                  key="back"
+                  onClick={handleCancel}
+                >
                   Cancel
                 </Button>
               </Form.Item>,
