@@ -37,11 +37,7 @@ export default ({ display }) => {
         style={sty.logo}
       >
         <img
-          style={{
-            height: '7.5vh',
-            marginRight: '0.5rem',
-            paddingBottom: '0.5rem',
-          }}
+          style={sty.logo}
           src={require('../../../styles/logo/lime.png')}
           alt="Citrics Lime Logo"
         />
@@ -51,7 +47,14 @@ export default ({ display }) => {
         {/*
           Tried to make this a seperate component then .mapped through an arr of objects 
           Ant design's <Menu mode='horizontal'/> did not want to play nice with that so here we are.. */}
-
+        {sty.homeIcon && (
+          <Menu.Item
+            key="home"
+            style={sty.menuItem}
+            icon={<HomeOutlined style={sty.menuIcon} />}
+            onClick={() => history.push('./')}
+          />
+        )}
         {userInfo && (
           <Menu.Item
             key="favorites"
@@ -60,14 +63,7 @@ export default ({ display }) => {
             onClick={() => history.push('./favorites')}
           />
         )}
-        {sty.homeIcon && (
-          <Menu.Item
-            key="home"
-            style={sty.menuItem}
-            icon={<HomeOutlined style={sty.menuIcon} />}
-            onClick={() => history.push('./login')}
-          />
-        )}
+
         {userInfo && (
           <Menu.Item
             key="home"
@@ -82,7 +78,11 @@ export default ({ display }) => {
             key="Login"
             icon={
               <Button
-                style={{ background: 'smoke', color: '#4D194D' }}
+                style={{
+                  background: 'smoke',
+                  color: '#4D194D',
+                  marginRight: '0.5rem',
+                }}
                 shape="round"
                 icon={<LoginOutlined />}
               >

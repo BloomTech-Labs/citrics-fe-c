@@ -33,8 +33,7 @@ const header = (display, theme) => {
     ? //mobile css
       {
         ...css,
-        top: 'unset',
-        bottom: 0,
+        top: 0,
         backgroundColor: 'unset',
         justifyContent: 'center',
       }
@@ -42,8 +41,7 @@ const header = (display, theme) => {
     ? //tablet css (spread this bad boy and pass in what you want to change)
       {
         ...css,
-        top: 'unset',
-        bottom: 0,
+        top: 0,
         backgroundColor: 'unset',
         justifyContent: 'center',
       }
@@ -60,6 +58,9 @@ const logo = (display, theme) => {
     fontFamily: 'Quicksand',
     color: '#006466',
     textShadow: '#fff 1px 0px 14px',
+    display: 'flex',
+    alignItems: 'center',
+    height: '7.5vh',
   };
   return isMobile(display)
     ? //mobile css
@@ -102,7 +103,7 @@ const menu = (display, theme) => {
 
 const menuIcon = (display, theme) => {
   const css = {
-    color: theme.primaryLight,
+    color: 'white',
     backgroundColor: 'unset',
   };
   return isMobile(display)

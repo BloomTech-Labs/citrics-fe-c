@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { useOktaAuth } from '@okta/okta-react';
 import store from './state';
 import {
   BrowserRouter as Router,
