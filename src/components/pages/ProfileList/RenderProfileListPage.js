@@ -17,6 +17,7 @@ const RenderProfileListPage = props => {
   const [visible, setVisible] = useState(false);
   const [form] = Form.useForm();
   const [formLayout, setFormLayout] = useState('horizontal');
+
   const { authService } = useOktaAuth();
 
   const logout = async () => {

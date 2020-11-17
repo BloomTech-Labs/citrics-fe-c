@@ -3,6 +3,15 @@ import RenderProfileListPage from '../components/pages/ProfileList/RenderProfile
 import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 
+jest.mock('@okta/okta-react', () => ({
+  useOktaAuth: () => {
+    return {
+      authState: {},
+      authService: {},
+    };
+  },
+}));
+
 test('loads a profile list', () => {
   const data = [{ id: '1234', name: 'item' }];
   const { getByText, debug } = render(
