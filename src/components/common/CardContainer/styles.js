@@ -15,6 +15,9 @@ const plotlyCardContainer = (display, theme) => {
   const css = {
     width: '100%',
     color: 'red',
+    display: 'flex',
+    flexFlow: 'row wrap',
+    justifyContent: 'center',
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)
@@ -35,6 +38,8 @@ const cityCardContainer = (display, theme) => {
   // this is our base css object
   const css = {
     width: '100%',
+    display: 'flex',
+    justifyContent: 'center',
   };
   // spread the css const to pass in what you want to change
   return isMobile(display)
