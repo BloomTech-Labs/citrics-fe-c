@@ -1,7 +1,7 @@
 
 # LABS 28 - CITRICS TEAM C
 
-You can find the deployed project [HERE](https://27-c.citrics.dev/).
+You can find the deployed project [HERE](https://c.citrics.dev/).
 See a video demo [HERE](https://www.youtube.com/watch?v=K0kvbHh7vDY&feature=youtu.be). 
 
 ## Contributors
@@ -35,6 +35,7 @@ See a video demo [HERE](https://www.youtube.com/watch?v=K0kvbHh7vDY&feature=yout
 - Add a city to your favorites
 - Authenticate with Okta
 - Display in desktop or mobile 
+- View and edit your profile information
 
 #### Front end deployed to `AWS AMPLIFY`
 
@@ -115,3 +116,4 @@ See [Backend Documentation](https://labs27-c-citrics-api.herokuapp.com/swagger-u
 - Login does not work on deployed branch, it returns a CORS policy error 
 - When removing CityCard items from top down on /compare page it rearranges order of the cards, and leads to duplicate colors
 - National Average data is hardcoded at state/actions/cardContainerActs.js line 65. Needs to be updated to work with new National Average DS API endpoint 
+- Save button in RenderProfileListPage does not work
