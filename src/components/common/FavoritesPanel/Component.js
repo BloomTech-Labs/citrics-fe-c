@@ -11,7 +11,15 @@ export default ({ display }) => {
 
   console.log(favorites);
   return (
-    <div>
+    <div
+      style={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        width: '80vw',
+        justifyContent: 'space-around',
+        alignContent: 'space-around',
+      }}
+    >
       {favorites.map(city => {
         return <CityCard city={city} style={sty} />;
       })}
