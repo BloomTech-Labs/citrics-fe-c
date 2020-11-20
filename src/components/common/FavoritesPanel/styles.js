@@ -37,7 +37,7 @@ const container = (display, theme) => {
       {
         ...css,
         marginTop: -12,
-        marginLeft: 0,
+        marginLeft: 20,
         zIndex: '50',
         width: '100vw',
         padding: '12px',
@@ -48,6 +48,8 @@ const container = (display, theme) => {
         top: '0px',
         filter: theme.elevation3,
         marginBottom: '40px',
+        display: 'flex',
+        flex: 'wrap',
       }
     : //desktop (spread this bad boy and pass in what you want to change)
       { ...css };
